@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>LH 6</title>
+		<link type="text/css" href="css/main.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/swfobject/swfobject.js"></script>		
+		<script type="text/javascript" src="js/jquery/jquery-1.5.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery/pubsub.js"></script>
+		<script type="text/javascript" src="js/flxhr/flXHR.js"></script>
+		<script type="text/javascript" src="js/strophe/strophe.js"></script>
+		<script type="text/javascript" src="js/strophe/strophe.flxhr.js"></script>
+		<script type="text/javascript" src="js/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="js/backbone/backbone-min.js"></script>
+		<body>
+			<div id="wrapper">
+				<div id="loading">
+					<div id="login">
+						<input id="loginNick" type="text">
+						<input id="loginRoom" type="text">
+						<a href="#" id="loginJoin">Join</a>
+					</div>
+					<div id="status">
+					</div>
+				</div>
+				<div id="leftCol">
+					<div id="playlist">
+						<div id="plsongs">
+							<ul>
+							</ul>
+						</div>
+						<div id="plcontrols">
+						</div>
+					</div>
+				</div>
+				<div id="rightCol">
+					<div id="video">
+						<div id="ytapiplayer"></div>
+					</div>
+					<div id="chat">
+						<div id="chatDisplay">
+						</div>
+						<input id="chatInput" />
+					</div>
+				</div>
+				<div id="members">
+					<ul>
+					</ul>
+				</div>
+				<br clear="all" />
+			</div>
+		</body>
+</html>
+<!-- Models -->
+<script type="text/javascript" src="js/app/models/Song.js"></script>
+<script type="text/javascript" src="js/app/models/Member.js"></script>
+<!-- Collections -->
+<script type="text/javascript" src="js/app/collections/MemberList.js"></script>
+<script type="text/javascript" src="js/app/collections/Playlist.js"></script>
+<!-- Views -->
+<script type="text/javascript" src="js/app/views/PlaylistView.js"></script>
+<script type="text/javascript" src="js/app/views/SongView.js"></script>
+<script type="text/javascript" src="js/app/views/YTPlayerView.js"></script>
+<script type="text/javascript" src="js/app/views/MembersView.js"></script>
+<script type="text/javascript" src="js/app/views/ChatView.js"></script>
+<script type="text/javascript" src="js/app/views/LoginView.js"></script>
+<!-- Connection -->
+<script type="text/javascript" src="js/app/Connection.js"></script>
+<!-- Main -->
+<script type="text/javascript" src="js/app/main.js"></script>
+
+<!----TEMPLATES-------------------------------------------------------- -->
+
+<!-- Member li template -->
+<script type="text/template" id="memberul-template">
+	<ul>
+		<% _.each(items, function(i) { %>
+			<li id="<%= i.cid %>"><%= i.get("nick") %></li>
+		<% }); %>
+	</ul>
+</script>
+
+<!-- Chat message template -->
+<script type="text/template" id="message-template">
+	<span class="message"><span class="nick"><%= nick %>: </span><%= message %></span>
+</script>
+
+<!-- Song li template -->
+<script type="text/template" id="song-template">
+	<li class="song"><%= id %></li>
+</script>

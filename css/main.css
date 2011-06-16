@@ -1,0 +1,81 @@
+body {
+	background: #d0d0d0;
+}
+#loading {
+	background: #e8e8e8;
+	height: 541px;
+	width: 953px;
+	position: absolute;
+	display: none;
+}
+#wrapper {
+	background: #e8e8e8;
+	border: solid 4px #f1f1f1;
+	height: 541px;
+	width: 953px;
+	margin: 50px auto;
+}
+#leftCol {
+	float: left;
+	width: 315px;
+}
+#rightCol {
+	float: right;
+	width: 638px;
+}
+#playlist {
+	background: #fbfbfb;
+	height: 540px;
+	width: 315px;
+}
+#plsongs {
+	height: 491px;
+	width: 315px;
+}
+#plsongs ul {
+	padding: 0;
+	margin: 0;
+}
+#plsong ul li {
+	height: 70px;
+}
+#plcontrols {
+	background: #b7b7b7;
+	height: 50px;
+	width: 315px;
+}
+#video {
+	background: #ededed;
+	padding-top: 42px;
+	height: 300px;
+	text-align: center;
+}
+#chat {
+	height: 199px;
+	background: #000
+}
+#chatDisplay {
+	background: #e4e4e4;
+	height: 168px;
+	overflow: auto;
+}
+#chatInput {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	padding: 2px 0 0 0;
+	margin: 0;
+	height: 29px;
+	width: 100%;
+	color: #7a7a7a;
+	background: #dadada;
+	font-size: 0.9em
+}
+span.nick {
+	color: #b3b3b3;
+}
+span.message {
+	display: block;
+	color: #565656
+}
