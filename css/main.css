@@ -12,7 +12,7 @@ body {
 	margin: 50px auto;
 }
 #loading {
-	background: url('/slice/images/loading_bg.png') top left no-repeat;
+	background: url('/lh/images/loading_bg.png') top left no-repeat;
 	height: 541px;
 	width: 952px;
 	position: absolute;
@@ -31,7 +31,7 @@ h1#loginLogo {
 	height: 0;
 	font-size: 0;
 	padding: 0 0 41px 233px;
-	background: url('/slice/images/lh_logo.png') top left no-repeat;
+	background: url('/lh/images/lh_logo.png') top left no-repeat;
 	float: left;
 	overflow: hidden;
 }
@@ -50,7 +50,7 @@ h1#loginLogo {
 	width: 637px;
 }
 #playlist {
-	background: url('/slice/images/playlist_pattern.jpg');
+	background: url('/lh/images/playlist_pattern.jpg');
 	height: 541px;
 	width: 315px;
 	
@@ -67,13 +67,13 @@ h1#loginLogo {
 #plcontrolsShadow {
 	width: 315px;
 	height: 9px;
-	background: url('/slice/images/controls_shadow.png') top left no-repeat;
+	background: url('/lh/images/controls_shadow.png') top left no-repeat;
 	position: relative;
 	top: -9px
 }
 
 #plcontrols {
-	background: url('/slice/images/controls_bg.jpg') top left no-repeat;
+	background: url('/lh/images/controls_bg.jpg') top left no-repeat;
 	height: 51px;
 	width: 315px;
 }
@@ -94,15 +94,15 @@ h1#loginLogo {
 	width: 32px;
 }
 a#playlistUp { 
-	background: url('/slice/images/playlist_up.jpg') top left no-repeat;
+	background: url('/lh/images/playlist_up.jpg') top left no-repeat;
 	background-position: 0 0;
 }
 a#playlistDown { 
-	background: url('/slice/images/playlist_down.jpg') top left no-repeat;
+	background: url('/lh/images/playlist_down.jpg') top left no-repeat;
 	background-position: 0 0;
 }
 a#playlistAdd {
-	background: url('/slice/images/playlist_add.jpg') top left no-repeat;
+	background: url('/lh/images/playlist_add.jpg') top left no-repeat;
 	background-position: 0 0;
 }
 a:hover#playlistUp { background-position: 0 -31px; }
@@ -121,7 +121,7 @@ a:hover#playlistAdd { background-position: 0 -31px; }
 #youtubePlayer {
 	width: 637px;
 	height: 342px;
-	background: url('/slice/images/gray_backgrounds.jpg') top left no-repeat;
+	background: url('/lh/images/gray_backgrounds.jpg') top left no-repeat;
 }
 
 #video {
@@ -132,7 +132,7 @@ a:hover#playlistAdd { background-position: 0 -31px; }
 	background: #dadada
 }
 #chatDisplay {
-	background: url('/slice/images/gray_backgrounds.jpg') top left no-repeat;
+	background: url('/lh/images/gray_backgrounds.jpg') top left no-repeat;
 	background-position: 0 -342px;
 	height: 168px;
 	overflow: auto;
@@ -148,7 +148,7 @@ a:hover#playlistAdd { background-position: 0 -31px; }
 	width: 100%;
 	color: #7a7a7a;
 	font-size: 0.9em;
-	background: url('/slice/images/gray_backgrounds.jpg') top left no-repeat;
+	background: url('/lh/images/gray_backgrounds.jpg') top left no-repeat;
 	background-position: 0 -510px;	
 }
 
@@ -195,7 +195,7 @@ a.button1 {
 	width: 81px;
 	height: 25px;
 	padding: 11px 0 0 0;
-	background: url('/slice/images/join_button.png') top left no-repeat;
+	background: url('/lh/images/join_button.png') top left no-repeat;
 	background-position: 0 0;
 	text-decoration: none;
 	text-align: center;
@@ -216,7 +216,7 @@ a:hover.button1 { background-position: 0 -36px }
 	width: 291px;
 	height: 63px;
 	padding: 6px 16px 0 8px;
-	background: url('/slice/images/song_bg.jpg') top left no-repeat;
+	background: url('/lh/images/song_bg.jpg') top left no-repeat;
 	background-position: 0 -69px 
 }
 #playing.song { 
@@ -262,7 +262,7 @@ a:hover.button1 { background-position: 0 -36px }
 }
 
 .tooltip {
-	background: url('/slice/images/gray_transparent_bg.png');
+	background: url('/lh/images/gray_transparent_bg.png');
 	color: #fff;
 	display: none;
 	padding: 7px;
