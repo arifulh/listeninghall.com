@@ -6,51 +6,323 @@
 		<link type="text/css" href="css/main.css" rel="stylesheet" />
 		<script type="text/javascript" src="js/swfobject/swfobject.js"></script>		
 		<script type="text/javascript" src="js/jquery/jquery-1.5.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery/pubsub.js"></script>
 		<script type="text/javascript" src="js/flxhr/flXHR.js"></script>
 		<script type="text/javascript" src="js/strophe/strophe.js"></script>
 		<script type="text/javascript" src="js/strophe/strophe.flxhr.js"></script>
 		<script type="text/javascript" src="js/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="js/backbone/backbone-min.js"></script>
+		
+		
+		<!-- Jquery plugins -->
+		<script type="text/javascript" src="js/jquery/pubsub.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery.mousewheel.min.js"></script>	
+		<script type="text/javascript" src="js/jquery/jquery.lh.remoteScroll.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery.lh.tooltips.js"></script>		
+		
 		<body>
 			<div id="wrapper">
-				<div id="loading">
-					<div id="login">
-						<input id="loginNick" type="text">
-						<input id="loginRoom" type="text">
-						<a href="#" id="loginJoin">Join</a>
+				<!-- Loading screen -->
+					<div id="loading" style="display: none">
+						<div id="login">
+							<h1 id="loginLogo">Listening Hall</h1>
+							<!-- Create new room -->
+							<div id="createDialog">
+								<ul class="dialog1">
+									<li>
+										Room name<br>
+										<input id="loginRoom" type="text">
+									</li>
+									<li>
+										Your nickname<br> 
+										<input id="loginNick" type="text">
+									</li>
+									<li><a href="#" id="createNew" class="button1">Create</a></li>
+								</ul>
+							</div>
+							<!-- Join existing room -->
+							<div id="joinDialog" style="display: none">
+								<ul class="dialog1">
+									<li>Room<h2></h2></li>
+									<li>
+										Your nickname<br> 
+										<input id="loginNick" type="text">
+									</li>
+									<li class="hidden">
+										Password<br> 
+										<input id="loginPass" type="text">								
+									</li>
+									<li><a href="#" id="joinExisting" class="button1">Join</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<div id="status">
-					</div>
-				</div>
-				<div id="leftCol">
+				<!-- end of loading screen -->	
+				<div id="leftColumn">
 					<div id="playlist">
 						<div id="plsongs">
 							<ul>
+								<li>
+									<div id="playing" class="song">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">Arcade Fire - The Suburbs</div>
+											<div class="plduration">Duration 3:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>
+								<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>									<li>
+									<div class="song queued">
+										<div class="plimage"></div>
+										<div class="plinfo">
+											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
+											<div class="plduration">Duration 1:10:00</div>
+										</div>
+										<br clear="all" />
+									</div>
+								</li>	
+								
 							</ul>
 						</div>
 						<div id="plcontrols">
+							<div id="plcontrolsShadow"></div>
+							<ul>
+								<li><a href="#" class="button2" id="playlistUp">Scroll playlist up</a></li>
+								<li><a href="#" class="button2" id="playlistDown">Scroll playlist down</a></li>
+								<li><a href="#" class="button2" id="playlistAdd">Add song to playlist</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<div id="rightCol">
-					<div id="video">
-						<div id="ytapiplayer"></div>
+				<div id="rightColumn">
+					<div id="youtubePlayer">
+						<div id="video">
+							<div id="ytapiplayer"></div>
+						</div>
 					</div>
 					<div id="chat">
-						<div id="chatDisplay">
-						</div>
+						<div id="chatDisplay"></div>
 						<input id="chatInput" />
 					</div>
 				</div>
-				<div id="members">
-					<ul>
-					</ul>
-				</div>
 				<br clear="all" />
 			</div>
-		</body>
+			
+			
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Models -->
 <script type="text/javascript" src="js/app/models/Song.js"></script>
 <script type="text/javascript" src="js/app/models/Member.js"></script>

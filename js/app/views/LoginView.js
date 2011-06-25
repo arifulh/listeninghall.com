@@ -2,7 +2,7 @@ var LoginView = Backbone.View.extend({
 	el : $("#loading"),
 	
 	events : {
-		"click #loginJoin" : "join"
+
 	},
 	
 	subscribe: function() {
@@ -10,22 +10,35 @@ var LoginView = Backbone.View.extend({
 	},
 	
 	initialize : function() {
-		_.bindAll(this, 'subscribe','join','success');
+		_.bindAll(this, 'subscribe', 'getRoom', 'joinExisting', 'createNew', 'success');
 		this.$login 	= $("#login");
 		this.$status 	= $("#status");
 		this.$nick 		= $("#loginNick");
 		this.$room 		= $("#loginRoom");
 		this.subscribe();
+		this.getRoom();
+	},
+	
+	getRoom : function() {
+		var room = (window.location.hash).split("/")[1];
+		
 	},
 	
 	// This function needs XSS examniation
-	join : function() {
+	createNew : function() {
 		var nick = this.$nick.val();
 		var	room = this.$room.val();
-		Connection.init(nick, room);
+		Connection.init(nick, room);		
+	},
+	
+	// This function needs XSS examniation
+	joinExisting : function(room) {
+		var nick = this.$nick.val();
 	},
 
-	success : function() {
+	// This function needs XSS examniation
+	success : function(room) {
+		window.location.hash = "/" + room;
 		$(this.el).fadeOut("slow");
 	},
 	

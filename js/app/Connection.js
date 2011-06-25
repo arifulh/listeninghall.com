@@ -125,7 +125,7 @@ var Connection = {
 	_onPresence : function(stanza) {
 		var pres = this._parse(stanza);	
 		if (pres.room !== this.room) return true;
-		if (pres.code === "110") $.publish("room/joined", [ this.nick ]);
+		if (pres.code === "110") $.publish("room/joined", [ this.nick, this.room ]);
 		switch(pres.type) {
 			case "error"	   : $.publish('room/error',        [ pres.error ]); break;
 			case "unavailable" : $.publish('room/user/left',    [ pres.nick ]);  break;
