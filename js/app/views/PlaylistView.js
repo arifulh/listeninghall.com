@@ -21,13 +21,13 @@ var PlaylistView = Backbone.View.extend({
 		this.$("#plsongs ul").append(view.render().el);
 	},
 	
-	// Remove view from DOM, and remove reference to view in songViews array
+	// Remove song view from DOM, and remove reference to view in songViews array
 	removeRender : function(song) {
 		this.songViews[0].remove();
 		this.songViews.shift();
 	},
 	
-	// Clear entire view
+	// Clear view of all songs
 	removeAll : function() {
 		var songs = this.songViews;
 		var len   = songs.length;

@@ -51,7 +51,6 @@ var Playlist = Backbone.Collection.extend({
 			if (next.get("id") !== id) { this.resync(); return };
 			next.togglePlay();
 		}		
-		
 	},
 	
 	// Upon initial connection, the server will send the current
@@ -68,6 +67,6 @@ var Playlist = Backbone.Collection.extend({
 	resync : function () {
 		this.refresh();
 		$.publish("song/resync");	
-	},	
+	}
 	
 });

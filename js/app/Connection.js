@@ -186,9 +186,9 @@ var Connection = {
 	
 	// Template for initial presence. 
 	_initialPresence : function() {
-		return $pres({ to: this.room + "/" + this.nick, })
+		return $pres({ to: this.room + "/" + this.nick })
 					.c("x", { xmlns: Strophe.NS.MUC });		
-	},
+	}
 	
 };
 

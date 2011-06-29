@@ -8,13 +8,12 @@ $(function() {
 			/* Collection */
 			this.members 		= new MemberList;
 			this.playlist 		= new Playlist;	
-			//	this.searches		= new ResultList;
 			
 			/* Views */
-			this.playlistView 	= new PlaylistView	({ collection: this.playlist });
-			this.playerView		= new YTPlayerView	({ collection: this.playlist });
-			//	this.searchView 	= new SearchView	({ collection: this.searches });
-			this.membersView 	= new MembersView	({ collection: this.members });
+			this.playlistView 	= new PlaylistView ({ collection: this.playlist });
+			this.playerView		= new YTPlayerView ({ collection: this.playlist });
+			this.membersView 	= new MembersView  ({ collection: this.members  });
+			this.searchView 	= new SearchView;
 			this.chatView 		= new ChatView;	
 			this.loginView 		= new LoginView;	
 		}
@@ -30,6 +29,15 @@ $(function() {
 	// Intialize jquery plugins for scrolling and tooltips
 	$("#plsongs").remoteScroll({ up: "#playlistUp", down: "#playlistDown"}); 
 	$(".pltitle").tooltips();	
+	
+	
+	
+	
+	
+	$("#playlistAdd").click(function() { 
+		$("#search").animate({width: 'toggle', opacity: 'toggle'}, 350);		
+		$("#searchResults").slideToggle("fast");
+	});
 	
 });
 

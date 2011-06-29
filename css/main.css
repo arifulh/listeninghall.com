@@ -1,8 +1,11 @@
-body {
+html {
 	background: #d0d0d0;
 	font-family: Arial;
 	font-size: 12px;
 	color: #d8d9da
+}
+textarea:focus, input:focus {
+	outline:none
 }
 #wrapper {
 	background: #e8e8e8;
@@ -12,7 +15,7 @@ body {
 	margin: 50px auto;
 }
 #loading {
-	background: url('/lh/images/loading_bg.png') top left no-repeat;
+	background: url('../images/loading_bg.png') top left no-repeat;
 	height: 541px;
 	width: 952px;
 	position: absolute;
@@ -31,7 +34,7 @@ h1#loginLogo {
 	height: 0;
 	font-size: 0;
 	padding: 0 0 41px 233px;
-	background: url('/lh/images/lh_logo.png') top left no-repeat;
+	background: url('../images.._logo.png') top left no-repeat;
 	float: left;
 	overflow: hidden;
 }
@@ -49,8 +52,83 @@ h1#loginLogo {
 	float: right;
 	width: 637px;
 }
+
+#search {
+	background: url('../images/search_pattern.png');
+	position: absolute;
+	width: 440px;
+	height: 515px;
+	padding: 26px 0 0 30px;
+	border-right: solid 5px #b9b9b9;
+}
+#searchContent {
+
+}
+#searchResults {
+	width: 405px;
+	height: 440px;
+	overflow: hidden;
+	margin: 10px 0 0 5px;
+	
+	
+}
+#searchResults ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative
+}
+#searchResults ul li {
+	border-bottom: solid 1px #696864;
+	width: 380px;
+	padding: 10px 5px 10px 5px;
+}
+#searchResults ul li:hover {
+	background: url('../images/black_transparent_bg3.png');
+}
+#searchResults ul li:hover a {
+	text-decoration: underline
+}
+#searchResults ul li:hover img {
+	border: solid 4px #494949
+}
+#searchBox {
+	width: 387px;
+	height: 32px;
+	padding: 14px 13px 0 13px;
+	background: url('../images/search_bar.png') top left no-repeat;
+}
+#searchText {
+	background: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	width: 360px;
+	height: 15px;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	float: left;
+}
+#searchButton {
+	display: block;
+	float: right;
+	background: #c2c2c2;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	text-decoration: none;
+	width: 0;
+	height: 0;
+	font: 0pt;
+	padding: 0 0 15px 15px;
+}
+
+
 #playlist {
-	background: url('/lh/images/playlist_pattern.jpg');
+	background: url('../images/playlist_pattern.jpg');
 	height: 541px;
 	width: 315px;
 	
@@ -67,13 +145,13 @@ h1#loginLogo {
 #plcontrolsShadow {
 	width: 315px;
 	height: 9px;
-	background: url('/lh/images/controls_shadow.png') top left no-repeat;
+	background: url('../images/controls_shadow.png') top left no-repeat;
 	position: relative;
 	top: -9px
 }
 
 #plcontrols {
-	background: url('/lh/images/controls_bg.jpg') top left no-repeat;
+	background: url('../images/controls_bg.jpg') top left no-repeat;
 	height: 51px;
 	width: 315px;
 }
@@ -94,15 +172,15 @@ h1#loginLogo {
 	width: 32px;
 }
 a#playlistUp { 
-	background: url('/lh/images/playlist_up.jpg') top left no-repeat;
+	background: url('../images/playlist_up.jpg') top left no-repeat;
 	background-position: 0 0;
 }
 a#playlistDown { 
-	background: url('/lh/images/playlist_down.jpg') top left no-repeat;
+	background: url('../images/playlist_down.jpg') top left no-repeat;
 	background-position: 0 0;
 }
 a#playlistAdd {
-	background: url('/lh/images/playlist_add.jpg') top left no-repeat;
+	background: url('../images/playlist_add.jpg') top left no-repeat;
 	background-position: 0 0;
 }
 a:hover#playlistUp { background-position: 0 -31px; }
@@ -121,7 +199,7 @@ a:hover#playlistAdd { background-position: 0 -31px; }
 #youtubePlayer {
 	width: 637px;
 	height: 342px;
-	background: url('/lh/images/gray_backgrounds.jpg') top left no-repeat;
+	background: url('../images/gray_backgrounds.jpg') top left no-repeat;
 }
 
 #video {
@@ -132,7 +210,7 @@ a:hover#playlistAdd { background-position: 0 -31px; }
 	background: #dadada
 }
 #chatDisplay {
-	background: url('/lh/images/gray_backgrounds.jpg') top left no-repeat;
+	background: url('../images/gray_backgrounds.jpg') top left no-repeat;
 	background-position: 0 -342px;
 	height: 168px;
 	overflow: auto;
@@ -148,7 +226,7 @@ a:hover#playlistAdd { background-position: 0 -31px; }
 	width: 100%;
 	color: #7a7a7a;
 	font-size: 0.9em;
-	background: url('/lh/images/gray_backgrounds.jpg') top left no-repeat;
+	background: url('../images/gray_backgrounds.jpg') top left no-repeat;
 	background-position: 0 -510px;	
 }
 
@@ -195,7 +273,7 @@ a.button1 {
 	width: 81px;
 	height: 25px;
 	padding: 11px 0 0 0;
-	background: url('/lh/images/join_button.png') top left no-repeat;
+	background: url('../images/join_button.png') top left no-repeat;
 	background-position: 0 0;
 	text-decoration: none;
 	text-align: center;
@@ -216,7 +294,7 @@ a:hover.button1 { background-position: 0 -36px }
 	width: 291px;
 	height: 63px;
 	padding: 6px 16px 0 8px;
-	background: url('/lh/images/song_bg.jpg') top left no-repeat;
+	background: url('../images/song_bg.jpg') top left no-repeat;
 	background-position: 0 -69px 
 }
 #playing.song { 
@@ -226,7 +304,6 @@ a:hover.button1 { background-position: 0 -36px }
 #playing.song .pltitle {
 	color: #000
 }
-
 .plimage {
 	width: 69px;
 	height: 50px;
@@ -234,6 +311,7 @@ a:hover.button1 { background-position: 0 -36px }
 	background: #ae9b97;
 	display: block;
 	float: left;
+
 }
 .plinfo {
 	width: 208px;
@@ -243,7 +321,7 @@ a:hover.button1 { background-position: 0 -36px }
 	float: right;
 }
 .pltitle {
-	height: 12px;
+	height: 14px;
 	display: block;
 	overflow: hidden;
 	font-size: 12px;
@@ -258,11 +336,44 @@ a:hover.button1 { background-position: 0 -36px }
 	overflow: hidden;
 	font-size: 11px;
 	color: #909ca5;
-	margin-top: 5px;
+	margin-top: 3px;
 }
-
+.searchImage {
+	width: 69px;
+	height: 50px;
+	border: solid 4px #383838;
+	background: #000;
+	display: block;
+	float: left
+}
+.searchInfo {
+	width: 278px;
+	margin-left: 10px;
+	float: left;
+}
+.searchTitle {
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	cursor: default;
+}
+.searchMisc {
+	overflow: hidden;
+	font-size: 11px;
+	color: #d5d5d5;
+	margin-top: 5px;
+	font-family: Tahoma;
+}
+.searchMisc a,
+.searchMisc a:active,
+.searchMisc a:visited {
+	color: #e2f4ec;
+}
+.searchMisc a:hover {
+	color: #bef2d6;
+}
 .tooltip {
-	background: url('/lh/images/gray_transparent_bg.png');
+	background: url('../images/gray_transparent_bg.png');
 	color: #fff;
 	display: none;
 	padding: 7px;
@@ -278,6 +389,135 @@ a:hover.button1 { background-position: 0 -36px }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 5px;
+	height: 100%;
+	background: red;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: red;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	background: #5c5c5c;
+	position: relative;
+}
+
+.jspDrag
+{
+	background: #3b3b3b;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+.jspDrag:hover {
+	background: #fff
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
 
 
 

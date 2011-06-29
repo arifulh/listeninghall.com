@@ -3,8 +3,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>LH 6</title>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+		
 		<link type="text/css" href="css/main.css" rel="stylesheet" />
-		<script type="text/javascript" src="js/swfobject/swfobject.js"></script>		
+		<script type="text/javascript" src="js/swfobject/swfobject.js"></script>
+		<script type="text/javascript" src="js/json2.js"></script>		
 		<script type="text/javascript" src="js/jquery/jquery-1.5.2.min.js"></script>
 		<script type="text/javascript" src="js/flxhr/flXHR.js"></script>
 		<script type="text/javascript" src="js/strophe/strophe.js"></script>
@@ -13,11 +16,14 @@
 		<script type="text/javascript" src="js/backbone/backbone-min.js"></script>
 		
 		
+		
 		<!-- Jquery plugins -->
 		<script type="text/javascript" src="js/jquery/pubsub.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.mousewheel.min.js"></script>	
 		<script type="text/javascript" src="js/jquery/jquery.lh.remoteScroll.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery.lh.tooltips.js"></script>		
+		<script type="text/javascript" src="js/jquery/jquery.lh.tooltips.js"></script>	
+		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.js"></script>			
+		
 		
 		<body>
 			<div id="wrapper">
@@ -56,14 +62,14 @@
 							</div>
 						</div>
 					</div>
-				<!-- end of loading screen -->	
+				<!-- end of loading screen -->				
 				<div id="leftColumn">
 					<div id="playlist">
 						<div id="plsongs">
 							<ul>
 								<li>
 									<div id="playing" class="song">
-										<div class="plimage"></div>
+										<img class="plimage" />
 										<div class="plinfo">
 											<div class="pltitle">Arcade Fire - The Suburbs</div>
 											<div class="plduration">Duration 3:00</div>
@@ -73,213 +79,14 @@
 								</li>
 								<li>
 									<div class="song queued">
-										<div class="plimage"></div>
+										<img class="plimage" />
 										<div class="plinfo">
 											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
 											<div class="plduration">Duration 1:10:00</div>
 										</div>
 										<br clear="all" />
 									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>									<li>
-									<div class="song queued">
-										<div class="plimage"></div>
-										<div class="plinfo">
-											<div class="pltitle">War Of The Roses KTU New York - Cheating boyfriend Episode - the price of milk has gone up </div>
-											<div class="plduration">Duration 1:10:00</div>
-										</div>
-										<br clear="all" />
-									</div>
-								</li>	
-								
+								</li>							
 							</ul>
 						</div>
 						<div id="plcontrols">
@@ -293,6 +100,31 @@
 					</div>
 				</div>
 				<div id="rightColumn">
+					<!-- Search screen -->
+					<div id="search">
+						
+						
+						<div id="searchContent">
+							<div id="searchBox">
+								<input type="text" value="Search Youtube" id="searchText" />
+								<a href="#" id="searchButton" />Search</a>
+							</div>
+							<div id="searchResults">
+								
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					</div>
+					<!-- end of search screen -->
 					<div id="youtubePlayer">
 						<div id="video">
 							<div id="ytapiplayer"></div>
@@ -326,12 +158,15 @@
 <!-- Models -->
 <script type="text/javascript" src="js/app/models/Song.js"></script>
 <script type="text/javascript" src="js/app/models/Member.js"></script>
+
 <!-- Collections -->
-<script type="text/javascript" src="js/app/collections/MemberList.js"></script>
 <script type="text/javascript" src="js/app/collections/Playlist.js"></script>
+<script type="text/javascript" src="js/app/collections/MemberList.js"></script>
+
 <!-- Views -->
 <script type="text/javascript" src="js/app/views/PlaylistView.js"></script>
 <script type="text/javascript" src="js/app/views/SongView.js"></script>
+<script type="text/javascript" src="js/app/views/SearchView.js"></script>
 <script type="text/javascript" src="js/app/views/YTPlayerView.js"></script>
 <script type="text/javascript" src="js/app/views/MembersView.js"></script>
 <script type="text/javascript" src="js/app/views/ChatView.js"></script>
@@ -343,14 +178,6 @@
 
 <!----TEMPLATES-------------------------------------------------------- -->
 
-<!-- Member li template -->
-<script type="text/template" id="memberul-template">
-	<ul>
-		<% _.each(items, function(i) { %>
-			<li id="<%= i.cid %>"><%= i.get("nick") %></li>
-		<% }); %>
-	</ul>
-</script>
 
 <!-- Chat message template -->
 <script type="text/template" id="message-template">
@@ -361,3 +188,51 @@
 <script type="text/template" id="song-template">
 	<li class="song"><%= id %></li>
 </script>
+
+<!-- Member li template -->
+<script type="text/template" id="memberul-template">
+	<ul>
+		<% _.each(items, function(i) { %>
+			<li id="<%= i.cid %>"><%= i.get("nick") %></li>
+		<% }); %>
+	</ul>
+</script>
+
+
+
+
+
+
+<!-- Search ul template -->
+<script type="text/template" id="search-template">
+<ul>
+	<% _.each(results, function(i) { %>
+		<% var media = i.media$group; %>
+		<li id="<%= media.yt$videoid.$t %>">
+			<img class="searchImage" src="<%= media.media$thumbnail[0].url %>" />
+			<div class="searchInfo">
+				<a class="searchTitle"><%= media.media$title.$t %></a>
+				<div class="searchMisc">
+					Duration: <%= media.yt$duration.seconds %> - 
+					<a href="#" id="<%= media.yt$videoid.$t %>">Add to playlist</a>
+				</div>
+			</div>
+			<br clear="all" />
+		</li>
+	<% }); %>
+<ul>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
