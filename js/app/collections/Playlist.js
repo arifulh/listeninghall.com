@@ -20,35 +20,46 @@ var Playlist = Backbone.Collection.extend({
 		this.subscribe();
 	},
 	
-	addSong : function(id, len) { this.add({ "id" : id, "len" : len }) },
+	addSong : function(song) { 	
+		this.add({ 
+			sid   : song.sid,
+			uuid  : song.uuid,
+			slen  : song.slen,
+			thumb : song.thumb,
+			title : song.title
+		}); 		
+	},
 	
 	// Sync current song time with the time sent from the server. If there are 
 	// no songs in the playlist, ignore signal from server, and if the current 
 	// song ID does not match the ID sent by the server, resync playlist.
-	syncSong : function(id, elapsed) {
+	syncSong : function(sync) {
 		if (this.length === 0) return;
 		var current = this.first();
-		if (current.get("id") !== id) { this.resync(); return };
-		current.set({ "elapsedTime": elapsed });
+		if (current.get("sid") !== sync.sid) { 
+			this.resync(); 
+			return; 
+		};
+		current.set({ "elapsedTime": sync.elapsed });
 		if (!current.get("playling")) current.togglePlay();
 	},
 	
 	// Load the first song int he playlist for playback. If there are no 
 	// songs in the playlist, ignore signal from server, and if the current 
 	// song ID does not match the ID sent by the server, resync playlist.
-	loadSong : function(id) {
+	loadSong : function(song) {
 		if (this.length === 0) return; 
 		var current = this.first(); 
 		
 		// If the current song has never been started, begin play.
 		// Otherwise, remove the current song, and begin play of next song.
 		if (!current.get("started")) {
-			if (current.get("id") !== id) { this.resync(); return };
+			if (current.get("sid") !== song.sid) { this.resync(); return };
 			current.togglePlay();
 		} else {
 			this.remove(current);
 			var next = this.first();
-			if (next.get("id") !== id) { this.resync(); return };
+			if (next.get("sid") !== song.sid) { this.resync(); return };
 			next.togglePlay();
 		}		
 	},
@@ -57,9 +68,7 @@ var Playlist = Backbone.Collection.extend({
 	// list of songs that need to be added to the playlist.
 	loadPlaylist : function(songs) {
 		var len = songs.length;
-		for (var i=0; i<len; i++) {
-			this.add({ "id" : songs[i].id, "len" : songs[i].len });
-		}
+		for (var i=0; i<len; i++) { this.addSong(songs[i]) }
 	},
 	
 	// If the playlist is out of sync with the server,

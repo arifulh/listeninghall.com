@@ -29,7 +29,7 @@ var YTPlayerView = Backbone.View.extend({
 	},
 	
 	play : function(song) {
-		var id = song.get("id");
+		var id = song.get("sid");
 		var seekTo = song.get("elapsedTime");
 		this.player.loadVideoById(id, seekTo);
 	},

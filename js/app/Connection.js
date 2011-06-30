@@ -61,24 +61,46 @@ var Connection = {
 		// todo
 	},
 	
-	// Helper function that parses a general set of attributes
-	// from all presence and message stanzas. Function helps clean
-	// up condition logic in "_onPresence', '_onMessage', and '_onSong'.
-	_parse : function(stanza) {
+	// Helper function that parses attributes from all presence stanzas
+	_parsePresence : function(stanza) {
 		var $stanza = $(stanza);
 		var from = $stanza.attr('from');		
 		return {
 			room  : Strophe.getBareJidFromJid(from),
 			nick  : Strophe.getResourceFromJid(from),
 			type  : $stanza.attr('type'),
-			text  : $stanza.text(),
-			song  : $stanza.find('song'),
 			code  : $stanza.find('status').attr('code'),
 			error : $stanza.find('error').attr('code')
+		};
+	},
+	
+	// Helper function that parses attributes from all message stanzas.
+	// **TODO: Message text may contain XSS code
+	_parseMessage : function(stanza) {
+		var $stanza = $(stanza);
+		var from = $stanza.attr('from');		
+		return {
+			room : Strophe.getBareJidFromJid(from),
+			nick : Strophe.getResourceFromJid(from),
+			text : $stanza.text(),
+			$song : $stanza.find('song')
 		};	
 	},
 	
-	// Needs to be implemented
+	// Helper function that parses attributes from all song stanzas.
+	// This information is generated from the server, so it will
+	// not contain any kind of XSS code.
+	_parseSong : function($song) {
+		return {
+			sid    : $song.find('sid').text(),
+			uuid   : $song.find('uuid').text(),
+			slen   : $song.find('slen').text(),
+			thumb  : $song.find('thumb').text(),
+			title  : $song.find('title').text()
+		}
+	},
+	
+	// Document this
 	requestPlaylist : function() {
 		var request = $iq({
 			to: this.room,
@@ -87,17 +109,16 @@ var Connection = {
 		this._connection.sendIQ(request, this.onPlaylist);
 	},
 	
+	// Clean up, and document
 	onPlaylist : function(stanza) {
-		console.log(Strophe.serialize(stanza));
 		var $stanza   = $(stanza);
 		var $playlist = $stanza.find('playlist');
+		var Connection = this;
 		var songs = [];
 		
-		$playlist.find('song').each(function(song) {
-			songs.push({ 
-				"id"  : $(this).attr("sid"),
-				"len" : $(this).attr("slen")
-			});
+		
+		$playlist.find('song').each(function(i, song) {		
+			songs.push(Connection._parseSong($(song)));
 		});
 		
 		if (songs.length > 0) {
@@ -106,24 +127,26 @@ var Connection = {
 		}	
 	},
 	
-	// Need to be implemented 
+	// Clean up an document
 	requestSync : function() {
 		var request = $iq({
 			to: this.room,
 			type: "get"
 		}).c('sync', { xmlns: "http://www.listeninghall.com/ns/sync" });
 		this._connection.sendIQ(request, function(stanza) {
-			console.log(Strophe.serialize(stanza));
-			var elapsed = $(stanza).find("sync").find("elapsed");
-			var id 		= $(elapsed).attr("sid");
-			var seconds = parseInt($(elapsed).attr("seconds"));
-			if (elapsed !== -1) $.publish("song/sync", [ id, seconds ]);
+			var $sync = $(stanza).find('sync');	
+			var sync = {
+				sid      : $sync.find('sid').text(),
+				uuid    : $sync.find('uuid').text(),
+				elapsed : parseInt($sync.find('elapsed').text())
+			}
+			if (sync.elapsed !== -1) $.publish("song/sync", [ sync ]);
 		});
 	},
 	
 	// *TODO: I think this function might be ready
 	_onPresence : function(stanza) {
-		var pres = this._parse(stanza);	
+		var pres = this._parsePresence(stanza);	
 		if (pres.room !== this.room) return true;
 		if (pres.code === "110") $.publish("room/joined", [ this.nick, this.room ]);
 		switch(pres.type) {
@@ -138,11 +161,10 @@ var Connection = {
 	// If the message is from this user, do not publish, since
 	// it has already been rendered to enhance App responsiveness	
 	_onMessage : function(stanza) {
-		console.log(Strophe.serialize(stanza));
-		var msg = this._parse(stanza);		
+		var msg = this._parseMessage(stanza);
 		if (msg.room !== this.room) return true;	
-		if (msg.song.length > 0) { 
-			this._onSong(msg.song); 
+		if (msg.$song.length > 0) { 
+			this._onSong(msg.$song); 
 			return true; 
 		}
 		if (msg.nick === this.nick) return true;	
@@ -151,12 +173,11 @@ var Connection = {
 	},
 	
 	// Needs work, needs comments
-	_onSong : function(song) {
-		var type = song.attr('type'),
-			id 	 = song.attr('sid'),
-			len  = song.attr('slen');
-		if (type === 'queue') $.publish('song/queue', [ id, len ]);
-		if (type === 'play')  $.publish('song/play',  [ id, len ]);
+	_onSong : function($song) {
+		var song = this._parseSong($song);
+		var type = $song.attr('type');
+		if (type === 'queue') $.publish('song/queue', [ song ]);
+		if (type === 'play')  $.publish('song/play',  [ song ]);
 	},
 		
 	// Template for messages that contain only groupchat text 
@@ -171,16 +192,13 @@ var Connection = {
 	// Template for messages containing song information.
 	// *Note: All messages are sent as type "groupchat", and the
 	// song element is sent as a payload inside the message.
-	sendSong : function(id, len) {
+	sendSong : function(id) {
 		var song = $msg({
 			to: this.room,
 			type: "groupchat"
 		}).c('song', { 
 				xmlns : "http://listeninghall.com/ns/song1", 
-				type  : "queue",
-				sid   : id,
-				slen  : len
-		});
+				type  : "queue"}).c('sid').t(id);
 		this._connection.send(song);		  
 	},
 	
