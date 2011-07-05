@@ -2,7 +2,8 @@ var SearchView = Backbone.View.extend({
 	el: $("#search"),
 	
 	events : {
-		"keypress #searchText" : "search"
+		"keypress #searchText" : "search",
+		"click li a"           : "add"
 	},
 	
 	initialize : function() {
@@ -11,7 +12,6 @@ var SearchView = Backbone.View.extend({
 		this.input          = $("#searchText");
 		this.searchTemplate = _.template($("#search-template").html());
 		this.display.jScrollPane();
-		
 	},
 	
 	search : function(e) {
@@ -35,5 +35,11 @@ var SearchView = Backbone.View.extend({
 				$("#searchResults ul").fadeIn("fast");
 			});			
 		});		
+	},
+	
+	add : function(e) {
+		var sid = e.currentTarget.id;
+		$.publish("song/send", [ sid ]);
 	}
+	
 });

@@ -29,9 +29,13 @@ var YTPlayerView = Backbone.View.extend({
 	},
 	
 	play : function(song) {
-		var id = song.get("sid");
-		var seekTo = song.get("elapsedTime");
-		this.player.loadVideoById(id, seekTo);
+		if (song.get("playing")) {
+			var id = song.get("sid");
+			var seekTo = song.get("elapsedTime");
+			this.player.loadVideoById(id, seekTo);
+		} else {
+			this.player.stopVideo();
+		}
 	},
 	
 	// This function is not very clear, the names are a little awkward,
@@ -42,6 +46,7 @@ var YTPlayerView = Backbone.View.extend({
 			return;
 		} else if (state === this.states.PLAYING && this.buffering) {
 			$.publish('song/request_sync');
+			this.buffering = false;
 		}
 	},
 	

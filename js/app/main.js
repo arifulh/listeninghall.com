@@ -16,13 +16,14 @@ $(function() {
 			this.searchView 	= new SearchView;
 			this.chatView 		= new ChatView;	
 			this.loginView 		= new LoginView;	
+			
 		}
 	};
 	mainapp.init();
 
 	// Initialize YouTube Player
     var swfUrl = "http://www.youtube.com/apiplayer?version=3&amp;enablejsapi=1&amp;playerapiid=ytplayer";	  
-    var params = { allowScriptAccess: "always", bgcolor: "#cccccc" };
+    var params = { allowScriptAccess: "always", bgcolor: "#cccccc", wmode: "transparent" };
     var atts = { id: "myytplayer" };	
     swfobject.embedSWF(swfUrl, "ytapiplayer", "444", "250", "9", null, null, params, atts);
 	
@@ -39,6 +40,7 @@ $(function() {
 		$("#searchResults").slideToggle("fast");
 	});
 	
+	
 });
 
 function onYouTubePlayerReady(playerid) {
@@ -48,3 +50,6 @@ function onYouTubePlayerReady(playerid) {
 function onYoutubeStateChange(state) {
 	$.publish('youtube/state', [ state ]);
 }
+
+
+

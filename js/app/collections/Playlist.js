@@ -5,6 +5,7 @@ var Playlist = Backbone.Collection.extend({
 	subscribe : function() {
 		$.subscribe('song/queue',    this.addSong);
 		$.subscribe('song/play',     this.loadSong);
+		$.subscribe('song/stop',     this.stopSong);
 		$.subscribe('song/sync',     this.syncSong);
 		$.subscribe('song/playlist', this.loadPlaylist);
 	},
@@ -15,6 +16,7 @@ var Playlist = Backbone.Collection.extend({
 		_.bindAll(this, 'addSong',
 						'syncSong',
 						'loadSong', 
+						'stopSong',
 						'loadPlaylist', 
 						'resync');
 		this.subscribe();
@@ -62,6 +64,14 @@ var Playlist = Backbone.Collection.extend({
 			if (next.get("sid") !== song.sid) { this.resync(); return };
 			next.togglePlay();
 		}		
+	},
+	
+	// If the song is playing, toggle "playing" so that it,
+	// is set to false and then remove the song from the playlist.
+	stopSong : function() {
+		var current = this.first(); 
+		current.togglePlay();
+		this.remove(current);
 	},
 	
 	// Upon initial connection, the server will send the current

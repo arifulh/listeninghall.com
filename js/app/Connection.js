@@ -11,6 +11,7 @@ var Connection = {
 	_subscribe : function() {
 		$.subscribe('message/send',    this.sendMessage);
 		$.subscribe('playlist/resync', this.requestPlaylist);
+		$.subscribe('song/send', 	   this.sendSong);
 		$.subscribe('song/resync', 	   this.requestSync);
 	},
 	
@@ -24,6 +25,7 @@ var Connection = {
 						'sendSong',
 						'requestPlaylist',
 						'requestSync',
+						'sendSkip',
 						'onPlaylist',
 						'_subscribe',
 						'_onMessage', 
@@ -116,6 +118,7 @@ var Connection = {
 		var Connection = this;
 		var songs = [];
 		
+		console.log(Strophe.serialize(stanza));
 		
 		$playlist.find('song').each(function(i, song) {		
 			songs.push(Connection._parseSong($(song)));
@@ -144,6 +147,17 @@ var Connection = {
 		});
 	},
 	
+	sendSkip : function() {
+		var skip = $iq({
+			to : this.room,
+			type : "set"
+		}).c('skip', { xmlns: "http://www.listeninghall.com/ns/skip" });
+		this._connection.sendIQ(skip, function(stanza) {
+			console.log(Strophe.serialize(stanza));
+		});
+		
+	},
+	
 	// *TODO: I think this function might be ready
 	_onPresence : function(stanza) {
 		var pres = this._parsePresence(stanza);	
@@ -160,7 +174,7 @@ var Connection = {
 	// If the message contains a song, allow onSong to handle the song data.
 	// If the message is from this user, do not publish, since
 	// it has already been rendered to enhance App responsiveness	
-	_onMessage : function(stanza) {
+	_onMessage : function(stanza) {	
 		var msg = this._parseMessage(stanza);
 		if (msg.room !== this.room) return true;	
 		if (msg.$song.length > 0) { 
@@ -178,6 +192,7 @@ var Connection = {
 		var type = $song.attr('type');
 		if (type === 'queue') $.publish('song/queue', [ song ]);
 		if (type === 'play')  $.publish('song/play',  [ song ]);
+		if (type === 'stop')  $.publish('song/stop');
 	},
 		
 	// Template for messages that contain only groupchat text 
@@ -192,13 +207,13 @@ var Connection = {
 	// Template for messages containing song information.
 	// *Note: All messages are sent as type "groupchat", and the
 	// song element is sent as a payload inside the message.
-	sendSong : function(id) {
+	sendSong : function(sid) {
 		var song = $msg({
 			to: this.room,
 			type: "groupchat"
 		}).c('song', { 
-				xmlns : "http://listeninghall.com/ns/song1", 
-				type  : "queue"}).c('sid').t(id);
+				xmlns : "http://listeninghall.com/ns/song_queue", 
+				type  : "queue"}).c('sid').t(sid);
 		this._connection.send(song);		  
 	},
 	
