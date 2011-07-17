@@ -9,58 +9,70 @@ var Connection = {
 	
 	// Subscribe to events published by the app.
 	_subscribe : function() {
-		$.subscribe('message/send',    this.sendMessage);
-		$.subscribe('playlist/resync', this.requestPlaylist);
-		$.subscribe('song/send', 	   this.sendSong);
-		$.subscribe('song/resync', 	   this.requestSync);
+		$.subscribe('connection/login',	this.login);
+		$.subscribe('message/send',	this.sendMessage);
+		$.subscribe('playlist/resync',	this.requestPlaylist);
+		$.subscribe('song/send',	this.sendSong);
+		$.subscribe('song/resync',	this.requestSync);
 	},
-	
+
 	// Use Underscore.js 'bindAll' function to bind certain
 	// methods in this object to run within context of this object
 	// (need this for all the event handlers, where 'this' becomes
 	// handled within the context of the callback). Set nick/room,
-	// and initialize the connection/subscription.
-	init : function(nick, room) {
+	// and initialize the connection/subscription.	
+	initialize : function() {
 		_.bindAll(this, 'sendMessage',
-						'sendSong',
-						'requestPlaylist',
-						'requestSync',
-						'sendSkip',
-						'onPlaylist',
-						'_subscribe',
-						'_onMessage', 
-						'_onPresence',
-						'_connectCallback');
-		this.nick 	 	 = nick;
-		this.room 	 	 = room + this.CONFIG.MUC_HOST;	
+				'sendSong', 
+				'requestPlaylist', 
+				'requestSync',
+				'sendSkip', 
+				'onPlaylist', 
+				'login', 
+				'createRoom', 
+				'joinExistingRoom', 
+				'_subscribe', 
+				'_onMessage', 
+				'_onPresence');
 		this._connection = new Strophe.Connection(this.CONFIG.BOSH);
-		this._connection.connect(this.CONFIG.HOST, null, this._connectCallback);	
+		this._connection.connect(this.CONFIG.HOST, null, function(status) {
+			$.publish("connection/progress", [ status ]);
+		});
 		this._subscribe();
 	},
 	
-	
-	// Needs comments
-	_connectCallback : function (status) {			
-		switch(status) {
-			case Strophe.Status.CONNECTED	 : this._connected();    break;
-			case Strophe.Status.DISCONNECTED : this._disconnected(); break;
-			case Strophe.Status.ERROR	     : this._connError();    break;
-			case Strophe.Status.CONNFAIL	 : this._connFail();     break;
-			case Strophe.Status.AUTHFAIL	 : this._authFail();
-		}
+	login : function(room, nick, create) {
+		var Connection = this;
+		this.nick = nick;
+		this.room = room + this.CONFIG.MUC_HOST;	
+		var request = $iq({ to: this.room, type: "get"})
+				.c('query', { xmlns: "http://jabber.org/protocol/disco#items" });					
+		this._connection.sendIQ(request, function(stanza) {
+			Connection[create ? "createRoom" : "joinExistingRoom"]($(stanza));
+		});							
 	},
 	
-	// Once connected, add event handlers for all incoming presence/message stanzas
-	_connected : function() {
-		this._connection.addHandler(this._onPresence, null, "presence");
-		this._connection.addHandler(this._onMessage,  null, "message", "groupchat");	
-		this._connection.send(this._initialPresence());		
-		this.requestPlaylist();
+	// Handle new room creation
+	createRoom : function($stanza) {
+		var $room = $stanza.find('item');
+		if ($room.length === 0) {
+			this._connection.send(this._initialPresence());	
+			this._connection.addHandler(this._onPresence, null, "presence");
+			this._connection.addHandler(this._onMessage,  null, "message", "groupchat");		
+			this.requestPlaylist();
+		} else { $.publish("room/exists") }	
 	},
 	
-	// Needs to be implemented
-	_disconnected : function() {
-		// todo
+	joinExistingRoom : function($stanza) {
+		var $members = $stanza.find('item');
+		var nick = this.nick;
+		var nameTaken = _.any($members, function(m) { return $(m).attr("name") === nick });
+		if (!nameTaken) {
+			this._connection.send(this._initialPresence());	
+			this._connection.addHandler(this._onPresence, null, "presence");
+			this._connection.addHandler(this._onMessage,  null, "message", "groupchat");		
+			this.requestPlaylist();			
+		} else { $.publish("room/nickTaken") }				
 	},
 	
 	// Helper function that parses attributes from all presence stanzas
@@ -68,10 +80,10 @@ var Connection = {
 		var $stanza = $(stanza);
 		var from = $stanza.attr('from');		
 		return {
-			room  : Strophe.getBareJidFromJid(from),
-			nick  : Strophe.getResourceFromJid(from),
-			type  : $stanza.attr('type'),
-			code  : $stanza.find('status').attr('code'),
+			room : Strophe.getBareJidFromJid(from),
+			nick : Strophe.getResourceFromJid(from),
+			type : $stanza.attr('type'),
+			code : $stanza.find('status').attr('code'),
 			error : $stanza.find('error').attr('code')
 		};
 	},
@@ -82,9 +94,9 @@ var Connection = {
 		var $stanza = $(stanza);
 		var from = $stanza.attr('from');		
 		return {
-			room : Strophe.getBareJidFromJid(from),
-			nick : Strophe.getResourceFromJid(from),
-			text : $stanza.text(),
+			room  : Strophe.getBareJidFromJid(from),
+			nick  : Strophe.getResourceFromJid(from),
+			text  : $stanza.text(),
 			$song : $stanza.find('song')
 		};	
 	},
@@ -94,11 +106,11 @@ var Connection = {
 	// not contain any kind of XSS code.
 	_parseSong : function($song) {
 		return {
-			sid    : $song.find('sid').text(),
-			uuid   : $song.find('uuid').text(),
-			slen   : $song.find('slen').text(),
-			thumb  : $song.find('thumb').text(),
-			title  : $song.find('title').text()
+			sid   : $song.find('sid').text(),
+			uuid  : $song.find('uuid').text(),
+			slen  : $song.find('slen').text(),
+			thumb : $song.find('thumb').text(),
+			title : $song.find('title').text()
 		}
 	},
 	
@@ -113,17 +125,13 @@ var Connection = {
 	
 	// Clean up, and document
 	onPlaylist : function(stanza) {
-		var $stanza   = $(stanza);
-		var $playlist = $stanza.find('playlist');
+		var $stanza    = $(stanza);
+		var $playlist  = $stanza.find('playlist');
 		var Connection = this;
 		var songs = [];
-		
-		console.log(Strophe.serialize(stanza));
-		
 		$playlist.find('song').each(function(i, song) {		
 			songs.push(Connection._parseSong($(song)));
 		});
-		
 		if (songs.length > 0) {
 			$.publish("song/playlist", [ songs ]);
 			this.requestSync();
@@ -131,7 +139,7 @@ var Connection = {
 	},
 	
 	// Clean up an document
-	requestSync : function() {
+	requestSync : function() {		
 		var request = $iq({
 			to: this.room,
 			type: "get"
@@ -139,7 +147,7 @@ var Connection = {
 		this._connection.sendIQ(request, function(stanza) {
 			var $sync = $(stanza).find('sync');	
 			var sync = {
-				sid      : $sync.find('sid').text(),
+				sid     : $sync.find('sid').text(),
 				uuid    : $sync.find('uuid').text(),
 				elapsed : parseInt($sync.find('elapsed').text())
 			}
@@ -147,26 +155,26 @@ var Connection = {
 		});
 	},
 	
+	// document
 	sendSkip : function() {
 		var skip = $iq({
 			to : this.room,
 			type : "set"
 		}).c('skip', { xmlns: "http://www.listeninghall.com/ns/skip" });
 		this._connection.sendIQ(skip, function(stanza) {
-			console.log(Strophe.serialize(stanza));
+			// todo
 		});
-		
 	},
 	
 	// *TODO: I think this function might be ready
 	_onPresence : function(stanza) {
 		var pres = this._parsePresence(stanza);	
 		if (pres.room !== this.room) return true;
-		if (pres.code === "110") $.publish("room/joined", [ this.nick, this.room ]);
+		if (pres.code === "110") $.publish("room/joined", [ this.room.replace(this.CONFIG.MUC_HOST,"") , this.nick ]);
 		switch(pres.type) {
 			case "error"	   : $.publish('room/error',        [ pres.error ]); break;
 			case "unavailable" : $.publish('room/user/left',    [ pres.nick ]);  break;
-			default			   : $.publish('room/user/entered', [ pres.nick ]);
+			default		   : $.publish('room/user/entered', [ pres.nick ]);
 		}
 		return true;	
 	},
@@ -220,7 +228,7 @@ var Connection = {
 	// Template for initial presence. 
 	_initialPresence : function() {
 		return $pres({ to: this.room + "/" + this.nick })
-					.c("x", { xmlns: Strophe.NS.MUC });		
+			.c("x", { xmlns: Strophe.NS.MUC });		
 	}
 	
 };

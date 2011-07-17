@@ -1,14 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>LH 6</title>
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
 		
-		<link type="text/css" href="css/main.css" rel="stylesheet" />
+		
+		<link type="text/css" href="jquery-ui-1.8.14.custom.css" rel="stylesheet" />
+		<link type="text/css" href="main.css" rel="stylesheet" />
+		
 		<script type="text/javascript" src="js/swfobject/swfobject.js"></script>
 		<script type="text/javascript" src="js/json2.js"></script>		
 		<script type="text/javascript" src="js/jquery/jquery-1.5.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-ui-1.8.14.custom.min.js"></script>
 		<script type="text/javascript" src="js/flxhr/flXHR.js"></script>
 		<script type="text/javascript" src="js/strophe/strophe.js"></script>
 		<script type="text/javascript" src="js/strophe/strophe.flxhr.js"></script>
@@ -23,101 +27,86 @@
 		<script type="text/javascript" src="js/jquery/jquery.lh.remoteScroll.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.lh.tooltips.js"></script>	
 		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.js"></script>			
-		
-		
 		<body>
+			<div id="topContainer">
+				<div id="top">
+					<h1 id="mainLogo">Listening Hall</h1>
+					<a href="" class="button3">Password</a>
+					<a class="button3" id="share">Share link to room</a>
+					<br clear="all" />
+				</div>
+			</div>
+			
+		<div id="shadow">
 			<div id="wrapper">
 				<!-- Loading screen -->
-					<div id="loading" style="display: none">
-						<div id="login">
+					<div id="loading">
+						<div id="login" class="valign1">
 							<h1 id="loginLogo">Listening Hall</h1>
-							<!-- Create new room -->
-							<div id="createDialog">
+							<div id="connectProgress"></div>
+							<div id="loginDialog">
 								<ul class="dialog1">
+									<li>Room name <span id="room_conflict">(Room already exists)</span><br><input id="loginRoom" type="text"></li>
+									<li>Your nick <span id="nick_conflict">(Nick already taken)</span><br><input id="loginNick" type="text"></li>
 									<li>
-										Room name<br>
-										<input id="loginRoom" type="text">
+										<a href="#" id="createButton" class="button1">Create</a>
+										<a href="#" id="joinButton" class="button1">Join</a>
 									</li>
-									<li>
-										Your nickname<br> 
-										<input id="loginNick" type="text">
-									</li>
-									<li><a href="#" id="createNew" class="button1">Create</a></li>
 								</ul>
-							</div>
-							<!-- Join existing room -->
-							<div id="joinDialog" style="display: none">
-								<ul class="dialog1">
-									<li>Room<h2></h2></li>
-									<li>
-										Your nickname<br> 
-										<input id="loginNick" type="text">
-									</li>
-									<li class="hidden">
-										Password<br> 
-										<input id="loginPass" type="text">								
-									</li>
-									<li><a href="#" id="joinExisting" class="button1">Join</a></li>
-								</ul>
-							</div>
+							</div>		
 						</div>
 					</div>
-				<!-- end of loading screen -->				
-				<div id="leftColumn">
-					<div id="playlist">
-						<div id="plsongs">
-							<ul>
-							
-							</ul>
-						</div>
-						<div id="plcontrols">
-							<div id="plcontrolsShadow"></div>
-							<ul>
-								<li><a href="#" class="button2" id="playlistUp">Scroll playlist up</a></li>
-								<li><a href="#" class="button2" id="playlistDown">Scroll playlist down</a></li>
-								<li><a href="#" class="button2" id="playlistAdd">Add song to playlist</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div id="rightColumn">
-					<!-- Search screen -->
-					<div id="search">
-						
-						
-						<div id="searchContent">
-							<div id="searchBox">
-								<input type="text" value="Search Youtube" id="searchText" />
-								<a href="#" id="searchButton" />Search</a>
-							</div>
-							<div id="searchResults">
-								
+					<div id="app">
+						<!-- end of loading screen -->				
+						<div id="leftColumn">
+							<div id="playlist">
+								<div id="plsongs">
+									<ul></ul>
+								</div>
+								<div id="plcontrols">
+									<div id="plcontrolsShadow"></div>
+									<div id="volume">
+										<div id="volumeIcon"></div>
+										<div id="volumeSlider"></div>
+									</div>
+									<ul>
+										<li><a href="#" class="button2" id="playlistUp">Scroll playlist up</a></li>
+										<li><a href="#" class="button2" id="playlistDown">Scroll playlist down</a></li>
+										<li><a href="#" class="button2" id="playlistAdd">Add song to playlist</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-					</div>
-					<!-- end of search screen -->
-					<div id="youtubePlayer">
-						<div id="video">
-							<div id="ytapiplayer"></div>
+						<div id="rightColumn">
+							<!-- Search screen -->
+							<div id="search">
+								<div id="searchContent">
+									<div id="searchBox">
+										<input type="text" value="Search Youtube ..." id="searchText" />
+										<a href="#" id="searchButton" />Search</a>
+									</div>
+									<div id="searchResults">
+									</div>
+								</div>
+							</div>
+							<!-- end of search screen -->
+							<div id="youtubePlayer">
+								<div id="video">
+									<div id="ytapiplayer"></div>
+								</div>
+							</div>
+							<div id="chat">
+								<div id="chatDisplay"></div>
+								<input id="chatInput" />
+							</div>
 						</div>
+						<br clear="all" />
 					</div>
-					<div id="chat">
-						<div id="chatDisplay"></div>
-						<input id="chatInput" />
-					</div>
-				</div>
-				<br clear="all" />
 			</div>
+		</div>
+			
+			
+
 			
 			
 </html>
@@ -167,7 +156,16 @@
 
 <!-- Song li template -->
 <script type="text/template" id="song-template">
-	<li class="song"><%= sid %></li>
+	<li>
+		<div class="song queued">
+			<img class="plimage" src="<%= thumb %>" />
+			<div class="plinfo">
+				<div class="pltitle"><%= title %></div>
+				<div class="plduration">Duration <%= slen %></div>
+			</div>
+			<br clear="all" />
+		</div>
+	</li>	
 </script>
 
 <!-- Member li template -->
@@ -180,10 +178,6 @@
 </script>
 
 
-
-
-
-
 <!-- Search ul template -->
 <script type="text/template" id="search-template">
 <ul>
@@ -193,9 +187,9 @@
 			<img class="searchImage" src="<%= media.media$thumbnail[0].url %>" />
 			<div class="searchInfo">
 				<a class="searchTitle"><%= media.media$title.$t %></a>
-				<div class="searchMisc">
-					Duration: <%= media.yt$duration.seconds %> - 
-					<a href="#" id="<%= media.yt$videoid.$t %>">Add to playlist</a>
+				<div class="searchMisc">					
+					<a href="#" class="button4">Duration: <%= media.yt$duration.seconds %></a>
+					<a href="#" class="button5" id="<%= media.yt$videoid.$t %>">Add to playlist</a>			
 				</div>
 			</div>
 			<br clear="all" />

@@ -18,7 +18,7 @@ var PlaylistView = Backbone.View.extend({
 	renderSong : function(song) {
 		var view = new SongView({ model : song });
 		this.songViews.push(view);
-		this.$("#plsongs ul").append(view.render().el);
+		this.$("#plsongs ul").append($(view.render().el).fadeIn());
 	},
 	
 	// Remove song view from DOM, and remove reference to view in songViews array

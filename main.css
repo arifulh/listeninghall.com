@@ -1,0 +1,594 @@
+html {
+	background: url('images/htmlbg.gif') top left #d6d6d6 repeat-y;
+	font-family: Arial;
+	font-size: 12px;
+	color: #d8d9da;
+	padding-top: 55px }
+ 
+textarea:focus, input:focus { outline: none }
+ 
+#shadow {
+	width: 985px;
+	height: 573px;
+	padding: 27px 0 0 25px;
+	margin: -10px auto 0;
+	background: url('images/shadow.png') top left no-repeat; }
+ 
+#wrapper {
+	background: #e8e8e8;
+	border: solid 4px #f1f1f1;
+	height: 541px;
+	width: 952px; }
+ 
+#topContainer {
+	width: 952px;
+	height: 42px;
+	margin: 0 auto; }
+ 
+#top {
+	width: 952px;
+	height: 42px;
+	display: none; }
+ 
+#loading {
+	background: url('images/loading_bg.png') top left no-repeat #000;
+	height: 541px;
+	width: 952px;
+	position: absolute;
+	z-index: 9999;
+	display: none }
+ 
+#login {
+	width: 494px;
+	min-height: 170px;
+	margin: 0 auto; }
+ 
+	#login.valign1 { margin-top: 245px }
+ 
+	#login.valign2 { margin-top: 195px }
+ 
+	#login a { color: #fff }
+ 
+	#login input {
+		background: #000;
+		height: 22px;
+		width: 190px;
+		border: solid 1px #5a5a5a;
+		padding: 5px;
+		color: #a5a5a5;
+		line-height: 18px;
+		color: #fff; }
+ 
+		#login input.set1 {
+			border: solid 1px #f4f1d5;
+			background: #f4f1d5;
+			color: #000;
+			font-weight: bold; }
+ 
+			#login input.set1:focus { border: solid 1px #f4f1d5; }
+ 
+		#login input:focus { border: solid 1px #fff; }
+ 
+h1#loginLogo {
+	display: block;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	padding: 0 0 42px 244px;
+	background: url('images/lh_logo.png') top left no-repeat;
+	float: left;
+	overflow: hidden; }
+ 
+h1#mainLogo {
+	display: block;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	padding: 0 0 42px 244px;
+	margin: 0 0 0 50px;
+	background: url('images/lh_logo.png') top left no-repeat;
+	float: left;
+	overflow: hidden; }
+ 
+#connectProgress {
+	background: #000;
+	border: solid 1px #656565;
+	float: left;
+	width: 220px;
+	height: 18px;
+	font-weight: bold;
+	margin: 6px 0 0 20px; }
+ 
+	#connectProgress .ui-slider-range { background: url('images/loading_bar.gif') }
+ 
+#loginDialog {
+	float: right;
+	width: 200px;
+	padding: 0 0 0 25px;
+	border-left: solid 1px #5c5c5c;
+	display: none }
+ 
+#createButton, #joinButton { display: block; }
+ 
+#room_conflict, #nick_conflict {
+	color: #adf8ff;
+	display: none }
+ 
+#leftColumn {
+	float: left;
+	width: 315px; }
+ 
+#rightColumn {
+	float: right;
+	width: 637px; }
+ 
+#search {
+	background: url('images/search_pattern.png');
+	position: absolute;
+	width: 470px;
+	height: 541px;
+	border-right: solid 5px #b9b9b9;
+	display: none;
+}
+ 
+#searchContent {  
+	background: url('images/shadow2.png') top left repeat-y;
+	width: 440px;
+	height: 515px;
+	padding: 26px 0 0 30px;	
+}
+ 
+#searchResults {
+	width: 405px;
+	height: 440px;
+	overflow: hidden;
+	margin: 10px 0 0 5px; }
+ 
+	#searchResults ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		position: relative }
+ 
+		#searchResults ul li {
+			border-bottom: solid 1px #696864;
+			width: 380px;
+			padding: 11px 5px 11px 5px; }
+ 
+			#searchResults ul li:hover { background: url('images/black_transparent_bg3.png'); }
+ 
+			#searchResults ul li:hover img { border: solid 4px #494949 }
+
+#searchBox {
+	width: 387px;
+	height: 32px;
+	padding: 14px 13px 0 13px;
+	background: url('images/search_bar.png') top left no-repeat; }
+ 
+#searchText {
+	background: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	width: 360px;
+	height: 15px;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	float: left; }
+ 
+#searchButton {
+	display: block;
+	float: right;
+	background: url('images/find_icon.gif');
+	margin: 2px 0 0 0;
+	padding: 0;
+	overflow: hidden;
+	text-decoration: none;
+	width: 0;
+	height: 0;
+	font: 0pt;
+	padding: 0 0 12px 12px; }
+ 
+#playlist {
+	background: url('images/playlist_pattern.jpg');
+	height: 541px;
+	width: 315px; }
+ 
+#plsongs {
+	height: 490px;
+	width: 315px;
+	overflow: hidden }
+ 
+	#plsongs ul {
+		padding: 0;
+		margin: 0; }
+ 
+#plcontrolsShadow {
+	width: 315px;
+	height: 9px;
+	background: url('images/controls_shadow.png') top left no-repeat;
+	position: relative;
+	top: -9px }
+ 
+#plcontrols {
+	background: url('images/controls_bg.jpg') top left no-repeat;
+	height: 51px;
+	width: 315px; }
+ 
+#volume {
+	float: left;
+	width: 146px;
+	margin-top: 14px;
+	margin-left: 16px; }
+ 
+#volumeIcon {
+	background: url('images/volume_icon.gif');
+	width: 7px;
+	height: 11px;
+	float: left; }
+ 
+#volumeSlider {
+	width: 130px;
+	height: 5px;
+	float: right;
+	margin-top: 2px; }
+ 
+#plcontrols ul {
+	margin: 2px 14px 0 0;
+	padding: 0;
+	width: 102px;
+	height: 36px;
+	float: right; }
+ 
+	#plcontrols ul li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		float: left;
+		width: 34px;
+		height: 36px; }
+ 
+a#playlistUp {
+	background: url('images/playlist_up.jpg') top left no-repeat;
+	background-position: 0 0; }
+ 
+a#playlistDown {
+	background: url('images/playlist_down.jpg') top left no-repeat;
+	background-position: 0 0; }
+ 
+a#playlistAdd {
+	background: url('images/playlist_add.jpg') top left no-repeat;
+	background-position: 0 0; }
+ 
+a:hover#playlistUp { background-position: 0 -36px; }
+ 
+a:hover#playlistDown { background-position: 0 -36px; }
+ 
+a:hover#playlistAdd { background-position: 0 -36px; }
+ 
+#youtubePlayer {
+	width: 637px;
+	height: 300px;
+	padding: 42px 0 0 0;
+	background: url('images/gray_backgrounds.jpg') top left no-repeat; }
+ 
+#video {
+	border: solid 5px #f9f9f9;
+	width: 444px;
+	height: 250px;
+	background: #000;
+	margin: 0 auto }
+ 
+#chat {
+	height: 199px;
+	background: #dadada }
+ 
+#chatDisplay {
+	background: url('images/gray_backgrounds.jpg') top left no-repeat;
+	background-position: 0 -342px;
+	height: 168px;
+	overflow: auto; }
+ 
+#chatInput {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	padding: 2px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	height: 29px;
+	width: 100%;
+	color: #7a7a7a;
+	font-size: 0.9em;
+	background: url('images/gray_backgrounds.jpg') top left no-repeat;
+	background-position: 0 -510px; }
+ 
+/* Classes */
+.block { display: block; }
+ 
+.hidden { display: none; }
+ 
+.dialog1 {
+	padding: 0;
+	margin: 0;
+	list-style: none }
+ 
+	.dialog1 li {
+		margin: 0;
+		padding: 0; }
+ 
+	.dialog1 h2 {
+		margin-top: 5px;
+		color: #fff }
+ 
+	.dialog1 input {
+		margin: 5px 0 15px 0;
+		width: 160px; }
+ 
+.nick { color: #b3b3b3; }
+ 
+.message {
+	display: block;
+	color: #565656 }
+ 
+.block { display: block; }
+ 
+a.button1 {
+	color: #fff;
+	display: block;
+	width: 81px;
+	height: 25px;
+	padding: 11px 0 0 0;
+	background: url('images/join_button.png') top left no-repeat;
+	background-position: 0 0;
+	text-decoration: none;
+	text-align: center;
+	overflow: hidden; }
+ 
+a.button2 {
+	display: block;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	padding: 0 0 36px 34px;
+	overflow: hidden; }
+ 
+a:hover.button1 { background-position: 0 -36px }
+ 
+a.button3 {
+	display: block;
+	color: #fff;
+	font-weight: bold;
+	float: right;
+	padding: 7px;
+	margin: 6px 0 0 4px;
+	text-decoration: none;
+	background: #dbdbdb;
+	border-solid: solid 1px #dbdbdb;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px; }
+	
+a.button4 {
+	display: block;
+	float: left;
+	color: #fff;
+	font-size: 11px;
+	padding: 5px;
+	margin: 6px 0 0 0px;
+	text-decoration: none;
+	background: #242224;
+	border-solid: solid 1px #242224;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px; }
+	
+a.button5 {
+	display: block;
+	float: left;
+	color: #fff;
+	font-size: 11px;
+	padding: 5px 8px 5px 17px;
+	margin: 6px 0 0 4px;
+	text-decoration: none;
+	background: url('images/plus_icon.gif') no-repeat 6px 9px #242224;
+	border-solid: solid 1px #242224;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px; }
+
+	a.button5:hover { background: url('images/plus_icon.gif') no-repeat 6px 9px #90c6da }
+ 
+a#share.button3:hover { cursor: text }
+ 
+/* Playlist song template */
+.song {
+	width: 291px;
+	height: 63px;
+	padding: 6px 16px 0 8px; }
+
+.queued {
+	background: url('images/song_bg.jpg') top left no-repeat;
+	background-position: 0 -69px
+}
+
+.playing {
+	background: url('images/song_bg.jpg') top left no-repeat;
+	background-position: 0 0;
+}
+
+.playing div.pltitle {
+	color: #000;
+	font-weight: bold;
+}
+
+.add {
+	background: url('images/small_icons.gif') 0 0 no-repeat;
+	width: 0px;
+	height: 0px;
+	padding: 0 0 12px 12px;
+	display: inline
+}	
+
+#playing.song {
+	background-position: 0 0;
+	color: #000; }
+ 
+	#playing.song .pltitle { color: #000 }
+ 
+.plimage {
+	width: 69px;
+	height: 50px;
+	border: solid 3px #ededed;
+	background: #ae9b97;
+	display: block;
+	float: left; }
+ 
+.plinfo {
+	width: 208px;
+	height: 42px;
+	padding: 14px 0 0 0;
+	display: block;
+	float: right; }
+ 
+.pltitle {
+	height: 14px;
+	display: block;
+	overflow: hidden;
+	font-size: 12px;
+	color: #6a737d;
+	cursor: default; }
+ 
+.plduration {
+	height: 12px;
+	display: block;
+	overflow: hidden;
+	font-size: 11px;
+	color: #6a737d;
+	margin-top: 3px; }
+ 
+.searchImage {
+	width: 69px;
+	height: 50px;
+	border: solid 4px #383838;
+	background: #000;
+	display: block;
+	float: left }
+ 
+.searchInfo {
+	width: 278px;
+	margin-left: 10px;
+	float: left; }
+ 
+.searchTitle {
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	cursor: default; }
+ 
+.searchMisc {
+	overflow: hidden;
+	margin-top: 5px; }
+ 
+.tooltip {
+	background: url('images/gray_transparent_bg.png');
+	color: #fff;
+	display: none;
+	padding: 7px;
+	font-size: 11px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-family: Tahoma;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px; }
+ 
+/* Override Jquery UI slider style */
+.ui-slider { border: solid 1px #dddddd }
+ 
+.ui-slider-range { background: #dddddd }
+ 
+.ui-slider-handle { display: none }
+ 
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+.jspContainer {
+	overflow: hidden;
+	position: relative; }
+ 
+.jspPane { position: absolute; }
+ 
+.jspVerticalBar {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 5px;
+	height: 100%;
+	background: red; }
+ 
+.jspHorizontalBar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: red; }
+ 
+.jspVerticalBar *,
+.jspHorizontalBar * {
+	margin: 0;
+	padding: 0; }
+ 
+.jspCap { display: none; }
+ 
+.jspHorizontalBar .jspCap { float: left; }
+ 
+.jspTrack {
+	background: #5c5c5c;
+	position: relative; }
+ 
+.jspDrag {
+	background: #3b3b3b;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer; }
+ 
+	.jspDrag:hover { background: #fff }
+ 
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag {
+	float: left;
+	height: 100%; }
+ 
+.jspArrow {
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer; }
+ 
+	.jspArrow.jspDisabled {
+		cursor: default;
+		background: #80808d; }
+ 
+.jspVerticalBar .jspArrow { height: 16px; }
+ 
+.jspHorizontalBar .jspArrow {
+	width: 16px;
+	float: left;
+	height: 100%; }
+ 
+.jspVerticalBar .jspArrow:focus { outline: none; }
+ 
+.jspCorner {
+	background: #eeeef4;
+	float: left;
+	height: 100%; }

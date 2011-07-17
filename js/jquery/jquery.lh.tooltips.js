@@ -13,7 +13,6 @@
 				return this.each(function() {
 					$(this).hover(methods._showTip, methods._hideTip);
 				});
-					
 			},
 			
 			// End possible fadeOut animation before showing, don't 

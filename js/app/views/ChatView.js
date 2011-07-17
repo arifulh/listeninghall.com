@@ -19,7 +19,7 @@ var ChatView = Backbone.View.extend({
 	},
 		
 	// Needs XSS examination
-	setNick : function(nick) { this.nick = nick },
+	setNick : function(room, nick) { this.nick = nick },
 		
 	// Needs XSS examination
 	createMessage : function(e) {

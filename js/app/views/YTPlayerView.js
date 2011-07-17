@@ -11,14 +11,16 @@ var YTPlayerView = Backbone.View.extend({
 
 	subscribe : function() {
 		$.subscribe('youtube/ready', this.setPlayer);
-		$.subscribe('youtube/state', this.onStateChange);
+		$.subscribe('youtube/state', this.stateChange);
+		$.subscribe('room/joined',   this.embedPlayer);
 	},
 	
 	initialize : function() {
-		_.bindAll(this, 'setPlayer', 'play', 'onStateChange');
+		_.bindAll(this, 'setPlayer', 'play', 'stateChange', 'embedPlayer');
 		this.collection.bind("change:playing", this.play);
 		this.collection.bind("change:elapsedTime", this.play);
 		this.buffering = false;
+		this.bufferStart = 0;
 		this.subscribe();
 	},
 	
@@ -26,6 +28,8 @@ var YTPlayerView = Backbone.View.extend({
 		this.player = $("#myytplayer")[0];
 		this.player.addEventListener("onStateChange", "onYoutubeStateChange");
 		this.player.addEventListener("onError", "onYoutubeError");
+		// debug volume - remove
+		this.player.setVolume(7);
 	},
 	
 	play : function(song) {
@@ -40,18 +44,27 @@ var YTPlayerView = Backbone.View.extend({
 	
 	// This function is not very clear, the names are a little awkward,
 	// and it seems like you only care about two states. Is that safe?
-	onStateChange : function(state) {
+	stateChange : function(state) {
 		if (state === this.states.BUFFERING) {
-			this.buffering = true;
-			return;
+			this.buffering   = true;
+			this.bufferStart = new Date().getTime();
 		} else if (state === this.states.PLAYING && this.buffering) {
-			$.publish('song/request_sync');
-			this.buffering = false;
+			this.buffering   = false;
+			var timeNow      = new Date().getTime();
+			var delay        = Math.ceil((timeNow - this.bufferStart)/1000);
+			if (delay > 10 ) {
+				var currentTime = this.player.getCurrentTime() + 5;
+				this.player.seekTo(currentTime + delay, true);
+			}
+			this.bufferStart = 0;
 		}
 	},
 	
-	onError : function(code) {
-		// todo
+	embedPlayer : function() {
+		var swfUrl = "http://www.youtube.com/apiplayer?version=3&amp;enablejsapi=1&amp;playerapiid=ytplayer";	  
+		var params = { allowScriptAccess: "always", bgcolor: "#000000", wmode: "transparent" };
+		var atts = { id: "myytplayer" };	
+		swfobject.embedSWF(swfUrl, "ytapiplayer", "444", "250", "9", null, null, params, atts);	
 	}
 	
 });
