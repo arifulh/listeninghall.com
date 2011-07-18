@@ -408,15 +408,12 @@ a#share.button3:hover { cursor: text }
 .song {
 	width: 291px;
 	height: 63px;
-	padding: 6px 16px 0 8px; }
-
-.queued {
+	padding: 6px 16px 0 8px;
 	background: url('images/song_bg.jpg') top left no-repeat;
 	background-position: 0 -69px
 }
 
 .playing {
-	background: url('images/song_bg.jpg') top left no-repeat;
 	background-position: 0 0;
 }
 
