@@ -9,6 +9,7 @@ var PlaylistView = Backbone.View.extend({
 		this.collection.bind('add',     this.renderSong);
 		this.collection.bind('remove',  this.removeRender);
 		this.collection.bind('refresh', this.removeAll);
+		this.list = $("#plsongs ul");
 		this.songViews = [];
 	},
 	
@@ -18,12 +19,13 @@ var PlaylistView = Backbone.View.extend({
 	renderSong : function(song) {
 		var view = new SongView({ model : song });
 		this.songViews.push(view);
-		this.$("#plsongs ul").append($(view.render().el).fadeIn());
+		this.list.append($(view.render().el).fadeIn());
 	},
 	
 	// Remove song view from DOM, and remove reference to view in songViews array
 	removeRender : function(song) {
-		this.songViews[0].remove();
+		var view = this.songViews[0];
+		$(this.songViews[0].el).slideUp(function(){ view.remove() });
 		this.songViews.shift();
 	},
 	
