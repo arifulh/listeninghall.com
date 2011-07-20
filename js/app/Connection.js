@@ -30,7 +30,8 @@ var Connection = {
 				'onPlaylist', 
 				'login', 
 				'createRoom', 
-				'joinExistingRoom', 
+				'joinExistingRoom',
+				'setPassword', 
 				'_subscribe', 
 				'_onMessage', 
 				'_onPresence');
@@ -225,11 +226,37 @@ var Connection = {
 		this._connection.send(song);		  
 	},
 	
+	// If the user is the creator of the room, they can password-protect it.
+	// MUC service requires us to fill out a room configuration form to apply
+	// a password. We must first request the configuration form, fill out the form
+	// (in this case, add our password), and send the form back (in its entirety).
+	setPassword : function(password) {
+		var Connection  = this;
+		var requestForm = $iq({to : this.room, type : "get"})
+							.c('query', { xmlns: "http://jabber.org/protocol/muc#owner" });
+
+		this._connection.sendIQ(requestForm, function(configureForm) {
+			// Once we have the configuration form, the only thing 
+			// we will be changing is the "Password" field.
+			var $configureForm = $(configureForm);
+			$configureForm.find('field[label="Password"]').find('value').text(password);
+			var $fields = $configureForm.find('field');
+		
+			// Rebuild our response stanza with all fields. Send new 
+			// configuration to room, do nothing with the server response.
+			var set = $iq({to : Connection.room, type : "set"})
+						.c("query", { xmlns: "http://jabber.org/protocol/muc#owner" })
+						.c("x", {xmlns: "jabber:x:data", type: 'submit'});
+			$fields.each(function(i, field){ set.cnode(field).up() });
+			Connection._connection.sendIQ(set, function(stanza) { return });
+		});
+	},
+
 	// Template for initial presence. 
 	_initialPresence : function() {
 		return $pres({ to: this.room + "/" + this.nick })
 			.c("x", { xmlns: Strophe.NS.MUC });		
-	}
+	},
 	
 };
 
