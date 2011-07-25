@@ -36,7 +36,7 @@ var Connection = {
     initialize: function () {
         _.bindAll(this);
         this._connection = new Strophe.Connection(this.CONFIG.BOSH);
-        this._send       = _.bind(this._connection.send, this._connection);
+        this._send       = _.bind(this._connection.send,   this._connection);
         this._sendIQ     = _.bind(this._connection.sendIQ, this._connection);
         this.connect();
         this.subscribe();
@@ -64,7 +64,7 @@ var Connection = {
         this._request("get", "items", function (query) {
             var $room  = $(query).find('item');
             var exists = $room.length !== 0 ? true : false;
-            exists ? $.publish("room/exists") : this.sendPresence(options.pass);
+            exists ? $.publish("room/conflict", ["exists"]) : this.sendPresence(options.pass);
         });
     },
 
@@ -157,7 +157,7 @@ var Connection = {
             // configuration to room, do nothing with the server response.
             var set = $iq({to: this.room,
                            type: "set"})
-                      .c("query", {xmlns: Strophe.NS.MUC_OWNER})
+                      .c("query", {xmlns: this.XMLNS.owner})
                       .c("x", {xmlns: "jabber:x:data",type: 'submit'});
             $fields.each(function (i, field) { set.cnode(field).up() });
             this._sendIQ(set, function (stanza) { return });
@@ -180,8 +180,8 @@ var Connection = {
     _onPresence: function (presence) {
         var pres = this._parsePresence(presence);
         if (pres.room !== this.room) return true;
-        if (pres.error === "409") $.publish("room/nickTaken");
-        if (pres.error === "401") $.publish("room/wrongPass");
+        if (pres.error === "409") $.publish("room/conflict", ["nick"]);
+        if (pres.error === "401") $.publish("room/conflict", ["pass"]);
         if (pres.status === "110") {
             $.publish("room/joined", [this.room.replace(this.CONFIG.MUC_HOST, ""), this.nick]);
             this.requestPlaylist();
