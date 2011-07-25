@@ -51,7 +51,7 @@ var Connection = {
             $.publish("connection/progress", [status]);
             if (status === Strophe.Status.CONNECTED) {
                 this._connection.addHandler(this._onPresence, null, "presence");
-                this._connection.addHandler(this._onMessage, null, "message", "groupchat");
+                this._connection.addHandler(this._onMessage,  null, "message", "groupchat");
             }
         }, this));
     },
@@ -76,8 +76,8 @@ var Connection = {
         this._request("get", "info", function (info) {
             if ($(info).find("feature[var='muc_passwordprotected']").length === 1) {
                 $.publish("room/requirePass");
-                this.sendPresence(options.pass);
             }
+            this.sendPresence(options.pass);
         });
     },
 
@@ -121,7 +121,7 @@ var Connection = {
             }, this));
             if (songs.length > 0) {
                 $.publish("song/playlist", [songs]);
-                this._requestSync();
+                this.requestSync();
             }
         });
     },
@@ -184,7 +184,7 @@ var Connection = {
         if (pres.error === "401") $.publish("room/wrongPass");
         if (pres.status === "110") {
             $.publish("room/joined", [this.room.replace(this.CONFIG.MUC_HOST, ""), this.nick]);
-            this._requestPlaylist();
+            this.requestPlaylist();
         }
         return true;
     },
