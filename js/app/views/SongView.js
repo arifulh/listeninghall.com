@@ -15,9 +15,11 @@ var SongView = Backbone.View.extend({
 		$(this.$("div.song")).addClass("playing");
 		return song;
 	},
-
+    
+    // Render template, and attach tooltip
 	render : function() {
 		$(this.el).html(this.template(this.model.toJSON()));	
+        this.$('.pltitle').miniTip({anchor: 's',event: 'hover'});
 		return this;
 	}
 
