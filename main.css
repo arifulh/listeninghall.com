@@ -3,7 +3,7 @@ html {
 	font-family: Arial;
 	font-size: 12px;
 	color: #d8d9da;
-	padding-top: 55px }
+	padding-top: 75px }
  
 textarea:focus, input:focus { outline: none }
  
@@ -27,17 +27,16 @@ textarea:focus, input:focus { outline: none }
  
 #top {
 	width: 952px;
-	height: 42px;
-	display: none; }
+	height: 45px;
+	display: none}
  
 #loading {
 	background: url('images/loading_bg.png') top left no-repeat #000;
 	height: 541px;
 	width: 952px;
 	position: absolute;
-	z-index: 9999;
-	display: none }
- 
+	z-index: 9999; display: none }
+
 #login {
 	width: 494px;
 	min-height: 170px;
@@ -46,7 +45,9 @@ textarea:focus, input:focus { outline: none }
 	#login.valign1 { margin-top: 245px }
  
 	#login.valign2 { margin-top: 195px }
- 
+ 	
+	#login.valign3 { margin-top: 160px }	
+	
 	#login a { color: #fff }
  
 	#login input {
@@ -74,7 +75,7 @@ h1#loginLogo {
 	width: 0;
 	height: 0;
 	font-size: 0;
-	padding: 0 0 42px 244px;
+	padding: 0 0 45px 236px;
 	background: url('images/lh_logo.png') top left no-repeat;
 	float: left;
 	overflow: hidden; }
@@ -84,13 +85,13 @@ h1#mainLogo {
 	width: 0;
 	height: 0;
 	font-size: 0;
-	padding: 0 0 42px 244px;
-	margin: 0 0 0 50px;
+	padding: 0 0 45px 236px;
+	margin: 0 0 0 40px;
 	background: url('images/lh_logo.png') top left no-repeat;
 	float: left;
 	overflow: hidden; }
  
-#connectProgress {
+#loginProgress {
 	background: #000;
 	border: solid 1px #656565;
 	float: left;
@@ -99,7 +100,7 @@ h1#mainLogo {
 	font-weight: bold;
 	margin: 6px 0 0 20px; }
  
-	#connectProgress .ui-slider-range { background: url('images/loading_bar.gif') }
+	#loginProgress .ui-slider-range { background: url('images/loading_bar.gif') }
  
 #loginDialog {
 	float: right;
@@ -107,10 +108,12 @@ h1#mainLogo {
 	padding: 0 0 0 25px;
 	border-left: solid 1px #5c5c5c;
 	display: none }
+
+#requirePass { display: none };
  
 #createButton, #joinButton { display: block; }
  
-#room_conflict, #nick_conflict {
+#room_conflict, #nick_conflict, #pass_conflict {
 	color: #adf8ff;
 	display: none }
  
@@ -128,7 +131,7 @@ h1#mainLogo {
 	width: 470px;
 	height: 541px;
 	border-right: solid 5px #b9b9b9;
-	display: none;
+	display: ;
 }
  
 #searchContent {  
@@ -311,7 +314,7 @@ a:hover#playlistAdd { background-position: 0 -36px; }
  
 .hidden { display: none; }
  
-.dialog1 {
+.dialog1 {1f1f1f
 	padding: 0;
 	margin: 0;
 	list-style: none }
@@ -335,7 +338,39 @@ a:hover#playlistAdd { background-position: 0 -36px; }
 	color: #565656 }
  
 .block { display: block; }
- 
+
+.box1 {
+	display: block;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+	float: right;
+	padding: 7px;
+	margin: 6px 0 0 4px;
+	text-decoration: none;
+	background: #b7babb;
+	border-solid: solid 1px #dbdbdb;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px; }
+
+	.box1 a { color: #fff; text-decoration: none }
+
+.box2 {
+	display: block;
+	float: left;
+	color: #fff;
+	font-size: 11px;
+	padding: 4px 6px 4px 6px;
+	margin: 6px 0 0 0px;
+	text-decoration: none;
+	background: #242224;
+	border-solid: solid 1px #242224;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px; }
+
+
 a.button1 {
 	color: #fff;
 	display: block;
@@ -357,41 +392,13 @@ a.button2 {
 	overflow: hidden; }
  
 a:hover.button1 { background-position: 0 -36px }
- 
-a.button3 {
-	display: block;
-	color: #fff;
-	font-weight: bold;
-	float: right;
-	padding: 7px;
-	margin: 6px 0 0 4px;
-	text-decoration: none;
-	background: #dbdbdb;
-	border-solid: solid 1px #dbdbdb;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px; }
-	
-a.button4 {
-	display: block;
-	float: left;
-	color: #fff;
-	font-size: 11px;
-	padding: 5px;
-	margin: 6px 0 0 0px;
-	text-decoration: none;
-	background: #242224;
-	border-solid: solid 1px #242224;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px; }
 	
 a.button5 {
 	display: block;
 	float: left;
 	color: #fff;
 	font-size: 11px;
-	padding: 5px 8px 5px 17px;
+	padding: 4px 8px 4px 17px;
 	margin: 6px 0 0 4px;
 	text-decoration: none;
 	background: url('images/plus_icon.gif') no-repeat 6px 9px #242224;
@@ -449,10 +456,11 @@ a#share.button3:hover { cursor: text }
 	height: 42px;
 	padding: 14px 0 0 0;
 	display: block;
-	float: right; }
+	float: right;
+	font-family: Arial }
  
 .pltitle {
-	height: 14px;
+	height: 13px;
 	display: block;
 	overflow: hidden;
 	font-size: 12px;
@@ -460,12 +468,12 @@ a#share.button3:hover { cursor: text }
 	cursor: default; }
  
 .plduration {
-	height: 12px;
+	height: 13px;
 	display: block;
 	overflow: hidden;
-	font-size: 11px;
-	color: #6a737d;
-	margin-top: 3px; }
+	font-size: 12px;
+	color: #babbbe;
+	margin-top: 3px }
  
 .searchImage {
 	width: 69px;
@@ -490,27 +498,82 @@ a#share.button3:hover { cursor: text }
 	overflow: hidden;
 	margin-top: 5px; }
  
-.tooltip {
-	background: url('images/gray_transparent_bg.png');
-	color: #fff;
+/* Override Jquery UI slider style */
+.ui-slider { border: solid 1px #dddddd }
+.ui-slider-range { background: #dddddd }
+.ui-slider-handle { display: none }
+
+/*! miniTip CSS - v1.2.5 */
+#miniTip {
+    /* main styles for tooltip */
+    background-color: #323232;
+	border: 1px solid #323232;
+	color: #cecece;
+	font-size: .9em;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+    /* end editing style */
 	display: none;
-	padding: 7px;
-	font-size: 11px;
 	position: absolute;
 	top: 0;
 	left: 0;
-	font-family: Tahoma;
-	border-radius: 4px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px; }
- 
-/* Override Jquery UI slider style */
-.ui-slider { border: solid 1px #dddddd }
- 
-.ui-slider-range { background: #dddddd }
- 
-.ui-slider-handle { display: none }
- 
+    z-index: 99999;
+}
+
+
+/* title bar style */
+#miniTip_t {
+	background-color: #f5edc2;
+	font-weight: 700;
+	padding: 4px 6px;
+}
+
+/* main content style */
+#miniTip_c { padding: 4px 8px }
+
+
+/* arrow holder, no need to edit */
+#miniTip_a {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* arrow pointing down, change border-top color to change color of the arrow */
+#miniTip .n {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid #323232;
+	border-bottom: 0;
+}
+
+/* arrow pointing up, change border-bottom color to change color of the arrow */
+#miniTip .s {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #323232;
+	border-top: 0;
+}
+
+/* arrow pointing left, change border-right color to change color of the arrow */
+#miniTip .e {
+	border-bottom: 8px solid transparent;
+	border-top: 8px solid transparent;
+	border-right: 8px solid #323232;
+	border-left: 0;
+}
+
+/* arrow pointing right, change border-left color to change color of the arrow */
+#miniTip .w {
+	border-bottom: 8px solid transparent;
+	border-top: 8px solid transparent;
+	border-left: 8px solid #323232;
+	border-right: 0;
+}
+
 /*
  * CSS Styles that are needed by jScrollPane for it to operate correctly.
  *
@@ -549,17 +612,13 @@ a#share.button3:hover { cursor: text }
 .jspHorizontalBar .jspCap { float: left; }
  
 .jspTrack {
-	background: #5c5c5c;
 	position: relative; }
  
 .jspDrag {
-	background: #3b3b3b;
 	position: relative;
 	top: 0;
 	left: 0;
 	cursor: pointer; }
- 
-	.jspDrag:hover { background: #fff }
  
 .jspHorizontalBar .jspTrack,
 .jspHorizontalBar .jspDrag {
@@ -589,3 +648,9 @@ a#share.button3:hover { cursor: text }
 	background: #eeeef4;
 	float: left;
 	height: 100%; }
+
+/* Individual scrollpane styles */
+#searchResults .jspDrag { background: #3b3b3b; }
+#searchResults .jspDrag:hover { background: #fff }
+#searchResults .jspTrack {background: #5c5c5c;}
+
