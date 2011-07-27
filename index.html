@@ -25,32 +25,31 @@
 		<script type="text/javascript" src="js/jquery/pubsub.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.mousewheel.min.js"></script>	
 		<script type="text/javascript" src="js/jquery/jquery.lh.remoteScroll.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery.lh.tooltips.js"></script>	
+		<script type="text/javascript" src="js/jquery/jquery.miniTip.min.js"></script>	
 		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.js"></script>			
 		<body>
 			<div id="topContainer">
 				<div id="top">
 					<h1 id="mainLogo">Listening Hall</h1>
-					<a href="" class="button3">Password</a>
-					<a class="button3" id="share">Share link to room</a>
+					<div class="box1"><a href="">Password-Protect</a></div>
+					<div class="box1" id="share">Share link</div>
 					<br clear="all" />
-				</div>
 			</div>
-			
+			</div>	
 		<div id="shadow">
 			<div id="wrapper">
 				<!-- Loading screen -->
 					<div id="loading">
 						<div id="login" class="valign1">
 							<h1 id="loginLogo">Listening Hall</h1>
-							<div id="connectProgress"></div>
+							<div id="loginProgress"></div>
 							<div id="loginDialog">
 								<ul class="dialog1">
 									<li>Room name <span id="room_conflict">(Room already exists)</span><br><input id="loginRoom" type="text"></li>
 									<li>Your nick <span id="nick_conflict">(Nick already taken)</span><br><input id="loginNick" type="text"></li>
+									<li id="requirePass">Password <span id="pass_conflict">(Required/Incorrect)</span><br><input id="loginPass" type="text"></li>
 									<li>
-										<a href="#" id="createButton" class="button1">Create</a>
-										<a href="#" id="joinButton" class="button1">Join</a>
+										<a href="#" id="loginButton" class="button1">Create</a>
 									</li>
 								</ul>
 							</div>		
@@ -86,6 +85,7 @@
 										<a href="#" id="searchButton" />Search</a>
 									</div>
 									<div id="searchResults">
+
 									</div>
 								</div>
 							</div>
@@ -156,10 +156,10 @@
 
 <!-- Song li template -->
 <script type="text/template" id="song-template">
-		<div class="song">
+		<div class="song ">
 			<img class="plimage" src="<%= thumb %>" />
 			<div class="plinfo">
-				<div class="pltitle"><%= title %></div>
+				<div class="pltitle" title="<%= title %>"><%= title %></div>
 				<div class="plduration">Duration <%= slen %></div>
 			</div>
 			<br clear="all" />
@@ -184,9 +184,9 @@
 		<li id="<%= media.yt$videoid.$t %>">
 			<img class="searchImage" src="<%= media.media$thumbnail[0].url %>" />
 			<div class="searchInfo">
-				<a class="searchTitle"><%= media.media$title.$t %></a>
+				<div class="searchTitle"><%= media.media$title.$t %></div>
 				<div class="searchMisc">					
-					<a href="#" class="button4">Duration: <%= media.yt$duration.seconds %></a>
+					<div class="box2">Duration: <%= media.yt$duration.seconds %></div>
 					<a href="#" class="button5" id="<%= media.yt$videoid.$t %>">Add to playlist</a>			
 				</div>
 			</div>
