@@ -31,7 +31,7 @@ textarea:focus, input:focus { outline: none }
 	display: }
 
 #toolbar ul {
-	margin: 0;
+	margin: 25px 0 0 0;
 	padding: 0;
 	width: 130px;
 	height: 25px;
@@ -42,30 +42,31 @@ textarea:focus, input:focus { outline: none }
 		padding: 0;
 		list-style: none;
 		float: left;
-		height: 25px; }
+		height: 25px }
+    
+    #toolbar li#inv {width: 74px}
+    #toolbar li#mem {width: 22px}
+    #toolbar li#pass {width: 22px}
     
     #toolbar ul li a {
         display: block;
 	    width: 0;
 	    height: 0;
 	    font-size: 0;
-	    overflow: hidden
+	    overflow: hidden;
     }
  
 a#invite {
-    width: 74px;
     padding: 0 0 25px 74px;
 	background: url('images/invite_button.png') top left no-repeat;
 	background-position: 0 0; }
  
 a#members {
-    width: 22px;
     padding: 0 0 25px 22px;
 	background: url('images/members_button.png') top left no-repeat;
 	background-position: 0 0; }
  
 a#pass {
-    width: 22px;
     padding: 0 0 25px 22px;
 	background: url('images/pass_button.png') top left no-repeat;
 	background-position: 0 0; }
@@ -427,6 +428,7 @@ a:hover#playlistAdd { background-position: 0 -36px; }
 	border-solid: solid 1px #dbdbdb;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
+
 	-moz-border-radius: 4px; }
 
 	.box1 a { color: #fff; text-decoration: none }
