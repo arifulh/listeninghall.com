@@ -18,24 +18,28 @@
 		<script type="text/javascript" src="js/strophe/strophe.flxhr.js"></script>
 		<script type="text/javascript" src="js/underscore/underscore-min.js"></script>
 		<script type="text/javascript" src="js/backbone/backbone-min.js"></script>
-		
-		
-		
+				
 		<!-- Jquery plugins -->
 		<script type="text/javascript" src="js/jquery/pubsub.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.mousewheel.min.js"></script>	
 		<script type="text/javascript" src="js/jquery/jquery.lh.remoteScroll.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.miniTip.min.js"></script>	
-		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.js"></script>			
+		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.js"></script>
+	
 		<body>
-			<div id="topContainer">
-				<div id="top">
-					<h1 id="mainLogo">Listening Hall</h1>
-					<div class="box1"><a href="">Password-Protect</a></div>
-					<div class="box1" id="share">Share link</div>
-					<br clear="all" />
-			</div>
-			</div>	
+		<div id="topContainer">
+			<div id="top">
+				<h1 id="mainLogo">Listening Hall</h1>
+                <div id="toolbar">
+                    <ul>
+                        <li><a id="invite" href="#">Invite</a></li>
+                        <li><a id="members" href="#">Members</a></li>
+                        <li><a id="pass" href="#">Pass</a></li>
+                    </ul>    
+                </div>
+				<br clear="all" />
+		    </div>
+		</div>	
 		<div id="shadow">
 			<div id="wrapper">
 				<!-- Loading screen -->
@@ -69,9 +73,9 @@
 										<div id="volumeSlider"></div>
 									</div>
 									<ul>
-										<li><a href="#" class="button2" id="playlistUp">Scroll playlist up</a></li>
-										<li><a href="#" class="button2" id="playlistDown">Scroll playlist down</a></li>
-										<li><a href="#" class="button2" id="playlistAdd">Add song to playlist</a></li>
+										<li><a href="#" id="playlistUp">Scroll playlist up</a></li>
+										<li><a href="#" id="playlistDown">Scroll playlist down</a></li>
+										<li><a href="#" id="playlistAdd">Add song to playlist</a></li>
 									</ul>
 								</div>
 							</div>
@@ -138,7 +142,7 @@
 <script type="text/javascript" src="js/app/views/SongView.js"></script>
 <script type="text/javascript" src="js/app/views/SearchView.js"></script>
 <script type="text/javascript" src="js/app/views/YTPlayerView.js"></script>
-<script type="text/javascript" src="js/app/views/MembersView.js"></script>
+<script type="text/javascript" src="js/app/views/ToolbarView.js"></script>
 <script type="text/javascript" src="js/app/views/ChatView.js"></script>
 <script type="text/javascript" src="js/app/views/LoginView.js"></script>
 <!-- Connection -->
@@ -169,8 +173,8 @@
 <!-- Member li template -->
 <script type="text/template" id="memberul-template">
 	<ul>
-		<% _.each(items, function(i) { %>
-			<li id="<%= i.cid %>"><%= i.get("nick") %></li>
+		<% _.each(mem, function(m) { %>
+			<li><%= m.nick %></li>
 		<% }); %>
 	</ul>
 </script>
@@ -197,6 +201,19 @@
 </script>
 
 
+<!-- Invite tip template -->
+<script type="text/template" id="invite-template">
+    <span class='highlight1'>Just share link: </span><br><span class='highlight2'><%= link %></span>
+</script>
+
+
+<!-- Password tip tempalte -->
+<script type="text/template" id="pass-template">
+    
+        Password protect room<br> <input id="setPassword"type="text">
+
+    
+</script>
 
 
 
