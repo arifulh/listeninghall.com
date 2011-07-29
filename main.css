@@ -11,7 +11,7 @@ textarea:focus, input:focus { outline: none }
 	width: 985px;
 	height: 573px;
 	padding: 27px 0 0 25px;
-	margin: -10px auto 0;
+	margin: -25px auto 0;
 	background: url('images/shadow.png') top left no-repeat; }
  
 #wrapper {
@@ -22,14 +22,80 @@ textarea:focus, input:focus { outline: none }
  
 #topContainer {
 	width: 952px;
-	height: 42px;
-	margin: 0 auto; }
+	height: 65px;
+	margin: 0 auto }
  
 #top {
 	width: 952px;
-	height: 45px;
-	display: none}
+	height: 65px;
+	display: }
+
+#toolbar ul {
+	margin: 0;
+	padding: 0;
+	width: 130px;
+	height: 25px;
+	float: right }
  
+	#toolbar ul li {
+		margin: 0 0 0 4px;
+		padding: 0;
+		list-style: none;
+		float: left;
+		height: 25px; }
+    
+    #toolbar ul li a {
+        display: block;
+	    width: 0;
+	    height: 0;
+	    font-size: 0;
+	    overflow: hidden
+    }
+ 
+a#invite {
+    width: 74px;
+    padding: 0 0 25px 74px;
+	background: url('images/invite_button.png') top left no-repeat;
+	background-position: 0 0; }
+ 
+a#members {
+    width: 22px;
+    padding: 0 0 25px 22px;
+	background: url('images/members_button.png') top left no-repeat;
+	background-position: 0 0; }
+ 
+a#pass {
+    width: 22px;
+    padding: 0 0 25px 22px;
+	background: url('images/pass_button.png') top left no-repeat;
+	background-position: 0 0; }
+ 
+a:hover#invite { background-position: 0 -25px; }
+ 
+a:hover#members { background-position: 0 -25px; }
+ 
+a:hover#pass { background-position: 0 -25px; }
+
+
+
+
+
+
+
+
+
+.highlight1 {
+    color: #8dd2ef;
+}
+.highlight2 {
+    color: #fff;
+}
+
+
+
+
+
+
 #loading {
 	background: url('images/loading_bg.png') top left no-repeat #000;
 	height: 541px;
@@ -85,8 +151,8 @@ h1#mainLogo {
 	width: 0;
 	height: 0;
 	font-size: 0;
-	padding: 0 0 45px 236px;
-	margin: 0 0 0 40px;
+	padding: 0 0 65px 220px;
+	margin: 0 0 0 25px;
 	background: url('images/lh_logo.png') top left no-repeat;
 	float: left;
 	overflow: hidden; }
@@ -131,7 +197,7 @@ h1#mainLogo {
 	width: 470px;
 	height: 541px;
 	border-right: solid 5px #b9b9b9;
-	display: ;
+	display: none;
 }
  
 #searchContent {  
@@ -253,6 +319,15 @@ h1#mainLogo {
 		float: left;
 		width: 34px;
 		height: 36px; }
+    
+    #plcontrols ul li a {
+        display: block;
+	    width: 0;
+	    height: 0;
+	    font-size: 0;
+	    padding: 0 0 36px 34px;
+	    overflow: hidden
+    }
  
 a#playlistUp {
 	background: url('images/playlist_up.jpg') top left no-repeat;
@@ -383,14 +458,6 @@ a.button1 {
 	text-align: center;
 	overflow: hidden; }
  
-a.button2 {
-	display: block;
-	width: 0;
-	height: 0;
-	font-size: 0;
-	padding: 0 0 36px 34px;
-	overflow: hidden; }
- 
 a:hover.button1 { background-position: 0 -36px }
 	
 a.button5 {
@@ -509,7 +576,7 @@ a#share.button3:hover { cursor: text }
     background-color: #323232;
 	border: 1px solid #323232;
 	color: #cecece;
-	font-size: .9em;
+	font-size: 1em;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
