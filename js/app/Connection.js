@@ -23,9 +23,10 @@ var Connection = {
         $.subscribe('connection/joinNew', this.createRoom);
         $.subscribe('connection/join',    this.joinExistingRoom);
         $.subscribe('message/send',       this.sendMessage);
-        $.subscribe('playlist/resync',    this.requestPlaylist);
         $.subscribe('song/send',          this.sendSong);
-        $.subscribe('song/resync',        this._requestSync);
+        $.subscribe('playlist/resync',    this.requestPlaylist);
+        $.subscribe('room/setPass',       this.requestPassword);
+        $.subscribe('song/resync',        this.requestSync);
     },
 
     // Use Underscore.js 'bindAll' function to bind all
