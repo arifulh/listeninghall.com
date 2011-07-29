@@ -6,16 +6,16 @@ $(function() {
 	var mainapp = {
 		init : function() {
 			// Collections
-			this.members 		= new MemberList;
-			this.playlist 		= new Playlist;	
+			this.members 	  = new MemberList;
+			this.playlist 	  = new Playlist;	
 			
 			// Views
-			this.playlistView 	= new PlaylistView ({ collection: this.playlist });
-			this.playerView		= new YTPlayerView ({ collection: this.playlist });
-			this.membersView 	= new MembersView  ({ collection: this.members  });
-			this.searchView 	= new SearchView;
-			this.chatView 		= new ChatView;	
-			this.loginView 		= new LoginView;
+			this.playlistView = new PlaylistView ({ collection: this.playlist });
+			this.playerView	  = new YTPlayerView ({ collection: this.playlist });
+			this.toolbarView  = new ToolbarView  ({ collection: this.members  });
+			this.searchView   = new SearchView;
+			this.chatView 	  = new ChatView;	
+			this.loginView 	  = new LoginView;
 			
 			// Connecton
 			//Connection.initialize();
@@ -25,7 +25,7 @@ $(function() {
 	mainapp.init();
 
 	main = mainapp;
-	
+
 	// Intialize jquery plugins for scrolling and tooltips
 	$("#volumeSlider").slider({
 			value: 30,
@@ -34,20 +34,21 @@ $(function() {
 			animate: true,
 			step: 10
 	});
-	$("#connectProgress").slider({
+	$("#loginProgress").slider({
 			orientation: "horizontal",
 			range: "min",
 			animate: true,
 			disabled: true
 	});
-	$("#plsongs").remoteScroll({ up: "#playlistUp", down: "#playlistDown"}); 
-	$(".pltitle").tooltips();	
-	
+	$("#plsongs").remoteScroll({ 
+        up: "#playlistUp", 
+        down: "#playlistDown"
+    }); 
+
 	// Animations
 	$("#playlistAdd").click(function() { 
 		$("#search").animate({width: 'toggle', opacity: 'toggle'}, 350);		
 	});
-	
 	
 	$(".button3").hover(function() {
 		$(this).animate({ backgroundColor: "#000" }, "fast");
@@ -56,10 +57,13 @@ $(function() {
 	});
 	
 	$("#share").hover(function() {
-		$(this).text(window.location.href);
-	}, function() { $(this).text("Share link to room")});
-	
+		$(this).text("Share link: " + window.location.href);
+	}, function() { $(this).text("Invite others")});
+
 });
+
+
+
 
 function onYouTubePlayerReady(playerid) {
 	$.publish('youtube/ready', [ playerid ]);	
