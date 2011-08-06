@@ -2,7 +2,7 @@ var Connection = {
 
     // Default server information
     CONFIG: {
-        BOSH     : "http://localhost:5280/http-bind",
+        BOSH     : "http://localhost/http-bind",
         HOST     : "localhost",
         MUC_HOST : "@conference.localhost"
     },
