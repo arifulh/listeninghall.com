@@ -362,13 +362,17 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	margin: 0 auto }
  
 #chat {
+    width: 637px;
 	height: 199px;
 	background: #dadada }
  
 #chatDisplay {
+    width: 607px;
+    padding: 15px 0 0 30px;
 	background: url('images/gray_backgrounds.jpg') top left no-repeat;
 	background-position: 0 -342px;
 	height: 168px;
+    word-wrap: break-word;
 	overflow: auto; }
  
 #chatInput {
@@ -376,14 +380,14 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	border-left: none;
 	border-right: none;
 	border-bottom: none;
-	padding: 2px 0px 0px 0px;
-	margin: 0px 0px 0px 0px;
-	height: 29px;
-	width: 100%;
-	color: #7a7a7a;
-	font-size: 0.9em;
+	padding: 0px 0px 0px 0px;
+	margin: 9px 0px 0px 5px;
+	width: 630px;
+	color: #6d6d6d;
+	font-size: 1em;
 	background: url('images/gray_backgrounds.jpg') top left no-repeat;
-	background-position: 0 -510px; }
+	background-position: 0 -510px;
+}
  
 /* Classes */
 .block { display: block; }
@@ -407,11 +411,22 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 		margin: 5px 0 15px 0;
 		width: 160px; }
  
-.nick { color: #b3b3b3; }
+.chatMessage {
+    width: 560px;
+    display: block;
+    margin-bottom: 15px;
+    line-height: 1.6em;
+}
+
+.chatNick { 
+    display: block; 
+    color: #4e4e4e; 
+    font-weight: bold;
+}
  
-.message {
+.chatText {
 	display: block;
-	color: #565656 }
+	color: #4e4e4e }
  
 .block { display: block; }
 
@@ -723,4 +738,8 @@ a#share.button3:hover { cursor: text }
 #searchResults .jspDrag { background: #3b3b3b; }
 #searchResults .jspDrag:hover { background: #fff }
 #searchResults .jspTrack {background: #5c5c5c;}
+
+#chat .jspDrag { background: #b7b7b7; }
+#chat .jspDrag:hover { background: #757575 }
+#chat .jspTrack {background: #d5d5d5;}
 
