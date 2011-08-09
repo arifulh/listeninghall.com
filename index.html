@@ -29,9 +29,9 @@
 				<h1 id="mainLogo">Listening Hall</h1>
                 <div id="toolbar">
                     <ul>
-                        <li id="invli"><a id="invite" href="#">Invite</a></li>
-                        <li id="memli"><a id="members" href="#">Members</a></li>
-                        <li id="passli"><a id="pass" href="#">Pass</a></li>
+                        <li id="invli"><span id="invite">Invite</span></li>
+                        <li id="memli"><span id="members">Members</span></li>
+                        <li id="passli"><span id="pass">Pass</span></li>
                     </ul>    
                 </div>
 				<br clear="all" />
@@ -50,7 +50,7 @@
 									<li>Your nick <span id="nick_conflict">(Nick already taken)</span><br><input id="loginNick" type="text"></li>
 									<li id="requirePass">Password <span id="pass_conflict">(Required/Incorrect)</span><br><input id="loginPass" type="text"></li>
 									<li>
-										<a href="#" id="loginButton" class="button1">Create</a>
+										<span id="loginButton" class="button1">Create</span>
 									</li>
 								</ul>
 							</div>		
@@ -70,9 +70,9 @@
 										<div id="volumeSlider"></div>
 									</div>
 									<ul>
-										<li><a href="#" id="playlistUp">Scroll playlist up</a></li>
-										<li><a href="#" id="playlistDown">Scroll playlist down</a></li>
-										<li><a href="#" id="playlistAdd">Add song to playlist</a></li>
+										<li><span id="playlistUp">Scroll playlist up</span></li>
+										<li><span id="playlistDown">Scroll playlist down</span></li>
+										<li><span id="playlistAdd">Add song to playlist</span></li>
 									</ul>
 								</div>
 							</div>
@@ -83,7 +83,7 @@
 								<div id="searchContent">
 									<div id="searchBox">
 										<input type="text" value="Search Youtube ..." id="searchText" />
-										<a href="#" id="searchButton" />Search</a>
+										<span id="searchButton" />Search</span>
 									</div>
 									<div id="searchResults">
 
@@ -188,7 +188,7 @@
 				<div class="searchTitle"><%= media.media$title.$t %></div>
 				<div class="searchMisc">					
 					<div class="box2">Duration: <%= media.yt$duration.seconds %></div>
-					<a href="#" class="button5" id="<%= media.yt$videoid.$t %>">Add to playlist</a>			
+					<span class="button5 addPlaylist" id="<%= media.yt$videoid.$t %>">Add to playlist</span>			
 				</div>
 			</div>
 			<br clear="all" />
@@ -206,10 +206,7 @@
 
 <!-- Password tip tempalte -->
 <script type="text/template" id="pass-template">
-    
         Password protect room<br> <input id="setPassword"type="text">
-
-    
 </script>
 
 

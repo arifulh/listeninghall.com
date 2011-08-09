@@ -2,9 +2,9 @@ var SearchView = Backbone.View.extend({
     el: $("#search"),
 
     events: {
-        "keypress #searchText" : "search",
-        "click #searchButton"  : "search",
-        "click li a"           : "add"
+        "keypress #searchText"  : "search",
+        "click #searchButton"   : "search",
+        "click li .addPlaylist" : "add"
     },
 
     // Gdata api request url will be built from these parameters. 

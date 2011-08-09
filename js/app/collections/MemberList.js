@@ -3,7 +3,7 @@ var MemberList = Backbone.Collection.extend({
 	
 	_subscribe: function() {
 		$.subscribe('room/user/entered', this.addMember);
-		$.subscribe('room/user/left', this.removeMember);		
+		$.subscribe('room/user/left',    this.removeMember);		
 	},
 	
 	initialize : function() {

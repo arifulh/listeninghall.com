@@ -2,19 +2,20 @@ var ToolbarView = Backbone.View.extend({
     el: $("#toolbar"),
 
     events: {
-        "mouseenter a#invite"  : "showInvite",
-        "mouseenter a#members" : "showMembers",
-        "mouseenter a#pass"    : "showPass"
+        "mouseenter span#invite"  : "showInvite",
+        "mouseenter span#members" : "showMembers",
+        "mouseenter span#pass"    : "showPass"
     },
     
     // We will be using tooltips to display information for each
     // of the toolbar icons, so compile the templates for each 
     // tooltip beforehand.
     initialize: function () {
+        _.bindAll(this, 'showInvite', 'showMembers', 'showPass');
         this.templateInv  = _.template($("#invite-template").html());
         this.templateMem  = _.template($("#memberul-template").html());
         this.templatePass = _.template($("#pass-template").html());
-        this.$pass           = $("#setPassword");
+        this.$pass        = $("#setPassword");
     },
 
     // Users can invite others to the room just by sharing the link.
@@ -51,8 +52,8 @@ var ToolbarView = Backbone.View.extend({
             fadeOut : callb,
             aHide   : false,
             maxW    : '400px',
-            event   : 'click',
-            delay   : 150
+            delay   : 100,
+            event   : 'click'
         });
     }
 });

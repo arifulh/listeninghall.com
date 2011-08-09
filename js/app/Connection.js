@@ -183,6 +183,9 @@ var Connection = {
         if (pres.room !== this.room) return true;
         if (pres.error === "409") $.publish("room/conflict", ["nick"]);
         if (pres.error === "401") $.publish("room/conflict", ["pass"]);
+        // Other users have joined/left
+        $.publish("room/user/" + (pres.type === "unavailable" ? "left" : "entered"), [pres.nick]);
+        // This user successfully joined for the first time
         if (pres.status === "110") {
             $.publish("room/joined", [this.room.replace(this.CONFIG.MUC_HOST, ""), this.nick]);
             this.requestPlaylist();
