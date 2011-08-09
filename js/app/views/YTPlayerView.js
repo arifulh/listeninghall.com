@@ -15,7 +15,6 @@ var YTPlayerView = Backbone.View.extend({
     subscribe: function () {
         $.subscribe('youtube/ready', this.setPlayer);
         $.subscribe('youtube/state', this.stateChange);
-        $.subscribe('room/joined',   this.embedPlayer);
     },
 
     // YTPlayerView listens to the Playlist collection for changes,
@@ -23,9 +22,10 @@ var YTPlayerView = Backbone.View.extend({
     // is set to 'playing', or when the 'elapsedTime' of a song is
     // changed, this view will trigger the YouTube player api. 
     initialize: function () {
-        _.bindAll(this, 'setPlayer', 'stateChange', 'embedPlayer', 'play');
+        _.bindAll(this, 'setPlayer', 'stateChange', 'play');
         this.collection.bind("change:playing",     this.play);
         this.collection.bind("change:elapsedTime", this.play);
+        this.embedPlayer();
         this.subscribe();
     },
 
@@ -125,8 +125,7 @@ var YTPlayerView = Backbone.View.extend({
     },
 
     // Standard chrome-less Youtube player embed. This function is called
-    // to embed the Youtube player onto the page as soon as the user 
-    // successfully joins the room.
+    // to embed the Youtube player onto the page as soon as the page is ready.
     embedPlayer: function () {
         var swfUrlParams = [
                 "http://www.youtube.com/apiplayer?", // baseUrl
