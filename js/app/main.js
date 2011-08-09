@@ -18,7 +18,7 @@ $(function() {
 			this.loginView 	  = new LoginView;
 			
 			// Connecton
-			//Connection.initialize();
+			Connection.initialize();
 			
 		}
 	};
@@ -27,13 +27,6 @@ $(function() {
 	main = mainapp;
 
 	// Intialize jquery plugins for scrolling and tooltips
-	$("#volumeSlider").slider({
-			value: 30,
-			orientation: "horizontal",
-			range: "min",
-			animate: true,
-			step: 10
-	});
 	$("#loginProgress").slider({
 			orientation: "horizontal",
 			range: "min",
@@ -72,6 +65,4 @@ function onYouTubePlayerReady(playerid) {
 function onYoutubeStateChange(state) {
 	$.publish('youtube/state', [ state ]);
 }
-
-
 

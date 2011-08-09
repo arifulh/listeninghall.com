@@ -28,12 +28,11 @@ textarea:focus, input:focus { outline: none }
 #top {
 	width: 952px;
 	height: 65px;
-	display: }
+	display: none}
 
 #toolbar ul {
 	margin: 25px 0 0 0;
 	padding: 0;
-	width: 130px;
 	height: 25px;
 	float: right }
  
@@ -44,9 +43,9 @@ textarea:focus, input:focus { outline: none }
 		float: left;
 		height: 25px }
     
-    #toolbar li#inv {width: 74px}
-    #toolbar li#mem {width: 22px}
-    #toolbar li#pass {width: 22px}
+    #toolbar li#invli {width: 74px}
+    #toolbar li#memli {width: 22px}
+    #toolbar li#passli {width: 22px}
     
     #toolbar ul li a {
         display: block;
@@ -102,7 +101,7 @@ a:hover#pass { background-position: 0 -25px; }
 	height: 541px;
 	width: 952px;
 	position: absolute;
-	z-index: 9999; display: none }
+	z-index: 9999 }
 
 #login {
 	width: 494px;

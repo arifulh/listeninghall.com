@@ -52,7 +52,7 @@ var ToolbarView = Backbone.View.extend({
             aHide   : false,
             maxW    : '400px',
             event   : 'click',
-            delay   : 150,
+            delay   : 150
         });
     }
 });

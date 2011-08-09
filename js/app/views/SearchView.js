@@ -54,5 +54,5 @@ var SearchView = Backbone.View.extend({
     buildQuery: function () {
         var query = this.input.val();
         return this.gdataParams.join("").concat("&q=", query);
-    },
+    }
 });
