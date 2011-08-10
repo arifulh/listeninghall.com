@@ -27,6 +27,7 @@ var Connection = {
         $.subscribe('playlist/resync',    this.requestPlaylist);
         $.subscribe('room/setPass',       this.requestPassword);
         $.subscribe('song/resync',        this.requestSync);
+        $.subscribe('song/voteSkip',      this.requestSkip);
     },
 
     // Use Underscore.js 'bindAll' function to bind all
