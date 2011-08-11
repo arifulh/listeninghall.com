@@ -7,15 +7,20 @@ var ToolbarView = Backbone.View.extend({
         "mouseenter span#pass"    : "showPass"
     },
     
+    subscribe : function() {
+        $.subscribe("room/user/affil", this.adminTools);
+    },
+
     // We will be using tooltips to display information for each
     // of the toolbar icons, so compile the templates for each 
     // tooltip beforehand.
     initialize: function () {
-        _.bindAll(this, 'showInvite', 'showMembers', 'showPass');
+        _.bindAll(this, "showInvite", "showMembers", "showPass", "allowPassword");
         this.templateInv  = _.template($("#invite-template").html());
         this.templateMem  = _.template($("#memberul-template").html());
         this.templatePass = _.template($("#pass-template").html());
         this.$pass        = $("#setPassword");
+        this.subscribe();
     },
 
     // Users can invite others to the room just by sharing the link.
@@ -42,6 +47,13 @@ var ToolbarView = Backbone.View.extend({
         var pass = this.$pass.val();
         var callb = function() {$.publish("room/setPass", [pass])}
         this.attachTip(e.currentTarget, render, 's', callb);
+    },
+
+    // Show administrator tool icons if the user has the appropriate affiliation.
+    adminTools : function(affiliation) {
+        if (affiliation === "moderator") {
+            $(this.el).addClass("admin");
+        }
     },
 
     // Generate and attach tooltip to target
