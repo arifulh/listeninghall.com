@@ -1,7 +1,7 @@
 html {
 	background: url('images/htmlbg.gif') top left #d6d6d6 repeat-y;
 	font-family: Arial;
-	font-size: 12px;
+	font-size: 0.9em;
 	color: #d8d9da;
 	padding-top: 75px }
  
@@ -45,8 +45,9 @@ textarea:focus, input:focus { outline: none }
     
     #toolbar li#invli {width: 74px}
     #toolbar li#memli {width: 22px}
-    #toolbar li#passli {width: 22px}
-    
+    #toolbar li#passli {width: 22px; display: none}
+    #toolbar.admin li#passli {width: 22px; display: inline}
+
     #toolbar ul li span {
         display: block;
 	    width: 0;
@@ -194,6 +195,7 @@ h1#mainLogo {
 #search {
 	background: url('images/search_pattern.png');
 	position: absolute;
+    z-index: 9999;
 	width: 470px;
 	height: 541px;
 	border-right: solid 5px #b9b9b9;
@@ -242,7 +244,7 @@ h1#mainLogo {
 	border-bottom: none;
 	width: 360px;
 	height: 15px;
-	font-size: 14px;
+	font-size: 1em;
 	margin: 0;
 	padding: 0;
 	color: #fff;
@@ -267,6 +269,14 @@ h1#mainLogo {
 	height: 541px;
 	width: 315px; }
  
+#plshadowbar {
+    background: url('images/shadowbar1.png') repeat-x;
+    width: 315px;
+    height: 6px;
+    display: block;
+    font-size: 0;
+}
+
 #plsongs {
 	height: 490px;
 	width: 315px;
@@ -275,7 +285,6 @@ h1#mainLogo {
 	#plsongs ul {
 		padding: 0;
 		margin: 0; }
- 
 #plcontrolsShadow {
 	width: 315px;
 	height: 9px;
@@ -373,7 +382,8 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	background-position: 0 -342px;
 	height: 168px;
     word-wrap: break-word;
-	overflow: auto; }
+	overflow: auto;
+    font-size: 0.8em; }
  
 #chatInput {
 	border-top: none;
@@ -384,9 +394,8 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	margin: 9px 0px 0px 5px;
 	width: 630px;
 	color: #6d6d6d;
-	font-size: 1em;
-	background: url('images/gray_backgrounds.jpg') top left no-repeat;
-	background-position: 0 -510px;
+	font-size: 0.8em;
+	background: none
 }
  
 /* Classes */
@@ -415,6 +424,7 @@ span:hover#playlistAdd { background-position: 0 -36px; }
     width: 560px;
     display: block;
     margin-bottom: 15px;
+
     line-height: 1.6em;
 }
 
@@ -433,7 +443,7 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 .box1 {
 	display: block;
 	color: #fff;
-	font-size: 11px;
+	font-size: 0.7em;
 	font-weight: bold;
 	float: right;
 	padding: 7px;
@@ -452,7 +462,7 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	display: block;
 	float: left;
 	color: #fff;
-	font-size: 11px;
+	font-size: 0.75em;
 	padding: 4px 6px 4px 6px;
 	margin: 6px 0 0 0px;
 	text-decoration: none;
@@ -482,7 +492,7 @@ span.button5 {
 	display: block;
 	float: left;
 	color: #fff;
-	font-size: 11px;
+	font-size: 0.75em;
 	padding: 4px 8px 4px 17px;
 	margin: 6px 0 0 4px;
 	text-decoration: none;
@@ -505,15 +515,6 @@ a#share.button3:hover { cursor: text }
 	background-position: 0 -69px
 }
 
-.playing {
-	background-position: 0 0;
-}
-
-.playing div.pltitle {
-	color: #000;
-	font-weight: bold;
-}
-
 .add {
 	background: url('images/small_icons.gif') 0 0 no-repeat;
 	width: 0px;
@@ -521,12 +522,6 @@ a#share.button3:hover { cursor: text }
 	padding: 0 0 12px 12px;
 	display: inline
 }	
-
-#playing.song {
-	background-position: 0 0;
-	color: #000; }
- 
-	#playing.song .pltitle { color: #000 }
  
 .plimage {
 	width: 69px;
@@ -545,20 +540,45 @@ a#share.button3:hover { cursor: text }
 	font-family: Arial }
  
 .pltitle {
-	height: 13px;
+	height: 16px;
 	display: block;
 	overflow: hidden;
-	font-size: 12px;
+	font-size: 0.8em;
 	color: #6a737d;
 	cursor: default; }
  
 .plduration {
-	height: 13px;
-	display: block;
-	overflow: hidden;
-	font-size: 12px;
+	height: 16px;
+	font-size: 0.79em;
 	color: #babbbe;
-	margin-top: 3px }
+	margin-top: 1px }
+
+.plskip {
+	height: 16px;
+	font-size: 0.79em;
+	margin-top: 1px;
+    text-decoration: none;
+    display: none }
+
+.plskip a {
+    color: #2997c0;
+    text-decoration: none
+}
+
+.playing {
+	background-position: 0 0;
+}
+
+.playing span.pltitle {
+	color: #000;
+	font-weight: bold;
+}
+.playing span.plskip {
+    display: inline
+}
+.playing span.plskip a:hover {
+    text-decoration: underline
+}
  
 .searchImage {
 	width: 69px;
@@ -574,7 +594,7 @@ a#share.button3:hover { cursor: text }
 	float: left; }
  
 .searchTitle {
-	font-size: 12px;
+	font-size: 0.8em;
 	font-weight: bold;
 	color: #fff;
 	cursor: default; }
@@ -591,10 +611,10 @@ a#share.button3:hover { cursor: text }
 /*! miniTip CSS - v1.2.5 */
 #miniTip {
     /* main styles for tooltip */
-    background-color: #323232;
-	border: 1px solid #323232;
-	color: #cecece;
-	font-size: 1em;
+    background-color: #000;
+	border: 1px solid #000;
+	color: #fff;
+	font-size: 0.8em;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -631,7 +651,7 @@ a#share.button3:hover { cursor: text }
 #miniTip .n {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
-	border-top: 8px solid #323232;
+	border-top: 8px solid #000;
 	border-bottom: 0;
 }
 
@@ -639,7 +659,7 @@ a#share.button3:hover { cursor: text }
 #miniTip .s {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
-	border-bottom: 8px solid #323232;
+	border-bottom: 8px solid #000;
 	border-top: 0;
 }
 
@@ -647,7 +667,7 @@ a#share.button3:hover { cursor: text }
 #miniTip .e {
 	border-bottom: 8px solid transparent;
 	border-top: 8px solid transparent;
-	border-right: 8px solid #323232;
+	border-right: 8px solid #000;
 	border-left: 0;
 }
 
@@ -655,7 +675,7 @@ a#share.button3:hover { cursor: text }
 #miniTip .w {
 	border-bottom: 8px solid transparent;
 	border-top: 8px solid transparent;
-	border-left: 8px solid #323232;
+	border-left: 8px solid #000;
 	border-right: 0;
 }
 
