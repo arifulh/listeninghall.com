@@ -9,8 +9,15 @@ var PlaylistView = Backbone.View.extend({
         this.collection.bind('add',     this.renderSong);
         this.collection.bind('remove',  this.removeRender);
         this.collection.bind('refresh', this.removeAll);
-        this.list = $("#plsongs ul");
+        this.$scrollpane = $("#plsongs");
+        this.$list = $("#plsongs ul");
         this.songViews = [];
+
+        // Hook up remote buttons to scroll the playlist
+        this.$scrollpane.remoteScroll({
+            up   : "#playlistUp",
+            down : "#playlistDown"
+        });
     },
 
     // Create a view for the song, and keep track of the view by
@@ -19,7 +26,7 @@ var PlaylistView = Backbone.View.extend({
     renderSong: function (song) {
         var view = new SongView({model: song});
         this.songViews.push(view);
-        this.list.append($(view.render().el).fadeIn());
+        this.$list.append($(view.render().el).fadeIn());
     },
 
     // Remove song view from DOM, and remove
