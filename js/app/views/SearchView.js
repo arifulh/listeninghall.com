@@ -1,6 +1,7 @@
 var SearchView = Backbone.View.extend({
     el: $("#search"),
-
+    
+    // Events that happen within the view
     events: {
         "keypress #searchText"  : "search",
         "click #searchButton"   : "search",
@@ -9,20 +10,22 @@ var SearchView = Backbone.View.extend({
 
     // Gdata api request url will be built from these parameters. 
     gdataParams: [
-        "http://gdata.youtube.com/feeds/api/videos?", 
-        "&v=2", 
-        "&format=5", 
-        "&alt=json-in-script", 
-        "&callback=?"
+        "http://gdata.youtube.com/feeds/api/videos?", // baseUrl
+        "&v=2",                                       // version
+        "&format=5",                                  // format
+        "&alt=json-in-script",                        // enable jsonp
+        "&callback=?"                                 // callback
     ],
 
-    // Store references to most used DOM elements.   
-    // Attach jScrollPane plugin to the search  
-    // display for custom scrollbars.
+    // Store references to most used DOM elements. Attach jScrollPane
+    // plugin to the search display for custom scrollbars.
     initialize: function () {
-        this.input    = $("#searchText");
-        this.display  = $("#searchResults").jScrollPane().data('jsp');
-        this.template = _.template($("#search-template").html());
+        _.bindAll(this, "render");
+        this.$toggle   = $("#playlistAdd");
+        this.$input    = $("#searchText");
+        this.$display  = $("#searchResults").jScrollPane().data('jsp');        
+        this.template  = _.template($("#search-template").html());
+        this.$toggle.bind("click", this.render);
     },
 
     // Bind the request callback to the SearchView object to simplify
@@ -33,8 +36,8 @@ var SearchView = Backbone.View.extend({
         var query = this.buildQuery();
         $.getJSON(query, _.bind(function (data) {
             var results = this.template({"results": data.feed.entry});
-            this.display.getContentPane().html(results);
-            this.display.reinitialise();
+            this.$display.getContentPane().html(results);
+            this.$display.reinitialise();
         }, this));
     },
 
@@ -45,14 +48,24 @@ var SearchView = Backbone.View.extend({
     add: function (e) {
         var sid = e.currentTarget.id;
         $("li#" + sid).fadeOut();
-        this.display.reinitialise();
+        this.$display.reinitialise();
         $.publish("song/send", [sid]);
     },
 
     // Build/return a gdata api request string from the
     // parameters object, with our query text appened.
     buildQuery: function () {
-        var query = this.input.val();
+        var query = this.$input.val();
         return this.gdataParams.join("").concat("&q=", query);
+    },
+
+    // This view is already within the DOM when initialized. 
+    // The render function will simply toggle hide/show animation.
+    render: function () {
+        var speed = 350;
+        $(this.el).animate({
+            width   : 'toggle',
+            opacity : 'toggle'
+        }, speed);
     }
 });
