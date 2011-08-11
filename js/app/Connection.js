@@ -184,11 +184,15 @@ var Connection = {
         if (pres.room !== this.room) return true;
         if (pres.error === "409") $.publish("room/conflict", ["nick"]);
         if (pres.error === "401") $.publish("room/conflict", ["pass"]);
+
         // Other users have joined/left
         $.publish("room/user/" + (pres.type === "unavailable" ? "left" : "entered"), [pres.nick]);
+
         // This user successfully joined for the first time
         if (pres.status === "110") {
-            $.publish("room/joined", [this.room.replace(this.CONFIG.MUC_HOST, ""), this.nick]);
+            var room = this.room.replace(this.CONFIG.MUC_HOST, "");
+            $.publish("room/joined", [room, this.nick]);
+            $.publish("room/user/affil", [pres.affil])
             this.requestPlaylist();
         }
         return true;
@@ -232,7 +236,8 @@ var Connection = {
             nick   : Strophe.getResourceFromJid(from),
             type   : $stanza.attr('type'),
             status : $stanza.find('status').attr('code'),
-            error  : $stanza.find('error').attr('code')
+            error  : $stanza.find('error').attr('code'),
+            affil  : $stanza.find('item').attr('role')
         };
     },
 
