@@ -36,10 +36,12 @@ var YTPlayerView = Backbone.View.extend({
     BufferDelayTimer: function () {
         var startTime = 0;
         return {
+
             // Set current time as the start time.
             start: function () {
                 startTime = new Date().getTime();
             },
+
             // Return the difference between stop and start times in seconds. 
             // If the timer was off, set stopTime to 0, in which case elapsed will 
             // also return 0. Turn timer of before returning (startTime = 0).
@@ -55,15 +57,18 @@ var YTPlayerView = Backbone.View.extend({
     // Intercept and handle state changes in the Youtube player
     stateChange: function (state) {
         switch (state) {
+
             // Start buffering timer to calculate delay
             case this.STATES.BUFFERING:
                 this.delayTimer.start();
                 break;
+
             // Stop timer, and adjust playback to account for the delay
             case this.STATES.PLAYING:
                 var delay = this.delayTimer.stop();
                 this.adjustPlayback(delay);
                 break;
+
             // Clicking the video screen will stop playback. We want to resume playback  
             // manually since the YT api doesn't allow us to disable click events.
             case this.STATES.UNSTARTED:
@@ -92,6 +97,7 @@ var YTPlayerView = Backbone.View.extend({
         var maxDelayAllowed = 10,
             correction = 4,
             currentTime = this.playerAPI.getCurrentTime();
+
         // If the delay was signifcant, adjust playback position.
         if (delay > maxDelayAllowed) {
             this.playerAPI.seekTo(currentTime + delay + correction, true);
