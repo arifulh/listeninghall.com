@@ -119,7 +119,7 @@ var Connection = {
             var $playlist = $(playlist).find('playlist');
             var songs = [];
             $playlist.find('song').each(_.bind(function (i, song) {
-                songs.push(this._parseSong($(song)));
+                songs.pushtrophe.unescapeNode(node)(this._parseSong($(song)));
             }, this));
             if (songs.length > 0) {
                 $.publish("song/playlist", [songs]);
@@ -188,9 +188,12 @@ var Connection = {
         // Other users have joined/left
         $.publish("room/user/" + (pres.type === "unavailable" ? "left" : "entered"), [pres.nick]);
 
-        // This user successfully joined for the first time
+        // This user successfully joined for the first time. The node part of 
+        // the jid (room name) will need be escaped. Pass user information 
+        // information over to the app, and get playlist
         if (pres.status === "110") {
-            var room = this.room.replace(this.CONFIG.MUC_HOST, "");
+            var node = Strophe.getNodeFromJid(this.room);
+            var room = Strophe.unescapeNode(node);
             $.publish("room/joined", [room, this.nick]);
             $.publish("room/user/affil", [pres.affil])
             this.requestPlaylist();
@@ -217,7 +220,7 @@ var Connection = {
     },
 
     // There are three types of song stanzas that are supported.
-    // This function will determine the type of the song, and
+    // This function will determine the type of thvar room = Strophe.getNodeFromJid(this.room);e song, and
     // publish the corresponding event.
     _onSong: function ($song) {
         var song = this._parseSong($song);
@@ -275,10 +278,12 @@ var Connection = {
         this._sendIQ(req, _.bind(callback, this));
     },
 
-    // Store nick and the full room address, so
-    // we can quickly send stanzas to the server.
+    // Store nick and the full room address, so we can quickly 
+    // send stanzas to the server. XMPP standards require that
+    // the node part of the room address be escaped.
     _setUser: function (nick, room) {
         this.nick = nick;
-        this.room = room + this.CONFIG.MUC_HOST;
+        this.room = Strophe.escapeNode(room) + this.CONFIG.MUC_HOST;
     }
+
 };
