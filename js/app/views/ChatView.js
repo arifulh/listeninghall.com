@@ -8,7 +8,7 @@ var ChatView = Backbone.View.extend({
 
     // Subscribe to Connection object events
     subscribe: function () {
-        $.subscribe("room/joined",      this.setNick);
+        $.subscribe("room/joined",      this.setUser);
         $.subscribe("message/recieved", this.renderMessage);
     },
 
@@ -27,7 +27,7 @@ var ChatView = Backbone.View.extend({
     },
 
     // Upon succesfully joining the room, set room/nick
-    setNick: function (room, nick) {
+    setUser: function (room, nick) {
         this.room = room;
         this.nick = nick;
     },
