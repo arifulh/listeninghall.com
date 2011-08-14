@@ -66,7 +66,7 @@ var Connection = {
         this._request("get", "items", function (query) {
             var $room  = $(query).find('item');
             var exists = $room.length !== 0 ? true : false;
-            exists ? $.publish("room/conflict", ["exists"]) : this.sendPresence(options.pass);
+            exists ? $.publish("room/conflict", ["roomExists"]) : this.sendPresence(options.pass);
         });
     },
 
@@ -182,8 +182,8 @@ var Connection = {
     _onPresence: function (presence) {
         var pres = this._parsePresence(presence);
         if (pres.room !== this.room) return true;
-        if (pres.error === "409") $.publish("room/conflict", ["nick"]);
-        if (pres.error === "401") $.publish("room/conflict", ["pass"]);
+        if (pres.error === "409") $.publish("room/conflict", ["nickExists"]);
+        if (pres.error === "401") $.publish("room/conflict", ["passWrong"]);
 
         // Other users have joined/left
         $.publish("room/user/" + (pres.type === "unavailable" ? "left" : "entered"), [pres.nick]);
