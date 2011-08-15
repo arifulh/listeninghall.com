@@ -141,7 +141,7 @@ var LoginView = Backbone.View.extend({
         // the outer function to display the error.
         return function (type, errorText) {
             var $element = error[type];
-            $element.text(errorText).effect("pulsate", {times: 3});
+            $element.text("(" + errorText + ")").effect("pulsate", {times: 3});
         }
     },
 
