@@ -220,7 +220,7 @@ var Connection = {
     },
 
     // There are three types of song stanzas that are supported.
-    // This function will determine the type of thvar room = Strophe.getNodeFromJid(this.room);e song, and
+    // This function will determine the type of the song, and
     // publish the corresponding event.
     _onSong: function ($song) {
         var song = this._parseSong($song);
