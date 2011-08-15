@@ -108,7 +108,7 @@ var LoginView = Backbone.View.extend({
         // fade the slider out and display the login dialog. Switch 
         // classes to manually enforce vertical alignment
         return function (amount) {
-            $progressBar.slider("value", amount);
+            $progressBar.slider("value", amount, true);
             if (amount === 100) {
                 $progressBar.fadeOut(function () {
                     $loginDialog.fadeIn();
