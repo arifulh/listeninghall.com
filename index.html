@@ -46,12 +46,10 @@
 							<div id="loginProgress"></div>
 							<div id="loginDialog">
 								<ul class="dialog1">
-									<li>Room name <span id="room_conflict">(Room already exists)</span><br><input id="loginRoom" type="text"></li>
-									<li>Your nick <span id="nick_conflict">(Nick already taken)</span><br><input id="loginNick" type="text"></li>
-									<li id="requirePass">Password <span id="pass_conflict">(Required/Incorrect)</span><br><input id="loginPass" type="text"></li>
-									<li>
-										<span id="loginButton" class="button1">Create</span>
-									</li>
+									<li>Room name <span id="room_conflict"></span><br><input id="loginRoom" type="text"></li>
+									<li>Your nick <span id="nick_conflict"></span><br><input id="loginNick" type="text"></li>
+									<li id="requirePass">Password <span id="pass_conflict"></span><br><input id="loginPass" type="text"></li>
+									<li><span id="loginButton" class="button1">Create</span></li>
 								</ul>
 							</div>		
 						</div>
@@ -174,7 +172,7 @@
 
 <!-- Member li template -->
 <script type="text/template" id="memberul-template">
-	<ul>
+	<ul class='members'>
 		<% _.each(mem, function(m) { %>
 			<li><%= m.nick %></li>
 		<% }); %>
