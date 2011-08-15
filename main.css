@@ -182,6 +182,8 @@ h1#mainLogo {
  
 #room_conflict, #nick_conflict, #pass_conflict {
 	color: #adf8ff;
+    margin-left: 5px;
+    position: absolute;
 	display: none }
  
 #leftColumn {
