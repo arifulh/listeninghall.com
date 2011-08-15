@@ -6,8 +6,8 @@ var ToolbarView = Backbone.View.extend({
         "mouseenter span#members" : "showMembers",
         "mouseenter span#pass"    : "showPass"
     },
-    
-    subscribe : function() {
+
+    subscribe: function () {
         $.subscribe("room/user/affil", this.adminTools);
     },
 
@@ -15,11 +15,11 @@ var ToolbarView = Backbone.View.extend({
     // of the toolbar icons, so compile the templates for each 
     // tooltip beforehand.
     initialize: function () {
-        _.bindAll(this, "showInvite", "showMembers", "showPass", "allowPassword");
+        _.bindAll(this, "showInvite", "showMembers", "showPass", "adminTools");
         this.templateInv  = _.template($("#invite-template").html());
         this.templateMem  = _.template($("#memberul-template").html());
         this.templatePass = _.template($("#pass-template").html());
-        this.$pass        = $("#setPassword");
+        this.password     = "";
         this.subscribe();
     },
 
@@ -43,29 +43,33 @@ var ToolbarView = Backbone.View.extend({
     // when the tooltip is closed, signaling the Connection 
     // object to set the password on the server.
     showPass: function (e) {
-        var render = this.templatePass();
-        var pass = this.$pass.val();
-        var callb = function() {$.publish("room/setPass", [pass])}
-        this.attachTip(e.currentTarget, render, 's', callb);
+        var current  = this.password,
+            render   = this.templatePass({pass: current}),
+            callback = _.bind(function () {
+                var pass = $("#setPassword").val();
+                $.publish("room/setPass", [pass]);
+                this.password = pass;
+            }, this);
+        this.attachTip(e.currentTarget, render, 's', callback);
     },
 
     // Show administrator tool icons if the user has the appropriate affiliation.
-    adminTools : function(affiliation) {
+    adminTools: function (affiliation) {
         if (affiliation === "moderator") {
             $(this.el).addClass("admin");
         }
     },
 
     // Generate and attach tooltip to target
-    attachTip: function (tar, ren, pos, callb) {
+    attachTip: function (tar, ren, pos, callback) {
         $(tar).miniTip({
-            content : ren,
-            anchor  : pos,
-            fadeOut : callb,
-            aHide   : false,
-            maxW    : '400px',
-            delay   : 100,
-            event   : 'click'
+            content: ren,
+            anchor: pos,
+            hide: callback,
+            aHide: false,
+            maxW: '400px',
+            delay: 10,
+            event: 'click'
         });
     }
 });
