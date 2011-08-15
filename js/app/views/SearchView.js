@@ -47,7 +47,7 @@ var SearchView = Backbone.View.extend({
     // can send a song-queue request to the server.
     add: function (e) {
         var sid = e.currentTarget.id;
-        $("li#" + sid).fadeOut();
+        $("li#" + sid).fadeOut("fast");
         this.$display.reinitialise();
         $.publish("song/send", [sid]);
     },
@@ -62,7 +62,7 @@ var SearchView = Backbone.View.extend({
     // This view is already within the DOM when initialized. 
     // The render function will simply toggle hide/show animation.
     render: function () {
-        var speed = 350;
+        var speed = 210;
         $(this.el).animate({
             width   : 'toggle',
             opacity : 'toggle'
