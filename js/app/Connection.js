@@ -269,8 +269,8 @@ var Connection = {
         }
     },
 
-    // Helper function to generate IQ stanzas based
-    // on type (get or set), and the specified request.
+    // Helper function to generate IQ stanzas based on
+    // type (get or set), and the specified request.
     _request: function (reqType, req, callback) {
         var req = $iq({to: this.room,
                        type: reqType})
