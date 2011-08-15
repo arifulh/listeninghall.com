@@ -90,6 +90,7 @@ span:hover#pass { background-position: 0 -25px; }
 }
 .highlight2 {
     color: #fff;
+    display: block;
 }
 
 
@@ -399,13 +400,27 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	font-size: 0.8em;
 	background: none
 }
- 
+#passwordForm {
+    margin-top: 3px;
+    color: #a5a5a5;
+}
+#passwordForm input {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	padding: 4px;
+	margin: 5px 0px 5px 0px;
+    background: #383838;
+    color: #bbbbbb
+}
+
 /* Classes */
 .block { display: block; }
  
 .hidden { display: none; }
  
-.dialog1 {1f1f1f
+.dialog1 {
 	padding: 0;
 	margin: 0;
 	list-style: none }
@@ -421,12 +436,21 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	.dialog1 input {
 		margin: 5px 0 15px 0;
 		width: 160px; }
- 
+
+.list1 {
+    margin: 0;
+    padding: 6px;
+    color: #b5b5b5;
+} 
+.list1 li {
+    padding: 5px 0 5px 0;
+    margin: 0;
+    border-bottom: dotted 1px #404040;
+}
 .chatMessage {
     width: 560px;
     display: block;
     margin-bottom: 15px;
-
     line-height: 1.6em;
 }
 

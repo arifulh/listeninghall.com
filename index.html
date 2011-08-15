@@ -21,7 +21,7 @@
 		<script type="text/javascript" src="js/jquery/jquery.mousewheel.min.js"></script>	
 		<script type="text/javascript" src="js/jquery/jquery.lh.remoteScroll.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery.miniTip.min.js"></script>	
-		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.min.js"></script>
 	
 		<body>
 		<div id="topContainer">
@@ -55,7 +55,7 @@
 						</div>
 					</div>
 					<div id="app">
-						<!-- end of loading screen -->				
+						<!-- end of loading screen -->
 						<div id="leftColumn">
 							<div id="playlist">
 								<div id="plsongs">
@@ -172,7 +172,7 @@
 
 <!-- Member li template -->
 <script type="text/template" id="memberul-template">
-	<ul class='members'>
+	<ul class='list1'>
 		<% _.each(mem, function(m) { %>
 			<li><%= m.nick %></li>
 		<% }); %>
@@ -209,7 +209,7 @@
 
 <!-- Password tip tempalte -->
 <script type="text/template" id="pass-template">
-        Password protect room<br> <input id="setPassword"type="text">
+        <div id="passwordForm">Password protect room<br> <input id="setPassword" value="<%= pass %>" type="text" /></div>
 </script>
 
 
