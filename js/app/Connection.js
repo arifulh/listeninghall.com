@@ -119,7 +119,8 @@ var Connection = {
             var $playlist = $(playlist).find('playlist');
             var songs = [];
             $playlist.find('song').each(_.bind(function (i, song) {
-                songs.pushtrophe.unescapeNode(node)(this._parseSong($(song)));
+                var song = this._parseSong($(song));
+                songs.push(song);
             }, this));
             if (songs.length > 0) {
                 $.publish("song/playlist", [songs]);
