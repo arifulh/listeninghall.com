@@ -65,7 +65,7 @@ var SearchView = Backbone.View.extend({
     // This view is already within the DOM when initialized. 
     // The render function will simply toggle hide/show animation.
     render: function () {
-        var speed = 180;
+        var speed = 160;
         this.el.fadeToggle(speed);
     },
     
@@ -74,7 +74,7 @@ var SearchView = Backbone.View.extend({
         var $toggle = $("#playlistAdd"),
             outside = ["#youtubePlayer","#chatDisplay","#chatInput"],
             view    = this.el,
-            speed   = 180;
+            speed   = 160;
         
         // Bind click to the playlistAdd button
         $toggle.click(this.render);
