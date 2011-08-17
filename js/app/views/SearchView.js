@@ -24,7 +24,7 @@ var SearchView = Backbone.View.extend({
         _.bindAll(this, "render");
         this.$toggle   = $("#playlistAdd");
         this.$input    = $("#searchText");
-        this.$display  = $("#searchResults").jScrollPane().data('jsp');        
+        this.$display  = $("#searchResults").jScrollPane({hideFocus: true}).data('jsp');        
         this.template  = _.template($("#search-template").html());
         this.$toggle.bind("click", this.render);
     },

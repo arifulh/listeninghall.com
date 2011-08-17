@@ -19,8 +19,8 @@ var ChatView = Backbone.View.extend({
     // well the message templates. Attach the scrollpane plugin to 
     // display as well.
     initialize: function () {
-        _.bindAll(this, 'subscribe', 'renderMessage', 'setNick');
-        this.$display    = $("#chatDisplay").jScrollPane().data('jsp');
+        _.bindAll(this, 'subscribe', 'renderMessage', 'setUser');
+        this.$display    = $("#chatDisplay").jScrollPane({hideFocus: true}).data('jsp');
         this.$input      = $("#chatInput");
         this.msgTemplate = _.template($("#message-template").html());
         this.subscribe();
