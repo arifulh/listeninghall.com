@@ -14,6 +14,7 @@ var SearchView = Backbone.View.extend({
         "http://gdata.youtube.com/feeds/api/videos?", // baseUrl
         "&v=2",                                       // version
         "&format=5",                                  // format
+        "&max-results=32",                            // number of results
         "&alt=json-in-script",                        // enable jsonp
         "&callback=?"                                 // callback
     ],
