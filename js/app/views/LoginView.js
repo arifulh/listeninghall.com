@@ -17,7 +17,7 @@ var LoginView = Backbone.View.extend({
     // for user input and animation. Also call 'checkUrlHash" once this view
     // is initialized to handle room parameters right away.
     initialize: function () {
-        _.bindAll(this, 'success', 'updateProgress', 'handleConflict');
+        _.bindAll(this, 'success', 'updateProgress', 'handleConflict','requirePass');
         this.progress  = this.progressBar();
         this.showError = this.errorDialog();
         this.create    = true; // Default, assume new room will be created.
@@ -103,6 +103,14 @@ var LoginView = Backbone.View.extend({
         var $progressBar = this.$("#loginProgress"),
             $loginDialog = this.$("#loginDialog"),
             $login       = this.$("#login");
+
+	    // Intialize progress bar
+	    $progressBar.slider({
+	        orientation : "horizontal",
+	        range       : "min",
+	        animate     : true,
+	        disabled    : true
+	    });
 
         // Update progress bar slider. If the slider reaches 100,
         // fade the slider out and display the login dialog. Switch 
