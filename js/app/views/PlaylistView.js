@@ -26,7 +26,7 @@ var PlaylistView = Backbone.View.extend({
     renderSong: function (song) {
         var view = new SongView({model: song});
         this.songViews.push(view);
-        this.$list.append($(view.render().el).fadeIn());
+        this.$list.append($(view.render().el).fadeIn("fast"));
         this.attachPlugins(view);
     },
 
