@@ -1,5 +1,5 @@
 html {
-	background: url('images/htmlbg.gif') top left #d6d6d6 repeat-y;
+	background: url('images/htmlbg.jpg') top center no-repeat #9c9c9c;
 	font-family: Arial;
 	font-size: 0.9em;
 	color: #d8d9da;
@@ -103,7 +103,7 @@ span:hover#pass { background-position: 0 -25px; }
 	height: 541px;
 	width: 952px;
 	position: absolute;
-	z-index: 9999 }
+	z-index: 9999; }
 
 #login {
 	width: 494px;
@@ -288,6 +288,7 @@ h1#mainLogo {
 	#plsongs ul {
 		padding: 0;
 		margin: 0; }
+
 #plcontrolsShadow {
 	width: 315px;
 	height: 9px;
@@ -314,9 +315,9 @@ h1#mainLogo {
  
 #volumeSlider {
 	width: 130px;
-	height: 5px;
+	height: 6px;
 	float: right;
-	margin-top: 2px; }
+	margin-top: 3px; }
  
 #plcontrols ul {
 	margin: 2px 14px 0 0;
@@ -402,7 +403,7 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 }
 #passwordForm {
     margin-top: 3px;
-    color: #a5a5a5;
+    color: #c8c8c8;
 }
 #passwordForm input {
 	border-top: none;
@@ -440,7 +441,7 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 .list1 {
     margin: 0;
     padding: 6px;
-    color: #b5b5b5;
+    color: #c8c8c8;
 } 
 .list1 li {
     padding: 5px 0 5px 0;
@@ -558,30 +559,32 @@ a#share.button3:hover { cursor: text }
 	float: left; }
  
 .plinfo {
-	width: 208px;
+	width: 200px;
 	height: 42px;
+    margin: 0 0 0 8px;
 	padding: 14px 0 0 0;
 	display: block;
-	float: right;
+	float: left;
 	font-family: Arial }
  
 .pltitle {
-	height: 16px;
-	display: block;
-	overflow: hidden;
-	font-size: 0.8em;
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+	text-overflow: ellipsis;
+    display: block; 
 	color: #6a737d;
 	cursor: default; }
  
 .plduration {
-	height: 16px;
-	font-size: 0.79em;
+
+	font-size: 0.8em;
 	color: #babbbe;
 	margin-top: 1px }
 
 .plskip {
-	height: 16px;
-	font-size: 0.79em;
+
+	font-size: 0.8em;
 	margin-top: 1px;
     text-decoration: none;
     display: none }
@@ -630,8 +633,8 @@ a#share.button3:hover { cursor: text }
 	margin-top: 5px; }
  
 /* Override Jquery UI slider style */
-.ui-slider { border: solid 1px #dddddd }
-.ui-slider-range { background: #dddddd }
+.ui-slider { border: none; background: #f2f2f2 }
+.ui-slider-range { background: #d3d3d3 }
 .ui-slider-handle { display: none }
 
 /*! miniTip CSS - v1.2.5 */
