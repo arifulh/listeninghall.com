@@ -10,7 +10,7 @@ var PlaylistView = Backbone.View.extend({
         this.collection.bind('remove',  this.removeRender);
         this.collection.bind('refresh', this.removeAll);
         this.$scrollpane = $("#plsongs");
-        this.$list = $("#plsongs ul");
+        this.$list = this.$("#plsongs ul");
         this.songViews = [];
 
         // Hook up remote buttons to scroll the playlist
@@ -27,6 +27,7 @@ var PlaylistView = Backbone.View.extend({
         var view = new SongView({model: song});
         this.songViews.push(view);
         this.$list.append($(view.render().el).fadeIn());
+        this.attachPlugins(view);
     },
 
     // Remove song view from DOM, and remove
@@ -42,5 +43,13 @@ var PlaylistView = Backbone.View.extend({
         var songs = this.songViews,
             len = songs.length;
         for (var i = 0; i < len; i++) songs[i].remove();
+    },
+    
+    // Once the view has been appended, attach tooltips,
+    // and text-overflow plugin (necessary for Firefox 4).
+    attachPlugins: function(view) {
+        var $title = view.$('.pltitle');
+        $title.miniTip({anchor: 'e',event: 'hover'})
+              .textOverflow();
     }
 });

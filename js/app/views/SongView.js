@@ -28,10 +28,11 @@ var SongView = Backbone.View.extend({
         $element.fadeOut();
     },
 
-    // Render template, and attach tooltip
+    // Render template, attach tooltip, and clip over
+    // flowing text (this is necessary for FF4, as it 
+    // does not support css3 text-overflow).
 	render : function() {
-		$(this.el).html(this.template(this.model.toJSON()));	
-        this.$('.pltitle').miniTip({anchor: 'e',event: 'hover'});
+		$(this.el).html(this.template(this.model.toJSON()));
 		return this;
 	}
 });
