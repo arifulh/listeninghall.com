@@ -22,11 +22,10 @@ var SearchView = Backbone.View.extend({
     // plugin to the search display for custom scrollbars.
     initialize: function () {
         _.bindAll(this, "render");
-        this.$toggle   = $("#playlistAdd");
-        this.$input    = $("#searchText");
-        this.$display  = $("#searchResults").jScrollPane({hideFocus: true}).data('jsp');        
-        this.template  = _.template($("#search-template").html());
-        this.$toggle.bind("click", this.render);
+        this.$input   = this.$("#searchText");
+        this.$display = this.$("#searchResults").jScrollPane({hideFocus: true}).data('jsp');        
+        this.template = _.template($("#search-template").html());
+        this.bindExternalEvents();
     },
 
     // Bind the request callback to the SearchView object to simplify
@@ -35,10 +34,12 @@ var SearchView = Backbone.View.extend({
     search: function (e) {
         if (e.which !== 13 && e.which !== 1) return;
         var query = this.buildQuery();
+        this.$("#searchResults ul").fadeOut("fast");
         $.getJSON(query, _.bind(function (data) {
             var results = this.template({"results": data.feed.entry});
             this.$display.getContentPane().html(results);
             this.$display.reinitialise();
+            this.$display.scrollToY(0, false);
         }, this));
     },
 
@@ -63,10 +64,23 @@ var SearchView = Backbone.View.extend({
     // This view is already within the DOM when initialized. 
     // The render function will simply toggle hide/show animation.
     render: function () {
-        var speed = 210;
-        $(this.el).animate({
-            width   : 'toggle',
-            opacity : 'toggle'
-        }, speed);
+        var speed = 180;
+        this.el.fadeToggle(speed);
+    },
+    
+    // Bind this view to relavent events that occur outside of this view. 
+    bindExternalEvents : function() {
+        var $toggle = $("#playlistAdd"),
+            outside = ["#youtubePlayer","#chatDisplay","#chatInput"],
+            view    = this.el,
+            speed   = 180;
+        
+        // Bind click to the playlistAdd button
+        $toggle.click(this.render);
+        
+        // Hide SearchView if user clicks outside divs
+        $.each(outside, function(i, div){
+            $(div).click(function() {view.fadeOut(speed)});
+        });   
     }
 });
