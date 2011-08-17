@@ -22,37 +22,7 @@ $(function() {
 			
 		}
 	};
-	mainapp.init();
-
-	main = mainapp;
-
-	// Intialize jquery plugins for scrolling and tooltips
-	$("#loginProgress").slider({
-			orientation: "horizontal",
-			range: "min",
-			animate: true,
-			disabled: true
-	});
-	$("#plsongs").remoteScroll({ 
-        up: "#playlistUp", 
-        down: "#playlistDown"
-    }); 
-
-	// Animations
-	$("#playlistAdd").click(function() { 
-		$("#search").animate({width: 'toggle', opacity: 'toggle'}, 350);		
-	});
-	
-	$(".button3").hover(function() {
-		$(this).animate({ backgroundColor: "#000" }, "fast");
-	}, function() {
-		$(this).animate({ backgroundColor: "#dbdbdb" }, "fast");
-	});
-	
-	$("#share").hover(function() {
-		$(this).text("Share link: " + window.location.href);
-	}, function() { $(this).text("Invite others")});
-
+	mainapp.init();    
 });
 
 
