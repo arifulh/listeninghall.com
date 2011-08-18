@@ -1,12 +1,6 @@
 var ToolbarView = Backbone.View.extend({
     el: $("#toolbar"),
-
-    events: {
-        "mouseenter span#invite"  : "showInvite",
-        "mouseenter span#members" : "showMembers",
-        "mouseenter span#pass"    : "showPass"
-    },
-
+    
     subscribe: function () {
         $.subscribe("room/user/affil", this.adminTools);
     },
@@ -15,45 +9,38 @@ var ToolbarView = Backbone.View.extend({
     // of the toolbar icons, so compile the templates for each 
     // tooltip beforehand.
     initialize: function () {
-        _.bindAll(this, "showInvite", "showMembers", "showPass", "adminTools");
+        _.bindAll(this, "adminTools", "renderInvite", "renderMembers", "renderPass");
         this.templateInv  = _.template($("#invite-template").html());
         this.templateMem  = _.template($("#memberul-template").html());
-        this.templatePass = _.template($("#pass-template").html());
+        this.templatePass = _.template($("#pass-template").html());      
         this.password     = "";
+        this.createTips();
         this.subscribe();
     },
 
     // Users can invite others to the room just by sharing the link.
     // Render the room url as content for the tooltip.
-    showInvite: function (e) {
-        var url = window.location.href;
-        var render = this.templateInv({link: url});
-        this.attachTip(e.currentTarget, render, 'w');
+    renderInvite: function () {
+        var url = window.location.href,
+            render = this.templateInv({link: url});
+        return render;
     },
 
     // Render memberlist as content for the tooltip
-    showMembers: function (e) {
-        var members = this.collection;
-        var render = this.templateMem({mem: members.toJSON()});
-        this.attachTip(e.currentTarget, render, 's');
+    renderMembers: function () {
+        var members = this.collection,
+            render  = this.templateMem({mem: members.toJSON()});
+        return render;
     },
 
     // Render set-password form as content for the tooltip.
-    // This function will also attach a callback function
-    // when the tooltip is closed, signaling the Connection 
-    // object to set the password on the server.
-    showPass: function (e) {
+    renderPass: function (e) {
         var current  = this.password,
-            render   = this.templatePass({pass: current}),
-            callback = _.bind(function () {
-                var pass = $("#setPassword").val();
-                $.publish("room/setPass", [pass]);
-                this.password = pass;
-            }, this);
-        this.attachTip(e.currentTarget, render, 's', callback);
+            render   = this.templatePass({pass: current});
+        return render;
     },
 
-    // Show administrator tool icons if the user has the appropriate affiliation.
+    // Show administrator tool icons if the user is a moderator.
     adminTools: function (affiliation) {
         if (affiliation === "moderator") {
             $(this.el).addClass("admin");
@@ -61,15 +48,29 @@ var ToolbarView = Backbone.View.extend({
     },
 
     // Generate and attach tooltip to target
-    attachTip: function (tar, ren, pos, callback) {
-        $(tar).miniTip({
-            content: ren,
-            anchor: pos,
-            hide: callback,
-            aHide: false,
-            maxW: '400px',
-            delay: 10,
-            event: 'click'
-        });
+    createTips: function () {
+        var attach = function (tar, ren, pos, callback) {
+                $(tar).parent().miniTip({
+                    content : ren,
+                    anchor  : pos,
+                    hide    : callback,
+                    aHide   : false,
+                    maxW    : '400px',
+                    delay   : 200,
+                    event   : 'hover'
+                });
+            },
+            // Callback function when the password tooltip is closed. This  
+            // signals the Connection object to set the password on the server.
+            publishPass = function () {
+                var pass = $("#setPassword").val();
+                $.publish("room/setPass", [pass]);
+                this.password = pass;
+            };  
+
+        // Attach tooltips once
+        attach(this.$("#inviteTool"), this.renderInvite, 'w');
+        attach(this.$("#membersTool"), this.renderMembers, 's');
+        attach(this.$("#passTool"), this.renderPass, 's', publishPass);
     }
 });
