@@ -1,8 +1,4 @@
-
-var main;
-
 $(function() {
-
 	var mainapp = {
 		init : function() {
 			// Collections
@@ -23,9 +19,6 @@ $(function() {
 	};
 	mainapp.init();    
 });
-
-
-
 
 function onYouTubePlayerReady(playerid) {
 	$.publish('youtube/ready', [ playerid ]);	

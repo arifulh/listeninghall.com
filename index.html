@@ -2,27 +2,28 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>LH 6</title>
+		<title>Listening Hall</title>
 
-        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+        <!-- css -->
+        <link type="text/css" href="reset-min.css" rel="stylesheet" />
 		<link type="text/css" href="jquery-ui-1.8.14.custom.css" rel="stylesheet" />
 		<link type="text/css" href="main.css" rel="stylesheet" />
 		
-		<script type="text/javascript" src="js/swfobject/swfobject.js"></script>
-		<script type="text/javascript" src="js/json2.js"></script>		
-		<script type="text/javascript" src="js/jquery/jquery-1.6.2.min.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery-ui-1.8.14.custom.min.js"></script>
-		<script type="text/javascript" src="js/strophe/strophe.js"></script>
-		<script type="text/javascript" src="js/underscore/underscore-min.js"></script>
-		<script type="text/javascript" src="js/backbone/backbone-min.js"></script>
+        <!-- Libraries -->
+		<script type="text/javascript" src="js/libraries/swfobject.js"></script>
+		<script type="text/javascript" src="js/libraries/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="js/libraries/jquery-ui-1.8.14.custom.min.js"></script>
+		<script type="text/javascript" src="js/libraries/strophe.min.js"></script>
+		<script type="text/javascript" src="js/libraries/underscore-min.js"></script>
+		<script type="text/javascript" src="js/libraries/backbone-min.js"></script>
 				
 		<!-- Jquery plugins -->
-		<script type="text/javascript" src="js/jquery/pubsub.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery.mousewheel.min.js"></script>	
-		<script type="text/javascript" src="js/jquery/jquery.lh.remoteScroll.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery.miniTip.min.js"></script>	
-        <script type="text/javascript" src="js/jquery/jquery.text-overflow.min.js"></script>	
-		<script type="text/javascript" src="js/jquery/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript" src="js/plugins/pubsub.js"></script>
+		<script type="text/javascript" src="js/plugins/jquery.mousewheel.min.js"></script>	
+		<script type="text/javascript" src="js/plugins/jquery.lh.remoteScroll.js"></script>
+		<script type="text/javascript" src="js/plugins/jquery.miniTip.min.js"></script>	
+        <script type="text/javascript" src="js/plugins/jquery.text-overflow.min.js"></script>	
+		<script type="text/javascript" src="js/plugins/jquery.jscrollpane.min.js"></script>
 	
 		<body>
 		<div id="topContainer">
@@ -103,35 +104,14 @@
 						<br clear="all" />
 					</div>
 			</div>
-		</div>
-			
-			
-
-			
-			
+		</div>	
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Models -->
-<script type="text/javascript" src="js/app/models/Song.js"></script>
-<script type="text/javascript" src="js/app/models/Member.js"></script>
-
-<!-- Collections -->
-<script type="text/javascript" src="js/app/collections/Playlist.js"></script>
-<script type="text/javascript" src="js/app/collections/MemberList.js"></script>
+<!-- Models/Collections -->
+<script type="text/javascript" src="js/app/models_collections/Song.js"></script>
+<script type="text/javascript" src="js/app/models_collections/Member.js"></script>
+<script type="text/javascript" src="js/app/models_collections/Playlist.js"></script>
+<script type="text/javascript" src="js/app/models_collections/MemberList.js"></script>
 
 <!-- Views -->
 <script type="text/javascript" src="js/app/views/PlaylistView.js"></script>
@@ -141,12 +121,12 @@
 <script type="text/javascript" src="js/app/views/ToolbarView.js"></script>
 <script type="text/javascript" src="js/app/views/ChatView.js"></script>
 <script type="text/javascript" src="js/app/views/LoginView.js"></script>
+
 <!-- Connection -->
 <script type="text/javascript" src="js/app/Connection.js"></script>
+
 <!-- Main -->
 <script type="text/javascript" src="js/app/main.js"></script>
-
-
 
 
 <!-- Chat message template -->
