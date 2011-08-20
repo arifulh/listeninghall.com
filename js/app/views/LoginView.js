@@ -76,7 +76,7 @@ var LoginView = Backbone.View.extend({
     // hash parameter, and fade out the loading screen.
     success: function (room, nick) {
         window.location.hash = "/" + room;
-        $(this.el).fadeOut("slow", function () {
+        $(this.el).fadeOut("fast", function () {
             var $header = $("#top");
             $header.fadeIn("slow");
         });
@@ -102,7 +102,8 @@ var LoginView = Backbone.View.extend({
     progressBar: function () {
         var $progressBar = this.$("#loginProgress"),
             $loginDialog = this.$("#loginDialog"),
-            $login       = this.$("#login");
+            $login       = this.$("#login"),
+            self         = this;
 
 	    // Intialize progress bar
 	    $progressBar.slider({

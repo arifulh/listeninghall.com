@@ -10,7 +10,7 @@
 		
 		<script type="text/javascript" src="js/swfobject/swfobject.js"></script>
 		<script type="text/javascript" src="js/json2.js"></script>		
-		<script type="text/javascript" src="js/jquery/jquery-1.5.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery/jquery-ui-1.8.14.custom.min.js"></script>
 		<script type="text/javascript" src="js/strophe/strophe.js"></script>
 		<script type="text/javascript" src="js/underscore/underscore-min.js"></script>
@@ -30,9 +30,9 @@
 				<h1 id="mainLogo">Listening Hall</h1>
                 <div id="toolbar">
                     <ul>
-                        <li id="invli"><span id="invite">Invite</span></li>
-                        <li id="memli"><span id="members">Members</span></li>
-                        <li id="passli"><span id="pass">Pass</span></li>
+                        <li><span id="inviteTool"></span></li>
+                        <li><span id="membersTool"></span></li>
+                        <li class="hidden"><span id="passTool"></span></li>
                     </ul>    
                 </div>
 				<br clear="all" />
@@ -55,36 +55,12 @@
 							</div>		
 						</div>
 					</div>
+                    <!-- end of loading screen -->
 					<div id="app">
-						<!-- end of loading screen -->
 						<div id="leftColumn">
 							<div id="playlist">
 								<div id="plsongs">
 									<ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     </ul>
                                     <div id="plshadowbar"></div>
 								</div>
@@ -110,9 +86,7 @@
 										<input type="text" value="Search Youtube ..." id="searchText" />
 										<span id="searchButton" />Search</span>
 									</div>
-									<div id="searchResults">
-
-									</div>
+									<div id="searchResults"></div>
 								</div>
 							</div>
 							<!-- end of search screen -->
@@ -172,7 +146,7 @@
 <!-- Main -->
 <script type="text/javascript" src="js/app/main.js"></script>
 
-<!----TEMPLATES-------------------------------------------------------- -->
+
 
 
 <!-- Chat message template -->
@@ -189,7 +163,18 @@
 			<img class="plimage" src="<%= thumb %>" />
 			<div class="plinfo">
 				<span class="pltitle" title="<%= title %>"><%= title %></span>
-				<span class="plduration">Duration <%= slen %></span>
+				<span class="plduration">Duration 
+                <span class="time">
+                    <% var time = function (t) {
+                            var h = Math.floor(t / 3600),
+                                m = Math.floor((t / 60) % 60),
+                                s = t % 60,
+                                fm = ((h > 0) ? (h + "h ") : "") + ((m > 0) ? (m + "m ") : "") + ((s > 0) ? (s + "s ") : "");
+                             return fm;                  
+                        }(slen); %>
+                        <%= time %>
+                </span>
+                </span>
                 <span class="plskip">- <a href="javascript:;">Vote to skip &#187</a></span>
 			</div>
 			<br clear="all" />
@@ -199,9 +184,7 @@
 <!-- Member li template -->
 <script type="text/template" id="memberul-template">
 	<ul class='list1'>
-		<% _.each(mem, function(m) { %>
-			<li><%= m.nick %></li>
-		<% }); %>
+		<% _.each(mem, function(m) { %><li><%= m.nick %></li><% }); %>
 	</ul>
 </script>
 
@@ -212,14 +195,26 @@
 	<% _.each(results, function(i) { %>
 		<% var media = i.media$group; %>
 		<li id="<%= media.yt$videoid.$t %>">
-			<img class="searchImage" src="<%= media.media$thumbnail[0].url %>" />
 			<div class="searchInfo">
 				<div class="searchTitle"><%= media.media$title.$t %></div>
-				<div class="searchMisc">					
-					<div class="box2">Duration: <%= media.yt$duration.seconds %></div>
-					<span class="button5 addPlaylist" id="<%= media.yt$videoid.$t %>">Add to playlist</span>			
+				<div class="searchMisc">	
+					<span class="button4 addPlaylist" id="<%= media.yt$videoid.$t %>">Add to playlist</span>							
+					<span class="button3">Duration: 
+                        <span class="time">
+                            <% var time = function (t) {
+                                    var h = Math.floor(t / 3600),
+                                        m = Math.floor((t / 60) % 60),
+                                        s = t % 60,
+                                        fm = ((h > 0) ? (h + "h ") : "") + ((m > 0) ? (m + "m ") : "") + ((s > 0) ? (s + "s ") : "");
+                                    return fm;                  
+                               }(media.yt$duration.seconds); 
+                            %>
+                            <%= time %>
+                        </span>
+                    </span>
 				</div>
 			</div>
+            <img class="searchImage" id="<%= media.yt$videoid.$t %>" src="<%= media.media$thumbnail[0].url %>" />
 			<br clear="all" />
 		</li>
 	<% }); %>

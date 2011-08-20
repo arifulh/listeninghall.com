@@ -19,7 +19,6 @@ $(function() {
 			
 			// Connecton
 			Connection.initialize();
-			
 		}
 	};
 	mainapp.init();    

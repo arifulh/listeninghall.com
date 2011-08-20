@@ -3,7 +3,7 @@ html {
 	font-family: Arial;
 	font-size: 0.9em;
 	color: #d8d9da;
-	padding-top: 75px }
+	padding-top: 65px }
  
 textarea:focus, input:focus { outline: none }
  
@@ -17,6 +17,8 @@ textarea:focus, input:focus { outline: none }
 #wrapper {
 	background: #e8e8e8;
 	border: solid 4px #f1f1f1;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 	height: 541px;
 	width: 952px; }
  
@@ -28,123 +30,116 @@ textarea:focus, input:focus { outline: none }
 #top {
 	width: 952px;
 	height: 65px;
-	display: none}
-
-#toolbar ul {
-	margin: 25px 0 0 0;
-	padding: 0;
-	height: 25px;
-	float: right }
+	display: none }
  
-	#toolbar ul li {
-		margin: 0 0 0 4px;
+#toolbar {
+	background: #0a0a0a;
+	border-solid: solid 1px #0a0a0a;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	float: right;
+	display: block;
+	position: relative;
+	top: 37px;
+	left: 3px;
+	padding: 4px; }
+ 
+	#toolbar ul {
 		padding: 0;
-		list-style: none;
-		float: left;
-		height: 25px }
-    
-    #toolbar li#invli {width: 74px}
-    #toolbar li#memli {width: 22px}
-    #toolbar li#passli {width: 22px; display: none}
-    #toolbar.admin li#passli {width: 22px; display: inline}
-
-    #toolbar ul li span {
-        display: block;
-	    width: 0;
-	    height: 0;
-	    font-size: 0;
-	    overflow: hidden;
-    }
+		margin: 0; }
  
-span#invite {
-    padding: 0 0 25px 74px;
-	background: url('images/invite_button.png') top left no-repeat;
-	background-position: 0 0; }
+		#toolbar ul li {
+			float: left;
+			list-style: none;
+			margin: 0;
+			padding: 0 9px 0 9px;
+			border-left: solid 1px #353535; }
  
-span#members {
-    padding: 0 0 25px 22px;
-	background: url('images/members_button.png') top left no-repeat;
-	background-position: 0 0; }
+			#toolbar ul li:first-child { border-left: solid 1px #0a0a0a }
  
-span#pass {
-    padding: 0 0 25px 22px;
-	background: url('images/pass_button.png') top left no-repeat;
-	background-position: 0 0; }
+			#toolbar ul li span { cursor: pointer; }
  
-span:hover#invite { background-position: 0 -25px; }
+			#toolbar ul li #inviteTool {
+				width: 46px;
+				height: 12px;
+				background: url('images/toolbaricons.png') 0 0 no-repeat;
+				display: block; }
  
-span:hover#members { background-position: 0 -25px; }
+			#toolbar ul li #membersTool {
+				width: 17px;
+				height: 12px;
+				background: url('images/toolbaricons.png') -46px 0 no-repeat;
+				display: block; }
  
-span:hover#pass { background-position: 0 -25px; }
-
-
-
-
-
-
-
-
-
-.highlight1 {
-    color: #8dd2ef;
-}
-.highlight2 {
-    color: #fff;
-    display: block;
-}
-
-
-
-
-
-
+			#toolbar ul li #passTool {
+				width: 9px;
+				height: 12px;
+				background: url('images/toolbaricons.png') -63px 0 no-repeat;
+				display: block; }
+ 
+	#toolbar li.hidden { display: none }
+ 
+	#toolbar.admin li.hidden { display: inline }
+ 
+	#toolbar ul li #inviteTool:hover { background-position: 0 -12px; }
+ 
+	#toolbar ul li #membersTool:hover { background-position: -46px -12px; }
+ 
+	#toolbar ul li #passTool:hover { background-position: -63px -12px; }
+ 
 #loading {
-	background: url('images/loading_bg.png') top left no-repeat #000;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: url('images/search_pattern.png') #000;
 	height: 541px;
 	width: 952px;
 	position: absolute;
 	z-index: 9999; }
-
+ 
 #login {
-	width: 494px;
-	min-height: 170px;
-	margin: 0 auto; }
+	width: 450px;
+	display: table;
+	margin: 0 auto;
+	font-size: 1em; }
  
-	#login.valign1 { margin-top: 245px }
+	#login.valign1 { margin-top: 247px }
  
-	#login.valign2 { margin-top: 195px }
- 	
-	#login.valign3 { margin-top: 160px }	
-	
+	#login.valign2 { margin-top: 183px }
+ 
+	#login.valign3 { margin-top: 148px }
+ 
 	#login a { color: #fff }
  
 	#login input {
-		background: #000;
-		height: 22px;
-		width: 190px;
-		border: solid 1px #5a5a5a;
-		padding: 5px;
-		color: #a5a5a5;
-		line-height: 18px;
-		color: #fff; }
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+		border: none;
+		background: url('images/gradient1.png') repeat-x #2e2e2e;
+		min-height: 24px;
+		width: 180px;
+		padding: 5px 10px 5px 10px;
+		line-height: 1.6em;
+		color: #888888;
+		-moz-transition: color 0.2s ease-in;
+		-webkit-transition: color 0.2s ease-in;
+		-o-transition: color 0.2s ease-in; }
  
-		#login input.set1 {
-			border: solid 1px #f4f1d5;
+		#login input.set1, #login input.set1:focus {
 			background: #f4f1d5;
 			color: #000;
 			font-weight: bold; }
  
-			#login input.set1:focus { border: solid 1px #f4f1d5; }
- 
-		#login input:focus { border: solid 1px #fff; }
+		#login input:focus {
+			background: url('images/gradient1.png') repeat-x #3c3c3c;
+			color: #fff; }
  
 h1#loginLogo {
 	display: block;
 	width: 0;
 	height: 0;
 	font-size: 0;
-	padding: 0 0 45px 236px;
-	background: url('images/lh_logo.png') top left no-repeat;
+	padding: 0 0 48px 199px;
+	background: url('images/lh_logo2.png') top left no-repeat;
 	float: left;
 	overflow: hidden; }
  
@@ -153,22 +148,26 @@ h1#mainLogo {
 	width: 0;
 	height: 0;
 	font-size: 0;
-	padding: 0 0 65px 220px;
-	margin: 0 0 0 25px;
-	background: url('images/lh_logo.png') top left no-repeat;
+	padding: 0 0 48px 199px;
+	margin: 15px 0 0 25px;
+	background: url('images/lh_logo1.png') top left no-repeat;
 	float: left;
 	overflow: hidden; }
  
 #loginProgress {
 	background: #000;
-	border: solid 1px #656565;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 	float: left;
 	width: 220px;
 	height: 18px;
 	font-weight: bold;
-	margin: 6px 0 0 20px; }
+	margin: 11px 0 0 20px; }
  
-	#loginProgress .ui-slider-range { background: url('images/loading_bar.gif') }
+	#loginProgress .ui-slider-range {
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		background: url('images/loading_bar.gif'); }
  
 #loginDialog {
 	float: right;
@@ -176,15 +175,15 @@ h1#mainLogo {
 	padding: 0 0 0 25px;
 	border-left: solid 1px #5c5c5c;
 	display: none }
-
-#requirePass { display: none };
+ 
+#requirePass { display: none }
  
 #createButton, #joinButton { display: block; }
  
 #room_conflict, #nick_conflict, #pass_conflict {
 	color: #adf8ff;
-    margin-left: 5px;
-    position: absolute;
+	margin-left: 5px;
+	position: absolute;
 	display: none }
  
 #leftColumn {
@@ -198,19 +197,17 @@ h1#mainLogo {
 #search {
 	background: url('images/search_pattern.png');
 	position: absolute;
-    z-index: 9999;
+	z-index: 9999;
 	width: 470px;
 	height: 541px;
 	border-right: solid 5px #b9b9b9;
-	display: none;
-}
+	display: none; }
  
-#searchContent {  
+#searchContent {
 	background: url('images/shadow2.png') top left repeat-y;
 	width: 440px;
 	height: 515px;
-	padding: 26px 0 0 30px;	
-}
+	padding: 26px 0 0 30px; }
  
 #searchResults {
 	width: 405px;
@@ -225,14 +222,46 @@ h1#mainLogo {
 		position: relative }
  
 		#searchResults ul li {
-			border-bottom: solid 1px #696864;
+			border-bottom: dotted 1px #717171;
 			width: 380px;
-			padding: 11px 5px 11px 5px; }
+			padding: 11px 0 11px 0 }
  
-			#searchResults ul li:hover { background: url('images/black_transparent_bg3.png'); }
+			#searchResults ul li:hover img { border: solid 4px #5ac1ec; }
  
-			#searchResults ul li:hover img { border: solid 4px #494949 }
-
+				#searchResults ul li:hover img:hover { border: solid 4px #fff; }
+ 
+			#searchResults ul li:hover span.button3 {
+				color: #a0a0a0;
+				border-bottom: solid 3px #a0a0a0; }
+ 
+			#searchResults ul li:hover span.button4 {
+				color: #fff;
+				border-bottom: solid 3px #5ac1ec; }
+ 
+				#searchResults ul li:hover span.button4:hover { border-bottom: solid 3px #e57099; }
+ 
+			#searchResults ul li .searchInfo {
+				width: 286px;
+				float: left; }
+ 
+			#searchResults ul li .searchImage {
+				width: 69px;
+				height: 50px;
+				border: solid 4px #383838;
+				-moz-border-radius: 4px;
+				border-radius: 4px;
+				background: #000;
+				display: block;
+				float: right;
+				cursor: pointer; }
+ 
+			#searchResults ul li .searchTitle {
+				font-size: 1em;
+				color: #f5f5f5;
+				cursor: default; }
+ 
+			#searchResults ul li .searchMisc {  }
+ 
 #searchBox {
 	width: 387px;
 	height: 32px;
@@ -254,7 +283,7 @@ h1#mainLogo {
 	float: left; }
  
 #searchButton {
-    cursor: pointer;
+	cursor: pointer;
 	display: block;
 	float: right;
 	background: url('images/find_icon.gif');
@@ -273,13 +302,12 @@ h1#mainLogo {
 	width: 315px; }
  
 #plshadowbar {
-    background: url('images/shadowbar1.png') repeat-x;
-    width: 315px;
-    height: 6px;
-    display: block;
-    font-size: 0;
-}
-
+	background: url('images/shadowbar1.png') repeat-x;
+	width: 315px;
+	height: 6px;
+	display: block;
+	font-size: 0; }
+ 
 #plsongs {
 	height: 490px;
 	width: 315px;
@@ -288,7 +316,7 @@ h1#mainLogo {
 	#plsongs ul {
 		padding: 0;
 		margin: 0; }
-
+ 
 #plcontrolsShadow {
 	width: 315px;
 	height: 9px;
@@ -305,7 +333,8 @@ h1#mainLogo {
 	float: left;
 	width: 146px;
 	margin-top: 14px;
-	margin-left: 16px; }
+	margin-left: 16px;
+	cursor: pointer; }
  
 #volumeIcon {
 	background: url('images/volume_icon.gif');
@@ -333,15 +362,14 @@ h1#mainLogo {
 		float: left;
 		width: 34px;
 		height: 36px; }
-    
-    #plcontrols ul li span {
-        display: block;
-	    width: 0;
-	    height: 0;
-	    font-size: 0;
-	    padding: 0 0 36px 34px;
-	    overflow: hidden
-    }
+ 
+		#plcontrols ul li span {
+			display: block;
+			width: 0;
+			height: 0;
+			font-size: 0;
+			padding: 0 0 36px 34px;
+			overflow: hidden }
  
 span#playlistUp {
 	background: url('images/playlist_up.jpg') top left no-repeat;
@@ -375,19 +403,19 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	margin: 0 auto }
  
 #chat {
-    width: 637px;
+	width: 637px;
 	height: 199px;
 	background: #dadada }
  
 #chatDisplay {
-    width: 607px;
-    padding: 15px 0 0 30px;
+	width: 607px;
+	padding: 15px 0 0 30px;
 	background: url('images/gray_backgrounds.jpg') top left no-repeat;
 	background-position: 0 -342px;
 	height: 168px;
-    word-wrap: break-word;
+	word-wrap: break-word;
 	overflow: auto;
-    font-size: 0.8em; }
+	font-size: 0.8em; }
  
 #chatInput {
 	border-top: none;
@@ -399,27 +427,30 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	width: 630px;
 	color: #6d6d6d;
 	font-size: 0.8em;
-	background: none
-}
+	background: none }
+ 
 #passwordForm {
-    margin-top: 3px;
-    color: #c8c8c8;
-}
-#passwordForm input {
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	border-bottom: none;
-	padding: 4px;
-	margin: 5px 0px 5px 0px;
-    background: #383838;
-    color: #bbbbbb
-}
-
+	margin-top: 3px;
+	color: #c8c8c8; }
+ 
+	#passwordForm input {
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-bottom: none;
+		padding: 4px;
+		margin: 5px 0px 5px 0px;
+		background: #383838;
+		color: #bbbbbb }
+ 
 /* Classes */
 .block { display: block; }
  
 .hidden { display: none; }
+ 
+.highlight1 { color: #8dd2ef; }
+ 
+.highlight2 { color: #fff; }
  
 .dialog1 {
 	padding: 0;
@@ -437,36 +468,34 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	.dialog1 input {
 		margin: 5px 0 15px 0;
 		width: 160px; }
-
+ 
 .list1 {
-    margin: 0;
-    padding: 6px;
-    color: #c8c8c8;
-} 
-.list1 li {
-    padding: 5px 0 5px 0;
-    margin: 0;
-    border-bottom: dotted 1px #404040;
-}
+	margin: 0;
+	padding: 6px;
+	color: #c8c8c8; }
+ 
+	.list1 li {
+		padding: 5px 0 5px 0;
+		margin: 0;
+		border-bottom: dotted 1px #404040; }
+ 
 .chatMessage {
-    width: 560px;
-    display: block;
-    margin-bottom: 15px;
-    line-height: 1.6em;
-}
-
-.chatNick { 
-    display: block; 
-    color: #4e4e4e; 
-    font-weight: bold;
-}
+	width: 560px;
+	display: block;
+	margin-bottom: 15px;
+	line-height: 1.6em; }
+ 
+.chatNick {
+	display: block;
+	color: #4e4e4e;
+	font-weight: bold; }
  
 .chatText {
 	display: block;
 	color: #4e4e4e }
  
 .block { display: block; }
-
+ 
 .box1 {
 	display: block;
 	color: #fff;
@@ -480,11 +509,10 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	border-solid: solid 1px #dbdbdb;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
-
 	-moz-border-radius: 4px; }
-
+ 
 	.box1 a { color: #fff; text-decoration: none }
-
+ 
 .box2 {
 	display: block;
 	float: left;
@@ -498,24 +526,25 @@ span:hover#playlistAdd { background-position: 0 -36px; }
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px; }
-
-
+ 
 span.button1 {
+	text-shadow: 1px 1px 2px #999999;
 	color: #fff;
 	display: block;
 	width: 81px;
-	height: 25px;
-	padding: 11px 0 0 0;
+	height: 36px;
+	line-height: 2.6em;
 	background: url('images/join_button.png') top left no-repeat;
 	background-position: 0 0;
 	text-decoration: none;
 	text-align: center;
-	overflow: hidden; }
+	overflow: hidden;
+	cursor: pointer; }
  
-span:hover.button1 { background-position: 0 -36px }
-	
+span:hover.button1 { background-position: 0 -36px; }
+ 
 span.button5 {
-    cursor: pointer;
+	cursor: pointer;
 	display: block;
 	float: left;
 	color: #fff;
@@ -528,10 +557,28 @@ span.button5 {
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px; }
-
+ 
 	span.button5:hover { background: url('images/plus_icon.gif') no-repeat 6px 9px #90c6da }
  
 a#share.button3:hover { cursor: text }
+ 
+span.button3 {
+	color: #a4a4a4;
+	font-size: 0.8em;
+	margin-right: 4px;
+	padding: 5px 0 3px 0;
+	border-bottom: solid 3px #5f5f5f;
+	display: inline-block;
+	cursor: default; }
+ 
+span.button4 {
+	color: #a4a4a4;
+	font-size: 0.8em;
+	margin-right: 4px;
+	padding: 5px 0 3px 0;
+	border-bottom: solid 3px #5f5f5f;
+	display: inline-block;
+	cursor: pointer; }
  
 /* Playlist song template */
 .song {
@@ -539,21 +586,19 @@ a#share.button3:hover { cursor: text }
 	height: 63px;
 	padding: 6px 16px 0 8px;
 	background: url('images/song_bg.jpg') top left no-repeat;
-	background-position: 0 -69px
-}
-
+	background-position: 0 -69px }
+ 
 .add {
 	background: url('images/small_icons.gif') 0 0 no-repeat;
 	width: 0px;
 	height: 0px;
 	padding: 0 0 12px 12px;
-	display: inline
-}	
+	display: inline }
  
 .plimage {
 	width: 69px;
 	height: 50px;
-	border: solid 3px #ededed;
+	border: solid 3px #e2e2e2;
 	background: #ae9b97;
 	display: block;
 	float: left; }
@@ -561,154 +606,114 @@ a#share.button3:hover { cursor: text }
 .plinfo {
 	width: 200px;
 	height: 42px;
-    margin: 0 0 0 8px;
+	margin: 0 0 0 8px;
 	padding: 14px 0 0 0;
 	display: block;
 	float: left;
 	font-family: Arial }
  
 .pltitle {
-    font-size: 0.9em;
-    white-space: nowrap;
-    overflow: hidden;
+	font-size: 0.9em;
+	white-space: nowrap;
+	overflow: hidden;
 	text-overflow: ellipsis;
-    display: block; 
+	display: block;
 	color: #6a737d;
 	cursor: default; }
  
 .plduration {
-
 	font-size: 0.8em;
 	color: #babbbe;
 	margin-top: 1px }
-
+ 
 .plskip {
-
 	font-size: 0.8em;
 	margin-top: 1px;
-    text-decoration: none;
-    display: none }
-
-.plskip a {
-    color: #2997c0;
-    text-decoration: none
-}
-
-.playing {
-	background-position: 0 0;
-}
-
-.playing span.pltitle {
-	color: #000;
-	font-weight: bold;
-}
-.playing span.plskip {
-    display: inline
-}
-.playing span.plskip a:hover {
-    text-decoration: underline
-}
+	text-decoration: none;
+	display: none }
  
-.searchImage {
-	width: 69px;
-	height: 50px;
-	border: solid 4px #383838;
-	background: #000;
-	display: block;
-	float: left }
+	.plskip a {
+		color: #2997c0;
+		text-decoration: none }
  
-.searchInfo {
-	width: 278px;
-	margin-left: 10px;
-	float: left; }
+.playing { background-position: 0 0; }
  
-.searchTitle {
-	font-size: 0.8em;
-	font-weight: bold;
-	color: #fff;
-	cursor: default; }
+	.playing span.pltitle {
+		color: #000;
+		font-weight: bold; }
  
-.searchMisc {
-	overflow: hidden;
-	margin-top: 5px; }
+	.playing span.plskip { display: inline }
+ 
+		.playing span.plskip a:hover { text-decoration: underline }
  
 /* Override Jquery UI slider style */
 .ui-slider { border: none; background: #f2f2f2 }
+ 
 .ui-slider-range { background: #d3d3d3 }
+ 
 .ui-slider-handle { display: none }
-
+ 
 /*! miniTip CSS - v1.2.5 */
 #miniTip {
-    /* main styles for tooltip */
-    background-color: #000;
+	background-color: #000; /* main styles for tooltip */
 	border: 1px solid #000;
 	color: #fff;
 	font-size: 0.8em;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-    /* end editing style */
-	display: none;
+	display: none; /* end editing style */
 	position: absolute;
 	top: 0;
 	left: 0;
-    z-index: 99999;
-}
-
-
+	z-index: 99999; }
+ 
 /* title bar style */
 #miniTip_t {
 	background-color: #f5edc2;
 	font-weight: 700;
-	padding: 4px 6px;
-}
-
+	padding: 4px 6px; }
+ 
 /* main content style */
 #miniTip_c { padding: 4px 8px }
-
-
+ 
 /* arrow holder, no need to edit */
 #miniTip_a {
 	width: 0;
 	height: 0;
 	position: absolute;
 	top: 0;
-	left: 0;
-}
-
+	left: 0; }
+ 
 /* arrow pointing down, change border-top color to change color of the arrow */
 #miniTip .n {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-top: 8px solid #000;
-	border-bottom: 0;
-}
-
+	border-bottom: 0; }
+ 
 /* arrow pointing up, change border-bottom color to change color of the arrow */
 #miniTip .s {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-bottom: 8px solid #000;
-	border-top: 0;
-}
-
+	border-top: 0; }
+ 
 /* arrow pointing left, change border-right color to change color of the arrow */
 #miniTip .e {
 	border-bottom: 8px solid transparent;
 	border-top: 8px solid transparent;
 	border-right: 8px solid #000;
-	border-left: 0;
-}
-
+	border-left: 0; }
+ 
 /* arrow pointing right, change border-left color to change color of the arrow */
 #miniTip .w {
 	border-bottom: 8px solid transparent;
 	border-top: 8px solid transparent;
 	border-left: 8px solid #000;
-	border-right: 0;
-}
-
-/*
+	border-right: 0; }
+ 
+/* 
  * CSS Styles that are needed by jScrollPane for it to operate correctly.
  *
  * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
@@ -716,7 +721,8 @@ a#share.button3:hover { cursor: text }
  */
 .jspContainer {
 	overflow: hidden;
-	position: relative; }
+	position: relative;
+	outline: 0 none; }
  
 .jspPane { position: absolute; }
  
@@ -745,8 +751,7 @@ a#share.button3:hover { cursor: text }
  
 .jspHorizontalBar .jspCap { float: left; }
  
-.jspTrack {
-	position: relative; }
+.jspTrack { position: relative; }
  
 .jspDrag {
 	position: relative;
@@ -782,13 +787,17 @@ a#share.button3:hover { cursor: text }
 	background: #eeeef4;
 	float: left;
 	height: 100%; }
-
+ 
 /* Individual scrollpane styles */
+
 #searchResults .jspDrag { background: #3b3b3b; }
-#searchResults .jspDrag:hover { background: #fff }
-#searchResults .jspTrack {background: #5c5c5c;}
-
+ 
+	#searchResults .jspDrag:hover { background: #fff }
+ 
+#searchResults .jspTrack { background: #5c5c5c; }
+ 
 #chat .jspDrag { background: #b7b7b7; }
-#chat .jspDrag:hover { background: #757575 }
-#chat .jspTrack {background: #d5d5d5;}
-
+ 
+	#chat .jspDrag:hover { background: #757575 }
+ 
+#chat .jspTrack { background: #d5d5d5; }

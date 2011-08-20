@@ -62,11 +62,11 @@ var ToolbarView = Backbone.View.extend({
             },
             // Callback function when the password tooltip is closed. This  
             // signals the Connection object to set the password on the server.
-            publishPass = function () {
+            publishPass = _.bind(function () {
                 var pass = $("#setPassword").val();
                 $.publish("room/setPass", [pass]);
                 this.password = pass;
-            };  
+            }, this);  
 
         // Attach tooltips once
         attach(this.$("#inviteTool"), this.renderInvite, 'w');
