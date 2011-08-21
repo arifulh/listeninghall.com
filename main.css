@@ -90,7 +90,7 @@ textarea:focus, input:focus { outline: none }
 #loading {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	background: url('images/search_pattern.png') #000;
+	background: url('images/search_pattern.png') 0 -27px #000;
 	height: 541px;
 	width: 952px;
 	position: absolute;
@@ -139,7 +139,7 @@ h1#loginLogo {
 	height: 0;
 	font-size: 0;
 	padding: 0 0 48px 199px;
-	background: url('images/lh_logo2.png') top left no-repeat;
+	background: url('images/lh_logo.png') 0 -48px no-repeat;
 	float: left;
 	overflow: hidden; }
  
@@ -150,7 +150,7 @@ h1#mainLogo {
 	font-size: 0;
 	padding: 0 0 48px 199px;
 	margin: 15px 0 0 25px;
-	background: url('images/lh_logo1.png') top left no-repeat;
+	background: url('images/lh_logo.png') 0 0 no-repeat;
 	float: left;
 	overflow: hidden; }
  
@@ -372,22 +372,22 @@ h1#mainLogo {
 			overflow: hidden }
  
 span#playlistUp {
-	background: url('images/playlist_up.jpg') top left no-repeat;
+	background: url('images/playlist_icons.jpg') no-repeat;
 	background-position: 0 0; }
  
 span#playlistDown {
-	background: url('images/playlist_down.jpg') top left no-repeat;
-	background-position: 0 0; }
+	background: url('images/playlist_icons.jpg') no-repeat;
+	background-position: -32px 0; }
  
 span#playlistAdd {
-	background: url('images/playlist_add.jpg') top left no-repeat;
-	background-position: 0 0; }
+	background: url('images/playlist_icons.jpg') no-repeat;
+	background-position: -64px 0; }
  
 span:hover#playlistUp { background-position: 0 -36px; }
  
-span:hover#playlistDown { background-position: 0 -36px; }
+span:hover#playlistDown { background-position: -32px -36px; }
  
-span:hover#playlistAdd { background-position: 0 -36px; }
+span:hover#playlistAdd { background-position: -64px -36px; }
  
 #youtubePlayer {
 	width: 637px;
@@ -782,6 +782,7 @@ span.button4 {
 	height: 100%; }
  
 .jspVerticalBar .jspArrow:focus { outline: none; }
+
  
 .jspCorner {
 	background: #eeeef4;
