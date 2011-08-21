@@ -360,7 +360,8 @@ h1#mainLogo {
 	width: 130px;
 	height: 6px;
 	float: right;
-	margin-top: 3px; }
+	margin-top: 3px;
+}
  
 #plcontrols ul {
 	margin: 2px 14px 0 0;
@@ -661,7 +662,7 @@ span.button4 {
 		.playing span.plskip a:hover { text-decoration: underline }
  
 /* Override Jquery UI slider style */
-.ui-slider { border: none; background: #f2f2f2 }
+.ui-slider { border: none; background: #f2f2f2; }
  
 .ui-slider-range { background: #d3d3d3 }
  
