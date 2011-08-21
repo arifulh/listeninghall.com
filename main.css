@@ -224,7 +224,7 @@ h1#mainLogo {
 		#searchResults ul li {
 			border-bottom: dotted 1px #717171;
 			width: 380px;
-			padding: 11px 0 11px 0 }
+			padding: 13px 0 13px 0 }
  
 			#searchResults ul li:hover img { border: solid 4px #5ac1ec; }
  
@@ -238,8 +238,22 @@ h1#mainLogo {
 				color: #fff;
 				border-bottom: solid 3px #5ac1ec; }
  
-				#searchResults ul li:hover span.button4:hover { border-bottom: solid 3px #e57099; }
- 
+				#searchResults ul li:hover span.button4:hover { border-bottom: solid 3px #fff; }
+
+            #searchResults ul li:hover {
+                border-color: #a2a2a2
+            }
+
+            /* CSS3 Transitions */
+            #searchResults ul li:hover span,
+            #searchResults ul li:hover img:hover,
+            #searchResults ul li:hover img,
+            #searchResults ul li:hover {
+		        -moz-transition: border-color 0.12s linear;
+		        -webkit-transition: border-color 0.12s linear;
+		        -o-transition: border-color 0.12s linear;    
+            }
+
 			#searchResults ul li .searchInfo {
 				width: 286px;
 				float: left; }

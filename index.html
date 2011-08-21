@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>Listening Hall</title>
+		<title>ListeningHall</title>
 
         <!-- css -->
         <link type="text/css" href="reset-min.css" rel="stylesheet" />
@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="js/libraries/swfobject.js"></script>
 		<script type="text/javascript" src="js/libraries/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="js/libraries/jquery-ui-1.8.14.custom.min.js"></script>
-		<script type="text/javascript" src="js/libraries/strophe.min.js"></script>
+	    <script type="text/javascript" src="js/libraries/strophe.min.js"></script>
 		<script type="text/javascript" src="js/libraries/underscore-min.js"></script>
 		<script type="text/javascript" src="js/libraries/backbone-min.js"></script>
 				
@@ -204,13 +204,13 @@
 
 <!-- Invite tip template -->
 <script type="text/template" id="invite-template">
-    <span class='highlight1'>Just share link: </span><br><span class='highlight2'><%= link %></span>
+    <span class='highlight1'>Just share this link: </span><br><span class='highlight2'><%= link %></span>
 </script>
 
 
 <!-- Password tip tempalte -->
 <script type="text/template" id="pass-template">
-        <div id="passwordForm">Password protect room<br> <input id="setPassword" value="<%= pass %>" type="text" /></div>
+        <div id="passwordForm">Password: <br> <input id="setPassword" value="<%= pass %>" type="text" /></div>
 </script>
 
 
