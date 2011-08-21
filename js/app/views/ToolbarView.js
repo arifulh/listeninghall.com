@@ -55,11 +55,14 @@ var ToolbarView = Backbone.View.extend({
                     anchor  : pos,
                     hide    : callback,
                     aHide   : false,
-                    maxW    : '400px',
-                    delay   : 200,
-                    event   : 'hover'
+                    maxW    : '900px',
+                    event   : 'click',
+                    fadeIn  : 150,
+                    fadeOut : 150,
+                    delay   : 0
                 });
             },
+
             // Callback function when the password tooltip is closed. This  
             // signals the Connection object to set the password on the server.
             publishPass = _.bind(function () {
