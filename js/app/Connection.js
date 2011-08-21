@@ -162,7 +162,9 @@ var Connection = {
                            type: "set"})
                       .c("query", {xmlns: this.XMLNS.owner})
                       .c("x", {xmlns: "jabber:x:data",type: 'submit'});
-            $fields.each(function (i, field) { set.cnode(field).up() });
+            $fields.each(function (i, field) {
+                set.cnode(Strophe.copyElement(field)).up();
+            });
             this._sendIQ(set, function (stanza) { return });
         });
     },
