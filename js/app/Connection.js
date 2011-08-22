@@ -226,8 +226,8 @@ var Connection = {
     // This function will determine the type of the song, and
     // publish the corresponding event.
     _onSong: function ($song) {
-        var song = this._parseSong($song);
-        var type = $song.attr('type');
+        var song = this._parseSong($song),
+            type = $song.attr('type');
         if (type === 'queue') $.publish('song/queue', [song]);
         if (type === 'play')  $.publish('song/play',  [song]);
         if (type === 'stop')  $.publish('song/stop');
@@ -235,8 +235,8 @@ var Connection = {
 
     // Helper function that parses attributes from all presence stanzas.
     _parsePresence: function (stanza) {
-        var $stanza = $(stanza);
-        var from = $stanza.attr('from');
+        var $stanza = $(stanza),
+            from = $stanza.attr('from');
         return {
             room   : Strophe.getBareJidFromJid(from),
             nick   : Strophe.getResourceFromJid(from),
@@ -249,12 +249,22 @@ var Connection = {
 
     // Helper function that parses attributes from all message stanzas.
     _parseMessage: function (stanza) {
-        var $stanza = $(stanza);
-        var from = $stanza.attr('from');
+        var $stanza = $(stanza),
+            from = $stanza.attr('from'),
+            // Unescape invalid xml characters. The main app appends
+            // text using jQuery.text(), so we must do this.
+            xmlunescape = function(text) {
+                text = text.replace(/\&amp\;/g,  "&");
+                text = text.replace(/\&lt\;/g,   "<");
+                text = text.replace(/\&gt\;/g,   ">");
+                text = text.replace(/\&apos\;/g, "'");
+                text = text.replace(/\&quot\;/g, "\"");
+                return text;           
+            };
         return {
             room  : Strophe.getBareJidFromJid(from),
             nick  : Strophe.getResourceFromJid(from),
-            text  : $stanza.text(),
+            text  : xmlunescape($stanza.text()),
             $song : $stanza.find('song')
         };
     },
