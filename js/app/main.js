@@ -20,10 +20,12 @@ $(function() {
 	mainapp.init();    
 });
 
+// Global youtube-api callback.
 function onYouTubePlayerReady(playerid) {
 	$.publish('youtube/ready', [ playerid ]);	
 }
 
+// Global youtube-api callback.
 function onYoutubeStateChange(state) {
 	$.publish('youtube/state', [ state ]);
 }
