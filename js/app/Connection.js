@@ -2,9 +2,9 @@ var Connection = {
 
     // Default server information
     CONFIG: {
-        BOSH     : "http://localhost/http-bind",
-        HOST     : "localhost",
-        MUC_HOST : "@conference.localhost"
+        BOSH     : "http://listeninghall.com/http-bind",
+        HOST     : "listeninghall.com",
+        MUC_HOST : "@conference.listeninghall.com"
     },
 
     // Namespace references
