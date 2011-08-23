@@ -131,15 +131,13 @@
 <script type="text/javascript" src="js/app/main.js"></script>
 
 
-<!-- Chat message template -->
+<!-- Templates -->
 <script type="text/template" id="message-template">
     <div class="chatMessage">
         <div class="chatNick"></div>
         <div class="chatText"></div>
     </div>
 </script>
-
-<!-- Song li template -->
 <script type="text/template" id="song-template">
 		<div class="song ">
 			<img class="plimage" src="<%= thumb %>" />
@@ -162,16 +160,11 @@
 			<br clear="all" />
 		</div>
 </script>
-
-<!-- Member li template -->
 <script type="text/template" id="memberul-template">
 	<ul class='list1'>
 		<% _.each(mem, function(m) { %><li><%= m.nick %></li><% }); %>
 	</ul>
 </script>
-
-
-<!-- Search ul template -->
 <script type="text/template" id="search-template">
 <ul>
 	<% _.each(results, function(i) { %>
@@ -202,15 +195,9 @@
 	<% }); %>
 <ul>
 </script>
-
-
-<!-- Invite tip template -->
 <script type="text/template" id="invite-template">
     <span class='highlight1'>Just share this link: </span><br><span class='highlight2'><%= link %></span>
 </script>
-
-
-<!-- Password tip tempalte -->
 <script type="text/template" id="pass-template">
         <div id="passwordForm">Password: <br> <input id="setPassword" value="<%= pass %>" type="text" /></div>
 </script>
