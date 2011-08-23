@@ -1,11 +1,6 @@
-// Todo: This plugin needs cleanup, better documentation
+// Quick and dirty custom plugin to allow 
+// the PlaylistView to be scrolled smoothly.
 (function ($) {
-
-    var SPEED = {
-        "FAST"   : 1400,
-        "NORMAL" : 5000,
-        "SLOW"   : 7000
-    };
 
     var methods = {
 
@@ -13,37 +8,46 @@
             return this.each(function () {
                 var $elem = $(this),
                     $up = $(options.up).data('scroll', $elem),
-                    $down = $(options.down).data('scroll', $elem);
+                    $dn = $(options.down).data('scroll', $elem);
+                
+                // Bind mouse events
                 $elem.mousewheel(methods._mouseScroll);
-                $up.hover(methods._scrollUp, methods._stopScroll);
-                $down.hover(methods._scrollDown, methods._stopScroll);
+                $up.mousedown(methods._scrollUp);
+                $dn.mousedown(methods._scrollDown);
+                $up.mouseup(methods._stopScroll);
+                $dn.mouseup(methods._stopScroll);
             });
         },
 
-        // Multiply the scroll amount to make it negative or positive to indicate direction
         _mouseScroll: function (event, delta) {
-            var $elem = $(this);
-            var scroll_amount = 200;
-            var direction = delta > 0 ? -1 : 1;
+            var $elem = $(this),
+                scrollAmount = 200,
+                currentPos   = $elem.scrollTop(),  
+
+                // Determine if scrolling up or down              
+                direction    = delta > 0 ? -1 : 1, 
+                offset       = scrollAmount*direction;
+
+            // End previous scroll animation before scrolling
             $elem.stop(true, true).animate({
-                scrollTop: $elem[0].scrollTop + scroll_amount * direction
+                scrollTop: currentPos + offset
             }, 200);
         },
 
         _scrollUp: function () {
-            var $elem = $(this).data('scroll'),
-                speed = SPEED.NORMAL;
-            if ($elem.scrollTop() < 490) speed = SPEED.FAST;
-            $elem.animate({
-                scrollTop: 0
-            }, speed);
+            var $elem  = $(this).data('scroll'),
+                height1  = $elem.scrollTop(),
+                height2  = 0,
+                distance = Math.abs(height2 - height1);
+            $elem.animate({ scrollTop: 0 }, distance*4);
         },
 
         _scrollDown: function () {
-            var $elem = $(this).data('scroll');
-            $elem.animate({
-                scrollTop: $elem[0].scrollHeight
-            }, 4000);
+            var $elem  = $(this).data('scroll'),
+                height1  = $elem.scrollTop(),
+                height2  = $elem[0].scrollHeight,
+                distance = Math.abs(height2 - height1);
+            $elem.animate({ scrollTop: height2 }, distance*4);
         },
 
         _stopScroll: function (event) {
