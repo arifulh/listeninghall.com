@@ -3,7 +3,9 @@ var ChatView = Backbone.View.extend({
 
     // Listen for user keyboard input
     events: {
-        "keypress #chatInput": "createMessage"
+        "keypress #chatInput": "createMessage",
+        "focus #chatInput"   : "toggleFocus",
+        "blur #chatInput"    : "toggleFocus"
     },
 
     // Subscribe to Connection object events
@@ -19,10 +21,11 @@ var ChatView = Backbone.View.extend({
     // well the message templates. Attach the scrollpane plugin to 
     // display as well.
     initialize: function () {
-        _.bindAll(this, 'subscribe', 'renderMessage', 'setUser');
-        this.$display    = $("#chatDisplay").jScrollPane({hideFocus: true}).data('jsp');
-        this.$input      = $("#chatInput");
+        _.bindAll(this, 'subscribe', 'renderMessage', 'setUser', 'toggleFocus');
+        this.$display = $("#chatDisplay").jScrollPane({hideFocus: true}).data('jsp');
+        this.$input   = $("#chatInput");
         this.msgTemplate = _.template($("#message-template").html());
+        this.focusCount = 0; 
         this.subscribe();
     },
 
@@ -59,6 +62,27 @@ var ChatView = Backbone.View.extend({
         // scrollpane api does not return itself, hence the redundant calls.
         this.$display.getContentPane().append($element);
         this.$display.reinitialise();
-        this.$display.scrollToBottom(true);
+        this.$display.scrollToBottom();
+
+        // Update title bar if chat is unfocused to alert users
+        // of new chat messages if they happen to be tabbed away.
+        if (!this.focus) {
+            this.focusCount++;
+            document.title = "[" + this.focusCount + "]" + " ListeningHall";
+        }
+    },
+
+    // Determine if the chatInput is focused or not. This will
+    // allow us to keep track of when the user is tabbed away
+    // in another window. We use the chat input box instead of 
+    // the $(window) object for cross browser reasons (IE7).
+    toggleFocus : function(e) {
+        this.focus = (e.type === "focusin") ? true : false;
+        // Reset title bar to default if we have focus
+        if (this.focus) {
+            document.title = "ListeningHall";
+            this.focusCount = 0;
+        };
     }
+    
 });
