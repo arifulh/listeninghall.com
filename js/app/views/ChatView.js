@@ -84,5 +84,4 @@ var ChatView = Backbone.View.extend({
             this.focusCount = 0;
         };
     }
-    
 });

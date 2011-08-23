@@ -94,7 +94,7 @@ textarea:focus, input:focus { outline: none }
 	height: 541px;
 	width: 952px;
 	position: absolute;
-	z-index: 9999; display: none}
+	z-index: 9999;}
  
 #login {
 	width: 450px;

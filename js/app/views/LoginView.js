@@ -40,7 +40,6 @@ var LoginView = Backbone.View.extend({
     // verifies the login fields, and 'connect' handles creating a signal
     // for the Connection object to connect.
     login: function () {
-
         // Determine if login fields are empty. Alert the user if
         // they are and return false. This function self-executes.
         var isLoginEmpty = _.bind(function () {
