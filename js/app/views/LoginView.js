@@ -61,7 +61,7 @@ var LoginView = Backbone.View.extend({
         var connect = _.bind(function () {
             var roomType = this.create ? 'New' : '';
             $.publish('connection/join' + roomType, [{
-                room: this.$roomInput.val(),
+                room: this.$roomInput.val().toLowerCase(),
                 nick: this.$nickInput.val(),
                 pass: this.$passInput.val()
             }]);
