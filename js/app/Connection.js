@@ -85,8 +85,7 @@ var Connection = {
 
     // Template for messages that contain only groupchat text 
     sendMessage: function (msg) {
-       var msg = $msg({to: this.room,
-                       type: "groupchat"})
+       var msg = $msg({to: this.room, type: "groupchat"})
                  .c('body').t(msg.text);
        this._send(msg);
     },
@@ -95,8 +94,7 @@ var Connection = {
     // *Note: All messages are sent as type "groupchat", and the
     // song element is sent as a payload inside the message.
     sendSong: function (sid) {
-        var msg = $msg({to: this.room,
-                        type: "groupchat"})
+        var msg = $msg({to: this.room, type: "groupchat"})
                   .c('song', {xmlns: this.XMLNS["songq"], type: "queue"})
                   .c('sid').t(sid);
         this._send(msg);
@@ -110,7 +108,7 @@ var Connection = {
         this._send(pres);
     },
 
-    // Request the entire playlist from the server. This is request
+    // Request the entire playlist from the server. This request
     // is made upon initially joining a room, or when it is necessary
     // to resync the playlist with the server. The list is parsed and 
     // pushed into an array to be used by other objects.
@@ -285,8 +283,7 @@ var Connection = {
     // Helper function to generate IQ stanzas based on
     // type (get or set), and the specified request.
     _request: function (reqType, req, callback) {
-        var req = $iq({to: this.room,
-                       type: reqType})
+        var req = $iq({to: this.room, type: reqType})
                   .c("query", {xmlns: this.XMLNS[req]});
         this._sendIQ(req, _.bind(callback, this));
     },
@@ -298,5 +295,4 @@ var Connection = {
         this.nick = nick;
         this.room = Strophe.escapeNode(room) + this.CONFIG.MUC_HOST;
     }
-
 };
