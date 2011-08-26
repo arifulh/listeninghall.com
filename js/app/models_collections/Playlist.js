@@ -13,12 +13,9 @@ var Playlist = Backbone.Collection.extend({
 	// Use Underscore.js 'bindAll' to bind methods in this 
 	// object to run within context of this object.  
 	initialize : function() {
-		_.bindAll(this, 'addSong',
-						'syncSong',
-						'loadSong', 
-						'unloadSong',
-						'loadPlaylist', 
-						'resync');
+		_.bindAll(this, 'addSong', 'syncSong', 'loadSong', 
+				'unloadSong', 'loadPlaylist', 
+				'resync');
 		this.subscribe();
 	},
 	
