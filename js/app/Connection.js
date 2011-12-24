@@ -156,8 +156,7 @@ var Connection = {
 
             // Rebuild our response stanza with all fields. Send new 
             // configuration to room, do nothing with the server response.
-            var set = $iq({to: this.room,
-                           type: "set"})
+            var set = $iq({to: this.room, type: "set"})
                       .c("query", {xmlns: this.XMLNS.owner})
                       .c("x", {xmlns: "jabber:x:data",type: 'submit'});
             $fields.each(function (i, field) {
