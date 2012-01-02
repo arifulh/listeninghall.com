@@ -1,7 +1,9 @@
 $(function () {
     var mainapp = {
         init: function () {
-        
+            
+            var test = new Function;
+            
             // Collections
             this.members      = new MemberList;
             this.playlist     = new Playlist;
