@@ -3,4 +3,4 @@ listeninghall.com
 
 http://www.listeninghall.com
 
-Share and listen to music together in realtime with others.
+Listening Hall is a single page web application that allows users to share and listen to music together in realtime.
