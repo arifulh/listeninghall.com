@@ -1,0 +1,30 @@
+
+<ion-view title="listeninghall" hide-nav-bar="true">
+
+
+
+
+
+
+
+  <ion-content class="padding has-header">
+<div class="list list-inset list-inset-spaced">
+  <label class="item item-input">
+    <i class="icon ion-ios7-information-outline placeholder-icon"></i>
+    <input type="text" ng-model="data.room" placeholder="Room name" value="{{ data.url }}">
+  </label>
+  <label class="item item-input">
+    <i class="icon ion-person placeholder-icon"></i>
+    <input type="text" ng-model="data.nick" placeholder="Your nick">
+  </label>
+  <button ng-show="!data.existing" ng-click="login()" style="text-align: left" class="button button-block button-positive item-icon-right">Create new room <i class="icon ion-ios7-arrow-thin-right"></i></button>
+  <button ng-show="data.existing" ng-click="login()" style="text-align: left" class="button  button-block button-positive item-icon-right">Enter room<i class="icon  ion-ios7-arrow-thin-right"></i></button></div>
+
+
+</div>
+
+  </ion-content>
+
+
+
+</ion-view>

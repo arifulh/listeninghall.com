@@ -1,0 +1,84 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialMessage\"><param name=\"ios-package\" value=\"SocialMessage\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "CFBundleURLTypes": [
+                        {
+                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>listeninghall</string></array></dict></array>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "Social.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "CoreGraphics.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.ionic.keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "nl.x-services.plugins.launchmyapp": {
+            "URL_SCHEME": "listeninghall",
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "uk.co.ilee.socialmessage": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        }
+    },
+    "dependent_plugins": {}
+}

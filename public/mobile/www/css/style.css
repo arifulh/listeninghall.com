@@ -1,0 +1,114 @@
+.slider{
+  position:absolute !important;
+  top: 0 ;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.slider-pager {
+    top: initial;
+}
+
+.pane, .view {
+    background: #eee !important
+}
+.content-main {
+    background: #;
+    position: absolute;
+    top: 213px !important;
+}
+.messages {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+
+.messages li {
+    display:block;
+    float:left;
+    clear:both;
+    border-bottom: solid 1px #ddd;
+    max-width:90%;
+    margin:0 0 0.5875rem 0;
+    padding:0;
+}
+.messages li,
+.messages li img {
+    float: left;
+}
+.messages li.user p,
+.messages li.user {
+    float:right;
+}
+
+.messages li.user img {
+    float:right;
+}
+
+.messages p {
+    border-radius:.8rem;
+    background:#fcfcfc;
+    color:#5a5a5a;
+    padding:.4875rem .6875rem;
+    margin:0;
+word-wrap: break-word;
+font-size: 14px;
+font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+line-height: 20px;
+text-rendering: optimizeLegibility;
+-webkit-backface-visibility: hidden;
+-webkit-user-drag: none;
+}
+/*5461F6 #F65467*/
+.messages li.user p {
+    background:#40D36F;
+    color:#FFF;
+}
+
+.messages img {
+    display:block;
+    max-width:65%;
+    border-radius:.75rem;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.2);
+    box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.2);
+}
+
+button {
+    border-radius: 3px !important;
+    border: none !important;
+}
+
+.list .item {
+    background: transparent;
+}
+
+.bar-subsecondary {
+    position: absolute;
+    top: 259px;
+    width: 100%;
+    background: #eee;
+}
+
+.bar-subprimary {
+    position: absolute;
+    opacity: 0.95;
+    border: none;
+    top: 210px !important;
+    color: #000
+}
+
+.bar-footerprimary {
+    opacity: 0.97; background: #f7f7f7;
+    border-top: solid 1px #ddd
+}
+
+.bar-subsecondary.bar {
+    padding: 0px
+}
+
+.

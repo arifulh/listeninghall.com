@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.ionicframework.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HelloCordova</name>
+    <description>
+        An Ionic Framework and Cordova project.
+    </description>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">
+      Ionic Framework Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="stay-in-webview" value="true" />
+    <preference name="HideKeyboardFormAccessoryBar" value="true" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="KeyboardShrinksView" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+
+    <!-- Don't store local date in an iCloud backup. Turn this to "cloud" to enable storage
+         to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
+    -->
+    <preference name="BackupWebStorage" value="none" />
+
+    <feature name="StatusBar">
+      <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="ios-package" value="IonicKeyboard" onload="true" />
+    </feature>
+    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+      <param name="URL_SCHEME" value="listeninghall" />
+    </gap:plugin>
+</widget>

@@ -1,0 +1,95 @@
+<ion-view title="Room"   hide-nav-bar="true" >
+
+<div  class="shadow bar-subprimary tabs tabs-icon-left">
+  <a  ng-click="goBack()" class="tab-item">
+  <i class="ion-ios7-arrow-left icon "></i>
+  </a>
+  <a ng-click="sendSocialInvite()" class="tab-item " >
+  <i class="icon ion-ios7-upload "></i>
+  </a>
+  <a ng-click="gotoPlaylist()" class="tab-item">
+  <i class="icon ion-ios7-musical-notes "></i>
+  </a>
+  <a ng-click="gotoChat()" class="tab-item">
+  <i class="icon ion-ios7-chatboxes"></i>
+  </a>
+</div>
+<ion-slide-box on-slide-changed="slideHasChanged(index)" delegate-handle="main-sliderbox" show-pager="false">
+  <ion-slide>
+    <ion-content scroll="true" class="content-main" >
+      <div class="list box">
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+        <a class="item item-avatar" ng-href="">
+        <img src="http://ionicframework.com/img/docs/venkman.jpg">
+        <h2>sdasdas</h2>
+        <p>Back off, man. I'm a scientist.</p>
+        </a>
+      </div>
+      </ion-content>
+      <div class="bar bar-footerprimary bar-footer"  >
+        <button class="button button-icon  "></button>
+        <button class="button   button-clear button-positive"> Add to playlist</button>
+      </div>
+    </ion-content>
+  </ion-slide>
+  <ion-slide>
+    <div  class="bar bar-subsecondary shadow"  >
+      <label style="background: transparent; " class="item-input-wrapper">
+        <input style=" background: #ddd; padding: 10px; border-radius: 3px;" ng-focus="onChatInputFocus()" ng-blur="cancelChatInput()" type="text" placeholder="Text message"  ng-enter="sendMessage()" ng-model="data.message"  >
+      </label>
+    </div>
+    <ion-content scroll="true" class="content-main" >
+      <div class="list box padding">
+        <ol class="messages ">
+          <li ng-class="{ user: message.user }" ng-repeat="message in data.allmessages"><p>{{ message.text }}</p></li>
+        </ol>
+          <a id="bottom"></a>
+      </div>
+    </ion-content>
+  </ion-slide>
+</ion-slide-box>
+</ion-view>

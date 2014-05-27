@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="nl.x-services.plugins.launchmyapp"
+        version="3.1.1">
+
+  <name>Custom URL scheme</name>
+
+  <description>
+    Launch your app by using this URL:  mycoolapp://
+    You can add a path and even pass params like this: mycoolerapp://somepath?foo=bar
+  </description>
+
+  <license>MIT</license>
+
+  <preference name="URL_SCHEME" />
+
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+
+  <!-- ios -->
+  <platform name="ios">
+    <js-module src="www/ios/LaunchMyApp.js" name="LaunchMyApp">
+      <clobbers target="window.plugins.launchmyapp" />
+    </js-module>
+
+    <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+      <array>
+        <dict>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>$URL_SCHEME</string>
+          </array>
+        </dict>
+      </array>
+    </config-file>
+  </platform>
+
+  <!-- android -->
+  <platform name="android">
+    <js-module src="www/android/LaunchMyApp.js" name="LaunchMyApp">
+      <clobbers target="window.plugins.launchmyapp" />
+    </js-module>
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="LaunchMyApp">
+        <param name="android-package" value="nl.xservices.plugins.LaunchMyApp"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/nl/xservices/plugins/LaunchMyApp.java" target-dir="src/nl/xservices/plugins"/>
+
+    <config-file target="AndroidManifest.xml" parent="/*/application/activity">
+      <intent-filter>
+        <data android:scheme="$URL_SCHEME"/>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+      </intent-filter>
+    </config-file>
+  </platform>
+
+</plugin>
